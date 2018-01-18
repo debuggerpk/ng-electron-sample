@@ -14,4 +14,4 @@ import { AuthModule } from '@retail-reaction/auth';
   bootstrap: [AppComponent],
   providers: [AuthModule]
 })
-export class AppModule { }
+export class RootModule { }

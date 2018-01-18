@@ -4,7 +4,7 @@ import * as env from 'gulp-env';
 import { exec } from 'child_process';
 import * as nodemon from 'gulp-nodemon';
 import * as browserSync from 'browser-sync';
-import { Paths, HMR_PROXY, HmrBrowserSyncConfig, } from './gulp_config';
+import { Paths, PROXY, HmrBrowserSyncConfig, } from './config';
 
 /**
  * Task to Build Main App
@@ -113,7 +113,7 @@ export const serveElectronHmrTask = (done) => {
     exec: `electron ${Paths.electron_dest}main`,
     watch: [Paths.electron_dest]
   }).on('start', () => {
-    proxyCli(HMR_PROXY, HmrBrowserSyncConfig);
+    proxyCli(PROXY, HmrBrowserSyncConfig);
   });
 }
 

@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "retail-reaction"
+    "name": "retail-reaction",
+    "npmScope": "reaction"
   },
   "apps": [
     {
@@ -18,7 +19,7 @@
       "test": "../../../test.js",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "reaction",
       "styles": [
         "styles.css"
       ],
@@ -62,7 +63,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {
     },
     "schematics": {

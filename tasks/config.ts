@@ -1,5 +1,5 @@
 
-export const HMR_PROXY = 'HMR-Proxy';
+export const PROXY = 'HMR-Proxy';
 
 export const Paths ={
   electron_src : './standalone/**/*.ts',
