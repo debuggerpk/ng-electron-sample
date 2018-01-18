@@ -8,7 +8,7 @@ import { exec } from 'child_process';
 
 import {
   Paths
-} from './tasks/gulp_config';
+} from './tasks/config';
 
 /**
  * Importing Gulp Tasks
