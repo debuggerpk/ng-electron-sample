@@ -1,6 +1,6 @@
 import { ElectronService } from 'ngx-electron';
 import { Injectable } from '@angular/core';
-import { IConfig } from '@reaction/config/models/config'
+import { IConfig } from '@reaction/config/models/config';
 
 @Injectable()
 export class ConfigService {
@@ -26,6 +26,4 @@ export class ConfigService {
       console.log(response);
     });
   }
-
-
 }

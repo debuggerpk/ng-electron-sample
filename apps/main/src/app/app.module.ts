@@ -9,12 +9,13 @@ import { ConfigService } from '@reaction/config';
 
 @NgModule({
   imports: [
-  BrowserModule,
-  NgxElectronModule,
-  NxModule.forRoot(),
-  RouterModule.forRoot([], {initialNavigation: 'enabled'})],
+    BrowserModule,
+    NgxElectronModule,
+    NxModule.forRoot(),
+    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [AuthModule, ConfigService]
+  providers: [AuthModule, ConfigService],
 })
-export class RootModule { }
+export class RootModule {}

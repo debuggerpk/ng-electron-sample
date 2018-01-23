@@ -3,8 +3,6 @@
  */
 export { IConfig } from './models/config';
 
-
-
 /**
  * Export Services
  */
