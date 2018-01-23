@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '@reaction/auth';
+import { ConfigModule } from '@reaction/config';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { AuthModule } from '@reaction/auth';
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     // @reaction modules
     AuthModule,
+    ConfigModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

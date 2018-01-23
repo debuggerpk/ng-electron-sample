@@ -1,9 +1,1 @@
-/**
- * Export Models
- */
-export { IConfig } from './models/config';
-
-/**
- * Export Services
- */
-export { ConfigService } from './services/config';
+export { ConfigModule , configRoutes } from './src/config.module';

@@ -36,6 +36,12 @@
       "appRoot": "",
       "root": "libs/auth/src",
       "test": "../../../test.js"
+    },
+    {
+      "name": "config",
+      "root": "libs/config/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ],
   "e2e": {
@@ -64,8 +70,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {
-    },
+    "component": {},
     "schematics": {
       "collection": "@nrwl/schematics",
       "newProject": [
