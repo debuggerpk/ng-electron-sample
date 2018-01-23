@@ -40,13 +40,16 @@ gulp.task('set:hmrVar', setHmrVariableTask);
  * Adding Watchers
  */
 gulp.task('watch:app', done => {
-  console.log('Watching');
   gulp.watch(Paths.app_src, gulp.series(buildAppTask));
   done();
 });
 
+gulp.task('watch:libs', done => {
+  gulp.watch(Paths.lib_src, gulp.series(buildAppTask));
+  done();
+});
+
 gulp.task('watch:electron', done => {
-  console.log('Watching Electron');
   gulp.watch(Paths.electron_src, gulp.series(buildElectronTask));
   done();
 });
@@ -55,7 +58,7 @@ gulp.task('watch:electron', done => {
 /**
  * Gulp Tasks
  */
-gulp.task('serve', gulp.series('build:electron', gulp.parallel(['serve:app', 'watch:app', 'watch:electron', 'serve:electron'])));
+gulp.task('serve', gulp.series('build:electron', gulp.parallel(['serve:app', 'watch:app', 'watch:electron', 'serve:electron', 'watch:libs'])));
 
-gulp.task('default', gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron'])));
+gulp.task('default', gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron', 'watch:libs'])));
 

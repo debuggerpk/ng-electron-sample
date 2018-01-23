@@ -5,6 +5,7 @@ export const Paths ={
   electron_src : './standalone/**/*.ts',
   electron_dest : './dist/electron/',
   app_src: ['./apps/main/src/**/*.ts', './apps/main/src/**/*.html', './apps/main/src/**/*.scss'],
+  lib_src: ['./libs/**/*.ts'],
   app_config: './apps/main/src/tsconfig.app.json'
 }
 

@@ -1,4 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { store } from './lib/store';
+import './lib/events';
 
 import * as path from 'path';
 

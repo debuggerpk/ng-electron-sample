@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '@reaction/config';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private _config;
 
-  constructor() { }
+  constructor(private _configService: ConfigService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this._config = this._configService.getConfig();
+      console.log(this._config);
+    }, 10);
   }
 
 }
