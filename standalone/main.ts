@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import { store } from './lib/store';
 import './lib/events';
 
@@ -26,6 +27,7 @@ function createWindow() {
   applicationRef.loadURL(url);
   if (debugMode) {
     // Open the DevTools.
+    installExtension(REDUX_DEVTOOLS);
     applicationRef.webContents.openDevTools();
   }
   applicationRef.on('closed', () => {
