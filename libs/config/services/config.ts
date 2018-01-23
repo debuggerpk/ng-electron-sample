@@ -20,8 +20,8 @@ export class ConfigService {
     return this.config;
   }
 
-  setConfig(payload:IConfig) {
-    this._electron.ipcRenderer.send('save-config',payload);
+  setConfig(payload: IConfig) {
+    this._electron.ipcRenderer.send('save-config', payload);
     this._electron.ipcRenderer.on('save-config-reply', (event, response) => {
       console.log(response);
     });

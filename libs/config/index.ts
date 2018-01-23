@@ -1,11 +1,11 @@
 /**
  * Export Models
  */
- export { IConfig } from './models/config';
+export { IConfig } from './models/config';
 
 
 
- /**
-  * Export Services
-  */
-  export { ConfigService } from './services/config';
+/**
+ * Export Services
+ */
+export { ConfigService } from './services/config';

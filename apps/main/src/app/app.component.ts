@@ -12,10 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private _configService: ConfigService) { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this._config = this._configService.getConfig();
-      console.log(this._config);
-    }, 10);
+
   }
 
 }
