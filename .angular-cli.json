@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
     "name": "retail-reaction",
-    "npmScope": "reaction"
+    "npmScope": "reaction",
+    "latestMigration": "20180424-add-tsconfig-tools"
   },
   "apps": [
     {
@@ -29,19 +30,28 @@
         "dev": "environments/environment.ts",
         "hmr": "environments/environment.hmr.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "tags": []
     },
     {
       "name": "auth",
       "appRoot": "",
       "root": "libs/auth/src",
-      "test": "../../../test.js"
+      "test": "../../../test.js",
+      "tags": []
     },
     {
       "name": "config",
       "root": "libs/config/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "$workspaceRoot",
+      "root": ".",
+      "appRoot": "",
+      "tags": []
     }
   ],
   "e2e": {
@@ -72,12 +82,7 @@
     "styleExt": "scss",
     "component": {},
     "schematics": {
-      "collection": "@nrwl/schematics",
-      "newProject": [
-        "app",
-        "lib"
-      ],
-      "postGenerate": "npm run format"
+      "collection": "@nrwl/schematics"
     }
   },
   "warnings": {
