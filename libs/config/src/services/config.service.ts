@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
-import { IConfig } from '../models/config';
+import { Configuration } from '../models/config';
 
 @Injectable()
 export class ConfigService {
-  public config: IConfig;
+  private _config: Configuration;
 
   constructor(private _electron: ElectronService) {
     if (this._electron.isElectronApp) {
       this._electron.ipcRenderer.send('get-config');
 
-      // register listers
       this._onGetConfig();
       this._onSaveConfig();
     }
   }
 
+  public get config(): Configuration {
+    return this._config;
+  }
+
+  public set config(payload: Configuration) {
+    this._electron.ipcRenderer.send('save-config', payload);
+  }
+
   private _onGetConfig(): void {
     this._electron.ipcRenderer.on('get-config-reply', (event, payload) => {
-      this.config = payload;
+      this._config = payload;
     });
   }
 
@@ -26,13 +33,5 @@ export class ConfigService {
     this._electron.ipcRenderer.on('save-config-reply', (event, response) => {
       console.log(response);
     });
-  }
-
-  public getConfig(): IConfig {
-    return this.config;
-  }
-
-  public setConfig(payload: IConfig): void {
-    this._electron.ipcRenderer.send('save-config', payload);
   }
 }

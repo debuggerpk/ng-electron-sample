@@ -13,6 +13,7 @@ import { MainEffects } from './+state/main.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { VendorModule } from '@reaction/vendor';
 
 @NgModule({
   imports: [
@@ -20,10 +21,11 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     BrowserModule,
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    VendorModule,
     // @reaction modules
     AuthModule,
     ConfigModule,
-    StoreModule.forRoot({main: mainReducer}, {initialState: {main: mainInitialState}}),
+    StoreModule.forRoot({ main: mainReducer }, { initialState: { main: mainInitialState } }),
     EffectsModule.forRoot([MainEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule,
