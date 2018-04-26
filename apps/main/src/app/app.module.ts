@@ -25,6 +25,7 @@ import { VendorModule } from '@reaction/vendor';
     // @reaction modules
     AuthModule,
     ConfigModule,
+    // @ngrx redux store
     StoreModule.forRoot({ main: mainReducer }, { initialState: { main: mainInitialState } }),
     EffectsModule.forRoot([MainEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

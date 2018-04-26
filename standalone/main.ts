@@ -14,6 +14,9 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   width: 800,
   height: 650,
   frame: true,
+  webPreferences: {
+    nodeIntegration: false,
+  },
 };
 
 function createWindow() {

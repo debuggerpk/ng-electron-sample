@@ -1,4 +1,3 @@
-
 export const PROXY = 'HMR-Proxy';
 
 export const Paths = {
@@ -6,8 +5,8 @@ export const Paths = {
   electron_dest: './dist/electron/',
   app_src: ['./apps/main/src/**/*.ts', './apps/main/src/**/*.html', './apps/main/src/**/*.scss'],
   lib_src: ['./libs/**/*.ts'],
-  app_config: './apps/main/src/tsconfig.app.json'
-}
+  app_config: './apps/main/src/tsconfig.app.json',
+};
 
 export const HmrBrowserSyncConfig = {
   open: false,
@@ -16,6 +15,6 @@ export const HmrBrowserSyncConfig = {
   notify: false,
   port: 4201,
   proxy: {
-    target: 'http://localhost:4200'
-  }
+    target: 'http://localhost:4200',
+  },
 };
