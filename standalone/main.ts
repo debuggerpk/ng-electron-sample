@@ -5,14 +5,16 @@ import './lib/events';
 
 import * as path from 'path';
 
-let applicationRef: Electron.BrowserWindow = null;
+let mainWindowRef: Electron.BrowserWindow = null;
 
 const debugMode = true;
 const isDev = process.env.NODE_ENV !== 'production';
 
 const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
-  width: 800,
-  height: 650,
+  width: store.get('windowBounds.width', 800),
+  height: store.get('windowBounds.height', 640),
+  x: store.get('windowBounds.x', 320),
+  y: store.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
     nodeIntegration: false,
@@ -26,18 +28,22 @@ function createWindow() {
       ? 'http://localhost:4200'
       : `file:///${__dirname}/apps/main/index.html`;
   console.log(`Main Window Proxy: ${url}`);
-  applicationRef = new BrowserWindow(mainWindowSettings);
-  applicationRef.loadURL(url);
+  mainWindowRef = new BrowserWindow(mainWindowSettings);
+  mainWindowRef.loadURL(url);
   if (debugMode) {
     // Open the DevTools.
     installExtension(REDUX_DEVTOOLS);
-    applicationRef.webContents.openDevTools();
+    mainWindowRef.webContents.openDevTools();
   }
-  applicationRef.on('closed', () => {
+  mainWindowRef.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    applicationRef = null;
+    mainWindowRef = null;
+  });
+
+  mainWindowRef.on('resize', () => {
+    store.set('windowBounds', mainWindowRef.getBounds());
   });
 }
 
@@ -52,7 +58,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (applicationRef === null) {
+  if (mainWindowRef === null) {
     createWindow();
   }
 });
