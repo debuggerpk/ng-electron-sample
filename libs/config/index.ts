@@ -1,1 +1,1 @@
-export { ConfigModule , configRoutes } from './src/config.module';
+export { ConfigModule } from './src/config.module';

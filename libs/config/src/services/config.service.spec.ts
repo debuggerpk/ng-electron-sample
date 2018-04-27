@@ -5,11 +5,14 @@ import { ConfigService } from './config.service';
 describe('ConfigService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConfigService]
+      providers: [ConfigService],
     });
   });
 
-  it('should be created', inject([ConfigService], (service: ConfigService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([ConfigService], (service: ConfigService) => {
+      expect(service).toBeTruthy();
+    }),
+  );
 });

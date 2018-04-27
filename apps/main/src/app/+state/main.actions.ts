@@ -1,12 +1,20 @@
-export interface LoadData {
-  type: 'LOAD_DATA';
-  payload: {};
+import { Action } from '@ngrx/store';
+
+export enum MainActionTypes {
+  LoadData = '[Main] Load Data',
+  DataLoaded = '[Main] Data Loaded',
 }
 
-export interface DataLoaded {
-  type: 'DATA_LOADED';
-  payload: {};
+export class LoadData implements Action {
+  readonly type = MainActionTypes.LoadData;
+
+  constructor(public payload: any) {}
 }
 
-export type MainAction = LoadData | DataLoaded;
+export class DataLoaded implements Action {
+  readonly type = MainActionTypes.DataLoaded;
 
+  constructor(public payload: any) {}
+}
+
+export type MainActions = LoadData | DataLoaded;

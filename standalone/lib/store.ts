@@ -1,3 +1,3 @@
-import * as Store from 'electron-store';
+const Store = require('electron-store');
 
 export const store = new Store({ name: 'config' });

@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NxModule } from '@nrwl/nx';
+
+// @reaction modules
 import { AuthModule } from '@reaction/auth';
 import { ConfigModule } from '@reaction/config';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { VendorModule } from '@reaction/vendor';
+
+// App Modules
 import { mainReducer } from './+state/main.reducer';
 import { mainInitialState } from './+state/main.init';
 import { MainEffects } from './+state/main.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppComponent } from './app.component';
+
+// Helpers
 import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { VendorModule } from '@reaction/vendor';
 
 @NgModule({
   imports: [

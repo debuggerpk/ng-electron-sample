@@ -1,11 +1,16 @@
-import {Main} from './main.interfaces';
-import {MainAction} from './main.actions';
+import { Main } from './main.interfaces';
+import { MainActions, MainActionTypes } from './main.actions';
 
-export function mainReducer(state: Main, action: MainAction): Main {
+export function mainReducer(state: Main, action: MainActions): Main {
   switch (action.type) {
-    case 'DATA_LOADED': {
-      return {...state, ...action.payload};
+    case MainActionTypes.LoadData: {
+      return { ...state, ...action.payload };
     }
+
+    case MainActionTypes.DataLoaded: {
+      return { ...state, ...action.payload };
+    }
+
     default: {
       return state;
     }

@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { MainState } from './+state/main.interfaces';
+import { LoadData } from './+state/main.actions';
 
 @Component({
-  selector: 'app-root',
+  selector: 'reaction-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  private _config;
+  constructor(private _store: Store<MainState>) {}
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    this._store.dispatch(new LoadData({}));
+  }
 }
