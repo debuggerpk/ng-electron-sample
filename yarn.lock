@@ -24,29 +24,12 @@
     rxjs "^5.5.6"
     source-map "^0.5.6"
 
-"@angular-devkit/core@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.5.8.tgz#7bc885cdc400378649766c605ce72a5492fd7ee9"
-  dependencies:
-    ajv "~6.4.0"
-    chokidar "^1.7.0"
-    rxjs "^6.0.0-beta.3"
-    source-map "^0.5.6"
-
 "@angular-devkit/schematics@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
   dependencies:
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
-
-"@angular-devkit/schematics@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.5.8.tgz#74f9b084ad8e68c9e845e32111dd0d240b368611"
-  dependencies:
-    "@angular-devkit/core" "0.5.8"
-    "@ngtools/json-schema" "^1.1.0"
-    rxjs "^6.0.0-beta.3"
 
 "@angular/animations@5.2.10":
   version "5.2.10"
@@ -386,7 +369,7 @@ ajv@^5.0.0, ajv@^5.1.0, ajv@~5.5.1:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
 
-ajv@^6.1.0, ajv@^6.1.1, ajv@~6.4.0:
+ajv@^6.1.0, ajv@^6.1.1:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.4.0.tgz#d3aff78e9277549771daf0164cff48482b754fc6"
   dependencies:
@@ -7004,12 +6987,6 @@ rxjs@^5.5.10, rxjs@^5.5.6:
   dependencies:
     symbol-observable "1.0.1"
 
-rxjs@^6.0.0-beta.3:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.0.0.tgz#d647e029b5854617f994c82fe57a4c6747b352da"
-  dependencies:
-    tslib "^1.9.0"
-
 safe-buffer@5.1.1, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -8113,7 +8090,7 @@ tsickle@^0.27.2:
     source-map "^0.6.0"
     source-map-support "^0.5.0"
 
-tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
 
