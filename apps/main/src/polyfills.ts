@@ -54,6 +54,7 @@ import 'core-js/es7/reflect';
  * Zone JS is required by Angular itself.
  */
 import 'zone.js/dist/zone'; // Included with Angular CLI.
+import { IpcRenderer } from 'electron';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
@@ -68,3 +69,13 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+export interface ReactionWindow {
+  ipc: IpcRenderer;
+}
+
+declare global {
+  interface Window {
+    reaction: ReactionWindow;
+  }
+}

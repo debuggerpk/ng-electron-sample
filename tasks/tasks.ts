@@ -114,6 +114,7 @@ export const serveHmrTask = done => {
 export const serveElectronHmrTask = done => {
   return nodemon({
     exec: `electron ${Paths.electron_dest}main`,
+    ignore: [`${Paths.electron_dest}apps/**/*.*`, `${Paths.electron_dest}libs/**/*.*`],
     watch: [Paths.electron_dest],
   }).on('start', () => {
     proxyCli(PROXY, HmrBrowserSyncConfig);

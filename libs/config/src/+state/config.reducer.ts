@@ -11,8 +11,10 @@ export interface ConfigState {
 }
 
 export const initialState: Configuration = {
-  outlet_id: '',
-  local_gateway: '',
+  outlet_id: null,
+  local_gateway: null,
+  api_key: null,
+  api_gateway: null,
 };
 
 export function configReducer(state = initialState, action: ConfigActions): Configuration {
@@ -20,9 +22,14 @@ export function configReducer(state = initialState, action: ConfigActions): Conf
     case ConfigActionTypes.GetConfig:
       return { ...state };
 
-    case ConfigActionTypes.GetConfigFromElectron: {
+    case ConfigActionTypes.GetConfigFromElectron:
+      return { ...state };
+
+    case ConfigActionTypes.GetConfigFromLocalStorage:
+      return { ...state };
+
+    case ConfigActionTypes.GetConfigDone:
       return { ...state, ...action.payload };
-    }
 
     default:
       return { ...state };

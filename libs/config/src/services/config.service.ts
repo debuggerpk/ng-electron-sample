@@ -1,36 +1,30 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Configuration } from '../models/config';
+import { Store } from '@ngrx/store';
+import { ConfigState } from '@reaction/config/src/+state/config.reducer';
+import { GetConfig } from '@reaction/config/src/+state/config.actions';
 
 @Injectable()
 export class ConfigService {
   private _config: Configuration;
+  private _reaction = window.reaction;
 
-  constructor(private _electron: ElectronService) {
-    if (this._electron.isElectronApp) {
-      this._electron.ipcRenderer.send('get-config');
+  constructor(private _store: Store<ConfigState>) {}
 
-      this._onGetConfig();
-      this._onSaveConfig();
-    }
-  }
-
-  public get config(): Configuration {
-    return this._config;
-  }
-
-  public set config(payload: Configuration) {
-    this._electron.ipcRenderer.send('save-config', payload);
+  public getConfig(): void {
+    this._store.dispatch(new GetConfig());
   }
 
   private _onGetConfig(): void {
-    this._electron.ipcRenderer.on('get-config-reply', (event, payload) => {
+    this._reaction.ipc.on('get-config-reply', (event, payload) => {
+      console.log(payload);
       this._config = payload;
     });
   }
 
   private _onSaveConfig(): void {
-    this._electron.ipcRenderer.on('save-config-reply', (event, response) => {
+    this._reaction.ipc.on('save-config-reply', (event, response) => {
       console.log(response);
     });
   }

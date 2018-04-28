@@ -18,6 +18,7 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   frame: true,
   webPreferences: {
     nodeIntegration: false,
+    preload: path.join(__dirname, 'preload.js'),
   },
 };
 

@@ -2,24 +2,15 @@ import { Action } from '@ngrx/store';
 
 import { Configuration } from '../models/config';
 
-export const GET_CONFIG_START = '[CONFIG]: Get Config Start';
-export const GET_CONFIG_FROM_ELECTRON = '[CONFIG] Get Electron Configuration';
-export const GET_CONFIG_FROM_LOCAL_STORAGE = '[CONFIG] Get LocalStorage Configuration';
-export const GET_CONFIG_DONE = '[CONFIG]: Get Config Done';
-export const SET_CONFIG_START = '[CONFIG]: Save Config';
-export const SET_CONFIG_DONE = '[CONFIG]: Save Config Done';
-
-// and the error Configuration
-
-export const CONFIG_ERROR = '[CONFIG] Error';
-
 export enum ConfigActionTypes {
   GetConfig = '[CONFIG] Get Config Start',
   GetConfigFromElectron = '[CONFIG] Get Electron Configuration',
   GetConfigFromLocalStorage = '[CONFIG] Get LocalStorage Configuration',
   GetConfigDone = '[CONFIG] Get Config Done',
-  SConfig = '[CONFIG] Save Config',
-  SetConfigDone = '[CONFIG] Save Config Done',
+  ValidateConfig = '[CONFIG] Validate',
+  ConfigValidationError = '[CONFIG] Validation Error',
+  SaveConfig = '[CONFIG] Save Config',
+  SaveConfigDone = '[CONFIG] Save Config Done',
 }
 
 export class GetConfig implements Action {
@@ -28,8 +19,6 @@ export class GetConfig implements Action {
 
 export class GetConfigFromElectron implements Action {
   readonly type = ConfigActionTypes.GetConfigFromElectron;
-
-  constructor(public payload: Configuration) { }
 }
 
 export class GetConfigFromLocalStorage implements Action {
@@ -39,19 +28,27 @@ export class GetConfigFromLocalStorage implements Action {
 export class GetConfigDone implements Action {
   readonly type = ConfigActionTypes.GetConfigDone;
 
-  constructor(public payload: Configuration) { }
+  constructor(public payload: Configuration) {}
+}
+
+export class ValidateConfig implements Action {
+  readonly type = ConfigActionTypes.ValidateConfig;
+
+  constructor(public payload: Configuration) {}
+}
+
+export class ConfigValidationError implements Action {
+  readonly type = ConfigActionTypes.ValidateConfig;
 }
 
 export class SaveConfig implements Action {
-  readonly type = SET_CONFIG_START;
+  readonly type = ConfigActionTypes.SaveConfig;
+
+  constructor(public payload: Configuration) {}
 }
 
 export class SaveConfigDone implements Action {
-  readonly type = SET_CONFIG_DONE;
-}
-
-export class ConfigError implements Action {
-  readonly type = CONFIG_ERROR;
+  readonly type = ConfigActionTypes.SaveConfigDone;
 }
 
 export type ConfigActions =
@@ -59,6 +56,7 @@ export type ConfigActions =
   | GetConfigFromElectron
   | GetConfigFromLocalStorage
   | GetConfigDone
+  | ValidateConfig
+  | ConfigValidationError
   | SaveConfig
-  | SaveConfigDone
-  | ConfigError;
+  | SaveConfigDone;

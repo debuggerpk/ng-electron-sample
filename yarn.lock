@@ -5412,11 +5412,15 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-ngrx-store-freeze@^0.2.2:
+ngrx-store-freeze@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.2.2.tgz#fbc1f50dbee8f5a63a34aa589abeb422d68f7fc5"
   dependencies:
     deep-freeze-strict "^1.1.1"
+
+ngrx-store-logger@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/ngrx-store-logger/-/ngrx-store-logger-0.2.1.tgz#216e99c9527cf3c50862ee2b27fe93fbe8c28671"
 
 ngx-electron@^1.0.4:
   version "1.0.4"

@@ -6,9 +6,7 @@ import { exec } from 'child_process';
  * Gulp Configuration
  */
 
-import {
-  Paths
-} from './tasks/config';
+import { Paths } from './tasks/config';
 
 /**
  * Importing Gulp Tasks
@@ -20,9 +18,8 @@ import {
   serveElectronTask,
   setLaunchVariableTask,
   serveHmrTask,
-  setHmrVariableTask
+  setHmrVariableTask,
 } from './tasks/tasks';
-
 
 /**
  * Gulp task wrapper.
@@ -34,7 +31,6 @@ gulp.task('serve:electron', serveElectronTask);
 gulp.task('serve:hmr', serveHmrTask);
 gulp.task('set:launchVar', setLaunchVariableTask);
 gulp.task('set:hmrVar', setHmrVariableTask);
-
 
 /**
  * Adding Watchers
@@ -54,11 +50,18 @@ gulp.task('watch:electron', done => {
   done();
 });
 
-
 /**
  * Gulp Tasks
  */
-gulp.task('serve', gulp.series('build:electron', gulp.parallel(['serve:app', 'watch:app', 'watch:electron', 'serve:electron', 'watch:libs'])));
+gulp.task(
+  'serve',
+  gulp.series(
+    'build:electron',
+    gulp.parallel(['serve:app', 'watch:app', 'watch:electron', 'serve:electron', 'watch:libs']),
+  ),
+);
 
-gulp.task('default', gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron', 'watch:libs'])));
-
+gulp.task(
+  'default',
+  gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron', 'watch:libs'])),
+);
