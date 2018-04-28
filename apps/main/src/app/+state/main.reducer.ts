@@ -1,18 +1,19 @@
-import { Main } from './main.interfaces';
+import { Action } from '@ngrx/store';
 import { MainActions, MainActionTypes } from './main.actions';
+import { MainState } from './states';
 
-export function mainReducer(state: Main, action: MainActions): Main {
+export const initialState: MainState = {};
+
+export function mainReducer(state = initialState, action: MainActions): MainState {
   switch (action.type) {
-    case MainActionTypes.LoadData: {
-      return { ...state, ...action.payload };
-    }
-
-    case MainActionTypes.DataLoaded: {
-      return { ...state, ...action.payload };
-    }
-
-    default: {
+    case MainActionTypes.MainAction:
       return state;
+
+    case MainActionTypes.MainLoaded: {
+      return { ...state, ...action.payload };
     }
+
+    default:
+      return state;
   }
 }

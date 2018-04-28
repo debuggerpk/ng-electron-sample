@@ -1,13 +1,10 @@
-import { mainReducer } from './main.reducer';
-import { mainInitialState } from './main.init';
-import { Main } from './main.interfaces';
-import { DataLoaded } from './main.actions';
+import { MainLoaded } from './main.actions';
+import { mainReducer, initialState } from './main.reducer';
 
 describe('mainReducer', () => {
   it('should work', () => {
-    const state: Main = {};
-    const action: DataLoaded = { type: 'DATA_LOADED', payload: {} };
-    const actual = mainReducer(state, action);
+    const action: MainLoaded = new MainLoaded({});
+    const actual = mainReducer(initialState, action);
     expect(actual).toEqual({});
   });
 });

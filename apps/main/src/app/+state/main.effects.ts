@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
+import { Actions, Effect } from '@ngrx/effects';
+import { MainActions, MainActionTypes, LoadMain, MainLoaded } from './main.actions';
+import { RootState } from './main.reducer';
 import { DataPersistence } from '@nrwl/nx';
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/switchMap';
-import { MainState } from './main.interfaces';
-import { LoadData, DataLoaded } from './main.actions';
 
 @Injectable()
 export class MainEffects {
+  @Effect() effect$ = this.actions$.ofType(MainActionTypes.MainAction);
+
   @Effect()
-  loadData = this.dataPersistence.fetch('LOAD_DATA', {
-    run: (action: LoadData, state: MainState) => {
-      return {
-        type: 'DATA_LOADED',
-        payload: {},
-      };
+  loadMain$ = this.dataPersistence.fetch(MainActionTypes.LoadMain, {
+    run: (action: LoadMain, state: RootState) => {
+      return new MainLoaded(state);
     },
 
-    onError: (action: LoadData, error) => {
+    onError: (action: LoadMain, error) => {
       console.error('Error', error);
     },
   });
 
-  constructor(private actions: Actions, private dataPersistence: DataPersistence<MainState>) {}
+  constructor(private actions$: Actions, private dataPersistence: DataPersistence<RootState>) {}
 }

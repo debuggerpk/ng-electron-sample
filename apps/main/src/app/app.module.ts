@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
 
 // @reaction modules
@@ -13,13 +9,18 @@ import { ConfigModule } from '@reaction/config';
 import { VendorModule } from '@reaction/vendor';
 
 // App Modules
-import { mainReducer } from './+state/main.reducer';
-import { mainInitialState } from './+state/main.init';
-import { MainEffects } from './+state/main.effects';
 import { AppComponent } from './app.component';
 
 // Helpers
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { mainReducer, initialState as mainInitialState } from './+state/main.reducer';
+import { MainEffects } from './+state/main.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { reducers, metaReducers } from './+state';
 
 @NgModule({
   imports: [
@@ -32,9 +33,9 @@ import { environment } from '../environments/environment';
     AuthModule,
     ConfigModule,
     // @ngrx redux store
-    StoreModule.forRoot({ main: mainReducer }, { initialState: { main: mainInitialState } }),
-    EffectsModule.forRoot([MainEffects]),
+    StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([MainEffects]),
     StoreRouterConnectingModule,
   ],
   declarations: [AppComponent],

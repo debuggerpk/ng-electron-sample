@@ -10,7 +10,9 @@ export class ConfigService {
   private _config: Configuration;
   private _reaction = window.reaction;
 
-  constructor(private _store: Store<ConfigState>) {}
+  constructor(private _store: Store<ConfigState>) {
+    this.getConfig();
+  }
 
   public getConfig(): void {
     this._store.dispatch(new GetConfig());

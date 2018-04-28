@@ -1,20 +1,22 @@
 import { Action } from '@ngrx/store';
 
 export enum MainActionTypes {
-  LoadData = '[Main] Load Data',
-  DataLoaded = '[Main] Data Loaded',
+  MainAction = '[Main] Action',
+  LoadMain = '[Main] Load Data',
+  MainLoaded = '[Main] Data Loaded',
 }
 
-export class LoadData implements Action {
-  readonly type = MainActionTypes.LoadData;
-
+export class Main implements Action {
+  readonly type = MainActionTypes.MainAction;
+}
+export class LoadMain implements Action {
+  readonly type = MainActionTypes.LoadMain;
   constructor(public payload: any) {}
 }
 
-export class DataLoaded implements Action {
-  readonly type = MainActionTypes.DataLoaded;
-
+export class MainLoaded implements Action {
+  readonly type = MainActionTypes.MainLoaded;
   constructor(public payload: any) {}
 }
 
-export type MainActions = LoadData | DataLoaded;
+export type MainActions = Main | LoadMain | MainLoaded;
