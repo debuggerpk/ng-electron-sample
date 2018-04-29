@@ -35,8 +35,11 @@ export function configReducer(state = initialState, action: ConfigActions): Conf
     case ConfigActionTypes.ValidateConfig:
       return { ...state, ...action.payload };
 
-    case ConfigActionTypes.ConfigValidationError:
+    case ConfigActionTypes.ConfigValidationSuccess:
       return { ...state };
+
+    case ConfigActionTypes.ConfigValidationError:
+      return { ...state, errors: action.payload };
 
     default:
       return { ...state };

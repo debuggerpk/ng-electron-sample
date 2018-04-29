@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-
 import { Configuration, ConfigurationErrors } from '../models/config';
 
 export enum ConfigActionTypes {

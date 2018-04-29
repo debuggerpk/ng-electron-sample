@@ -5,6 +5,12 @@ import { Store } from '@ngrx/store';
 import { ConfigState } from '@reaction/config/src/+state/config.reducer';
 import { GetConfig, GetConfigDone } from '@reaction/config/src/+state/config.actions';
 
+/**
+ * Configuration service that handles all aspects of Configuration
+ *
+ * @export
+ * @class ConfigService
+ */
 @Injectable()
 export class ConfigService {
   private _config: Configuration;
@@ -18,22 +24,50 @@ export class ConfigService {
     }
   }
 
-  public getConfig(): void {
-    this._store.dispatch(new GetConfig());
-  }
+  /**
+   * Initialize configuration fetch process
+   *
+   *
+   * @memberOf ConfigService
+   */
+  public getConfig: () => void = () => this._store.dispatch(new GetConfig());
 
-  public getConfigFromElectron(): void {
-    this._reaction.ipc.send('get-config');
-  }
+  /**
+   * Gets the configuration from ElectronStore via IpcRenderer.
+   * IPC is exposed as window object and is controlled via Electron Main Process
+   *
+   *
+   * @memberOf ConfigService
+   */
+  public getConfigFromElectron: () => void = () => this._reaction.ipc.send('get-config');
 
-  public getConfigFromLocalStorage(): void {
-    console.log('Placeholder for getting configuration from localstorage');
-  }
+  /**
+   * Gets the configuration from localstorage
+   *
+   *
+   * @memberOf ConfigService
+   */
+  public getConfigFromLocalStorage(): void {}
 
+  /**
+   * Checks if the application is rendered inside Electron
+   *
+   * @returns {boolean}
+   *
+   * @memberOf ConfigService
+   */
   public isElectronApp(): boolean {
     return this._electron.isElectronApp;
   }
 
+  /**
+   * Validates the fetched configuration
+   *
+   * @param {Configuration} config
+   * @returns {ConfigurationErrors}
+   *
+   * @memberOf ConfigService
+   */
   public validateConfig(config: Configuration): ConfigurationErrors {
     if (config.outlet_id && config.api_gateway && config.api_key) {
       return null;
@@ -56,12 +90,26 @@ export class ConfigService {
     }
   }
 
+  /**
+   * Listener on IpcRenderer for fetch configuration response
+   *
+   * @private
+   *
+   * @memberOf ConfigService
+   */
   private _onIpcGetConfig(): void {
     this._reaction.ipc.on('get-config-reply', (event, payload: Configuration) => {
       this._store.dispatch(new GetConfigDone(payload));
     });
   }
 
+  /**
+   * Listender on IpcRenderer for save configuration response
+   *
+   * @private
+   *
+   * @memberOf ConfigService
+   */
   private _onIpcSaveConfig(): void {
     this._reaction.ipc.on('save-config-reply', (event, response) => {
       console.log(response);

@@ -17,7 +17,6 @@ import {
   ConfigValidationError,
 } from './config.actions';
 import { ConfigState } from './config.reducer';
-import { validateConfig } from '@angular/router/src/config';
 
 @Injectable()
 export class ConfigEffects {
