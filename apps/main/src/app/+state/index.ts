@@ -9,6 +9,6 @@ export const reducers: ActionReducerMap<RootState> = {
   main: mainReducer,
 };
 
-export const logStore = (reducer: ActionReducer<RootState>): any => storeLogger()(reducer);
+export const logStore = (reducer: ActionReducer<RootState>): any => storeLogger({ collapsed: true })(reducer);
 
 export const metaReducers: MetaReducer<RootState>[] = !environment.production ? [logStore, storeFreeze] : [];

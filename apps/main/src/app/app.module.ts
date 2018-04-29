@@ -27,7 +27,7 @@ import { reducers, metaReducers } from './+state';
     // @npm vendor modules
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot([], { initialNavigation: false }),
     VendorModule,
     // @reaction modules
     AuthModule,

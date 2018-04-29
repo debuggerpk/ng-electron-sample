@@ -15,6 +15,7 @@ export const initialState: Configuration = {
   local_gateway: null,
   api_key: null,
   api_gateway: null,
+  errors: null,
 };
 
 export function configReducer(state = initialState, action: ConfigActions): Configuration {
@@ -30,6 +31,12 @@ export function configReducer(state = initialState, action: ConfigActions): Conf
 
     case ConfigActionTypes.GetConfigDone:
       return { ...state, ...action.payload };
+
+    case ConfigActionTypes.ValidateConfig:
+      return { ...state, ...action.payload };
+
+    case ConfigActionTypes.ConfigValidationError:
+      return { ...state };
 
     default:
       return { ...state };

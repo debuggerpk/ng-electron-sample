@@ -1,13 +1,14 @@
 import { Action } from '@ngrx/store';
 
-import { Configuration } from '../models/config';
+import { Configuration, ConfigurationErrors } from '../models/config';
 
 export enum ConfigActionTypes {
   GetConfig = '[CONFIG] Get Config Start',
   GetConfigFromElectron = '[CONFIG] Get Electron Configuration',
   GetConfigFromLocalStorage = '[CONFIG] Get LocalStorage Configuration',
   GetConfigDone = '[CONFIG] Get Config Done',
-  ValidateConfig = '[CONFIG] Validate',
+  ValidateConfig = '[CONFIG] Validate Configuration',
+  ConfigValidationSuccess = '[CONFIG] Validation Success',
   ConfigValidationError = '[CONFIG] Validation Error',
   SaveConfig = '[CONFIG] Save Config',
   SaveConfigDone = '[CONFIG] Save Config Done',
@@ -37,8 +38,14 @@ export class ValidateConfig implements Action {
   constructor(public payload: Configuration) {}
 }
 
+export class ConfigValidationSuccess implements Action {
+  readonly type = ConfigActionTypes.ConfigValidationSuccess;
+}
+
 export class ConfigValidationError implements Action {
-  readonly type = ConfigActionTypes.ValidateConfig;
+  readonly type = ConfigActionTypes.ConfigValidationError;
+
+  constructor(public payload: ConfigurationErrors) {}
 }
 
 export class SaveConfig implements Action {
@@ -57,6 +64,7 @@ export type ConfigActions =
   | GetConfigFromLocalStorage
   | GetConfigDone
   | ValidateConfig
+  | ConfigValidationSuccess
   | ConfigValidationError
   | SaveConfig
   | SaveConfigDone;
