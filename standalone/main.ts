@@ -22,7 +22,7 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   },
 };
 
-function createWindow() {
+const createWindow: () => void = () => {
   // TODO: account for packaging builds or reuse 'build'.
   const url =
     isDev && process.env.LAUNCH_MODE !== 'build'
@@ -46,7 +46,7 @@ function createWindow() {
   mainWindowRef.on('resize', () => {
     store.set('windowBounds', mainWindowRef.getBounds());
   });
-}
+};
 
 app.on('ready', createWindow);
 

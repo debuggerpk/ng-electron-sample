@@ -1,10 +1,13 @@
-import * as gulp from 'gulp';
-import * as typescript from 'gulp-typescript';
-import * as env from 'gulp-env';
-import { exec } from 'child_process';
-import * as nodemon from 'gulp-nodemon';
 import * as browserSync from 'browser-sync';
-import { Paths, PROXY, HmrBrowserSyncConfig } from './config';
+import { exec } from 'child_process';
+import * as gulp from 'gulp';
+import * as loadGulpPlugins from 'gulp-load-plugins';
+// import * as env from 'gulp-env';
+// import * as nodemon from 'gulp-nodemon';
+// import * as typescript from 'gulp-typescript';
+import { HmrBrowserSyncConfig, Paths, PROXY } from './config';
+
+const $ = loadGulpPlugins();
 
 /**
  * Task to Build Main App
@@ -40,7 +43,9 @@ export const serveAppTask = () => {
 export const buildElectronTask = () => {
   return gulp
     .src([Paths.electron_src])
-    .pipe(typescript())
+    .pipe($.sourcemaps.init())
+    .pipe($.typescript())
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(Paths.electron_dest));
 };
 
@@ -61,7 +66,7 @@ export const serveElectronTask = () => {
  * @param done - Callback function to signal task completion.
  */
 export const setLaunchVariableTask = done => {
-  env.set({
+  $.env.set({
     LAUNCH_MODE: 'build',
     NODE_ENV: 'development',
   });
@@ -74,7 +79,7 @@ export const setLaunchVariableTask = done => {
  * @param done - Callback function to signal task completion.
  */
 export const setHmrVariableTask = done => {
-  env.set({
+  $.env.set({
     LAUNCH_MODE: 'hmr',
     NODE_ENV: 'development',
   });
@@ -112,7 +117,7 @@ export const serveHmrTask = done => {
  * @param done - Callback function to signal task completion.
  */
 export const serveElectronHmrTask = done => {
-  return nodemon({
+  return $.nodemon({
     exec: `electron ${Paths.electron_dest}main`,
     ignore: [`${Paths.electron_dest}apps/**/*.*`, `${Paths.electron_dest}libs/**/*.*`],
     watch: [Paths.electron_dest],
