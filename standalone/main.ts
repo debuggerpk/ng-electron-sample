@@ -27,7 +27,7 @@ function createWindow() {
   const url =
     isDev && process.env.LAUNCH_MODE !== 'build'
       ? 'http://localhost:4200'
-      : `file:///${__dirname}/apps/main/index.html`;
+      : `file:///${__dirname}/apps/root/index.html`;
   console.log(`Main Window Proxy: ${url}`);
   mainWindowRef = new BrowserWindow(mainWindowSettings);
   mainWindowRef.loadURL(url);

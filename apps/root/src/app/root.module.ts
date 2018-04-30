@@ -9,7 +9,7 @@ import { ConfigModule } from '@reaction/config';
 import { VendorModule } from '@reaction/vendor';
 
 // App Modules
-import { AppComponent } from './app.component';
+import { RootComponent } from './root.component';
 
 // Helpers
 import { environment } from '../environments/environment';
@@ -38,8 +38,8 @@ import { reducers, metaReducers } from './+state';
     EffectsModule.forRoot([MainEffects]),
     StoreRouterConnectingModule,
   ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+  declarations: [RootComponent],
+  bootstrap: [RootComponent],
   providers: [MainEffects],
 })
 export class RootModule {}

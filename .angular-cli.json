@@ -7,9 +7,9 @@
   },
   "apps": [
     {
-      "name": "main",
-      "root": "apps/main/src",
-      "outDir": "dist/apps/main",
+      "name": "root",
+      "root": "apps/root/src",
+      "outDir": "dist/apps/root",
       "assets": [
         "assets",
         "favicon.ico"

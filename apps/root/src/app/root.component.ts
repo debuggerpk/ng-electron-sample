@@ -5,10 +5,10 @@ import { ConfigService, GetConfig } from '@reaction/config';
 
 @Component({
   selector: 'reaction-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class RootComponent implements OnInit {
   constructor(private _config: ConfigService, private _store: Store<RootState>) {
     this._store.dispatch(new GetConfig());
   }

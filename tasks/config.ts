@@ -3,9 +3,9 @@ export const PROXY = 'HMR-Proxy';
 export const Paths = {
   electron_src: './standalone/**/*.ts',
   electron_dest: './dist/',
-  app_src: ['./apps/main/src/**/*.ts', './apps/main/src/**/*.html', './apps/main/src/**/*.scss'],
+  app_src: ['./apps/root/src/**/*.ts', './apps/root/src/**/*.html', './apps/root/src/**/*.scss'],
   lib_src: ['./libs/**/*.ts'],
-  app_config: './apps/main/src/tsconfig.app.json',
+  app_config: './apps/root/src/tsconfig.app.json',
 };
 
 export const HmrBrowserSyncConfig = {
