@@ -4,6 +4,7 @@ import { Configuration, ConfigurationErrors } from '../models/config';
 import { Store } from '@ngrx/store';
 import { ConfigState } from '@reaction/config/src/+state/config.reducer';
 import { GetConfig, GetConfigDone } from '@reaction/config/src/+state/config.actions';
+import { Router } from '@angular/router';
 
 /**
  * Configuration service that handles all aspects of Configuration
@@ -16,7 +17,7 @@ export class ConfigService {
   private _config: Configuration;
   private _reaction = window.reaction;
 
-  constructor(private _store: Store<ConfigState>, private _electron: ElectronService) {
+  constructor(private _store: Store<ConfigState>, private _electron: ElectronService, private _router: Router) {
     // Register Listeners
     if (this.isElectronApp()) {
       this._onIpcGetConfig();
@@ -47,7 +48,15 @@ export class ConfigService {
    *
    * @memberOf ConfigService
    */
-  public getConfigFromLocalStorage(): void {}
+  public getConfigFromLocalStorage: () => void = () =>
+    this._store.dispatch(
+      new GetConfigDone({
+        outlet_id: '',
+        api_key: '',
+        api_gateway: '',
+        local_gateway: '',
+      }),
+    );
 
   /**
    * Checks if the application is rendered inside Electron
@@ -58,6 +67,10 @@ export class ConfigService {
    */
   public isElectronApp(): boolean {
     return this._electron.isElectronApp;
+  }
+
+  public navigateToConfig() {
+    this._router.navigate(['/config']);
   }
 
   /**
@@ -75,15 +88,15 @@ export class ConfigService {
       const errors: ConfigurationErrors = {};
 
       if (!config.outlet_id) {
-        errors.outlet_id = 'Outlet ID must be defined.';
+        errors.outlet_id = true;
       }
 
       if (!config.api_gateway) {
-        errors.api_gateway = 'API Gateway is required for data sync.';
+        errors.api_gateway = true;
       }
 
       if (!config.api_key) {
-        errors.api_key = 'API Key is required for data sync.';
+        errors.api_key = true;
       }
 
       return errors;

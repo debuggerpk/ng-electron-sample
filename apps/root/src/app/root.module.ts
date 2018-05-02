@@ -1,34 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
-
-// @reaction modules
 import { AuthModule } from '@reaction/auth';
 import { ConfigModule } from '@reaction/config';
 import { VendorModule } from '@reaction/vendor';
-
-// App Modules
-import { RootComponent } from './root.component';
-
-// Helpers
-import { environment } from '../environments/environment';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { mainReducer, initialState as mainInitialState } from './+state/main.reducer';
-import { MainEffects } from './+state/main.effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { reducers, metaReducers } from './+state';
+import { environment } from '../environments/environment';
+import { RootComponent } from './root.component';
+import { MainEffects } from './+state/main.effects';
+import { reducers, metaReducers, ReactionRouterSerializer } from './+state';
+import { RootRoutes, RootRoutingModule } from './root.routing';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
     // @npm vendor modules
+    CommonModule,
+    BrowserAnimationsModule,
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: false }),
     VendorModule,
+    RootRoutingModule,
     // @reaction modules
     AuthModule,
     ConfigModule,
@@ -40,6 +38,6 @@ import { reducers, metaReducers } from './+state';
   ],
   declarations: [RootComponent],
   bootstrap: [RootComponent],
-  providers: [MainEffects],
+  providers: [MainEffects, { provide: RouterStateSerializer, useClass: ReactionRouterSerializer }],
 })
 export class RootModule {}

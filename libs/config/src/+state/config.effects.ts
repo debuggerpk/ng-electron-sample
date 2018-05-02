@@ -53,5 +53,11 @@ export class ConfigEffects {
     }),
   );
 
+  @Effect({ dispatch: false })
+  validationError$ = this._actions.pipe(
+    ofType<ConfigValidationError>(ConfigActionTypes.ConfigValidationError),
+    tap(() => this._config.navigateToConfig()),
+  );
+
   constructor(private _actions: Actions, private _config: ConfigService) {}
 }

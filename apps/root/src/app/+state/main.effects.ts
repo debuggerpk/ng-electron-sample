@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { MainActions, MainActionTypes, LoadMain, MainLoaded } from './main.actions';
-import { MainState } from './states';
 import { DataPersistence } from '@nrwl/nx';
 
 @Injectable()
@@ -19,5 +18,5 @@ export class MainEffects {
   //   },
   // });
 
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<MainState>) {}
+  constructor(private actions$: Actions, private dataPersistence: DataPersistence<any>) {}
 }

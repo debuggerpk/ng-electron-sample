@@ -17,6 +17,7 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   y: store.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
+    experimentalFeatures: true,
     nodeIntegration: false,
     preload: path.join(__dirname, 'preload.js'),
   },

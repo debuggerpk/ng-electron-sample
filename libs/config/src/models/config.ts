@@ -1,5 +1,5 @@
 export interface ConfigurationErrors {
-  [key: string]: string;
+  [key: string]: boolean;
 }
 
 export interface Configuration {
@@ -7,5 +7,5 @@ export interface Configuration {
   api_key: string;
   api_gateway: string;
   local_gateway: string;
-  errors: ConfigurationErrors | null;
+  errors?: ConfigurationErrors | null;
 }

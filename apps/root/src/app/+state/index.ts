@@ -2,11 +2,33 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
-import { mainReducer } from './main.reducer';
-import { RootState } from './states';
+import { RootState, ReactionRouterState } from './states';
+import { RouterStateSerializer, routerReducer } from '@ngrx/router-store';
+import { RouterStateSnapshot } from '@angular/router';
+
+export class ReactionRouterSerializer implements RouterStateSerializer<ReactionRouterState> {
+  serialize(routerState: RouterStateSnapshot): ReactionRouterState {
+    let route = routerState.root;
+
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+
+    const {
+      url,
+      root: { queryParams },
+    } = routerState;
+    const { params } = route;
+
+    // Only return an object including the URL, params and query params
+    // instead of the entire snapshot
+    return { url, params, queryParams };
+  }
+}
 
 export const reducers: ActionReducerMap<RootState> = {
-  main: mainReducer,
+  // main: mainReducer,
+  router: routerReducer,
 };
 
 export const logStore = (reducer: ActionReducer<RootState>): any => storeLogger({ collapsed: true })(reducer);

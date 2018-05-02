@@ -6,3 +6,11 @@
   * Material Styles
   */
 @include mat-core();
+
+$reaction-colors-primary: mat-palette($mat-blue);
+$reaction-colors-accent: mat-palette($mat-pink);
+$reaction-colors-warn: mat-palette($mat-deep-orange);
+
+$reaction-colors-theme: mat-light-theme($reaction-colors-primary, $reaction-colors-accent, $reaction-colors-warn);
+
+@include angular-material-theme($reaction-colors-theme);

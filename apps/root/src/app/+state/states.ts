@@ -1,14 +1,20 @@
+import { Params } from '@angular/router';
+import { RouterReducerState } from '@ngrx/router-store';
+
 /**
- * Interface for the 'Main' data used in
- *  - MainState, and
- *  - mainReducer
+ * Interface for the 'Router' state
  */
-export interface MainState {}
+export interface ReactionRouterState {
+  url: string;
+  params: Params;
+  queryParams: Params;
+}
 
 /**
  * Interface to the part of the Store containing MainState
  * and other information related to MainData.
  */
 export interface RootState {
-  readonly main: MainState;
+  readonly router: RouterReducerState<ReactionRouterState>;
+  // readonly [key: string]: any;
 }

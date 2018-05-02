@@ -53,7 +53,7 @@ export const buildElectronTask = () => {
  * Task to Serve Built Electron
  */
 export const serveElectronTask = () => {
-  const electronIns = exec(`electron ${Paths.electron_dest}main`);
+  const electronIns = exec(`electron ${Paths.electron_dest}`);
 
   electronIns.stdout.pipe(process.stdout);
 
@@ -118,7 +118,7 @@ export const serveHmrTask = done => {
  */
 export const serveElectronHmrTask = done => {
   return $.nodemon({
-    exec: `electron ${Paths.electron_dest}main`,
+    exec: `electron ${Paths.electron_dest}`,
     ignore: [`${Paths.electron_dest}apps/**/*.*`, `${Paths.electron_dest}libs/**/*.*`],
     watch: [Paths.electron_dest],
   }).on('start', () => {
