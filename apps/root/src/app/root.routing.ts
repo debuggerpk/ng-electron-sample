@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ConfigRoutes } from '@reaction/config';
 
 export const RootRoutes: Routes = [
-  // { path: 'config', loadChildren: '@reaction/config#ConfigModule' },
-  { path: '', children: ConfigRoutes },
+  { path: 'config', loadChildren: '@reaction/config#ConfigModule' },
+  // { path: '', children: ConfigRoutes },
   { path: '**', redirectTo: '' },
 ];
 

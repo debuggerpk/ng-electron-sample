@@ -5,7 +5,7 @@ import { ConfigComponent } from './components/config/config.component';
 
 export const ConfigRoutes: Routes = [
   {
-    path: 'config',
+    path: '',
     component: ConfigComponent,
   },
 ];

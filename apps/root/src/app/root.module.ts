@@ -1,22 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
-import { AuthModule } from '@reaction/auth';
-import { ConfigModule } from '@reaction/config';
+import { ConfigModule, ConfigComponent } from '@reaction/config';
 import { VendorModule } from '@reaction/vendor';
-import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from '../environments/environment';
-import { RootComponent } from './root.component';
+import { ReactionRouterSerializer, reducers, metaReducers } from './+state';
 import { MainEffects } from './+state/main.effects';
-import { reducers, metaReducers, ReactionRouterSerializer } from './+state';
-import { RootRoutes, RootRoutingModule } from './root.routing';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { RootComponent } from './root.component';
+import { RootRoutingModule } from './root.routing';
 
 @NgModule({
   imports: [
@@ -26,10 +23,9 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     NxModule.forRoot(),
     VendorModule,
-    RootRoutingModule,
     // @reaction modules
-    AuthModule,
     ConfigModule,
+    RootRoutingModule,
     // @ngrx redux store
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

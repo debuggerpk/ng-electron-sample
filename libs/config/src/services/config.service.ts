@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Configuration, ConfigurationErrors } from '../models/config';
 import { Store } from '@ngrx/store';
@@ -17,7 +17,12 @@ export class ConfigService {
   private _config: Configuration;
   private _reaction = window.reaction;
 
-  constructor(private _store: Store<ConfigState>, private _electron: ElectronService, private _router: Router) {
+  constructor(
+    private _store: Store<ConfigState>,
+    private _electron: ElectronService,
+    private _router: Router,
+    private _zone: NgZone,
+  ) {
     // Register Listeners
     if (this.isElectronApp()) {
       this._onIpcGetConfig();
@@ -70,7 +75,9 @@ export class ConfigService {
   }
 
   public navigateToConfig() {
-    this._router.navigate(['/config']);
+    this._zone.run(() => {
+      this._router.navigate(['/config']);
+    });
   }
 
   /**

@@ -1,28 +1,39 @@
-<form [formGroup]="configurationForm">
-  <!-- Outlet ID -->
-  <mat-form-field>
-    <input matInput
-           placeholder="Outlet ID"
-           formControlName="outlet_id">
-  </mat-form-field>
-  <!-- API KEY -->
-  <mat-form-field>
-    <input matInput
-           placeholder="API Key"
-           formControlName="api_key">
-  </mat-form-field>
-  <!-- API Gateway -->
-  <mat-form-field>
-    <input matInput
-           placeholder="API Gateway"
-           formControlName="api_gateway">
-  </mat-form-field>
-  <!-- Local Gateway -->
-  <mat-form-field>
-    <input matInput
-           placeholder="Local Gateway"
-           formControlName="local_gateway">
-  </mat-form-field>
-  <button mat-raised-button
-          color="primary">Save</button>
-</form>
+<mat-card>
+  <form [formGroup]="configurationForm">
+    <mat-card-content>
+      <!-- Outlet ID -->
+      <mat-form-field>
+        <input matInput
+               placeholder="Outlet ID"
+               formControlName="outlet_id">
+      </mat-form-field>
+      <!-- API KEY -->
+      <mat-form-field>
+        <input matInput
+               placeholder="API Key"
+               formControlName="api_key">
+      </mat-form-field>
+      <!-- API Gateway -->
+      <mat-form-field>
+        <input matInput
+               placeholder="API Gateway"
+               formControlName="api_gateway">
+      </mat-form-field>
+      <!-- Local Gateway -->
+      <mat-form-field>
+        <input matInput
+               placeholder="Local Gateway"
+               formControlName="local_gateway">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <pre>{{ configurationForm.value | json }}</pre>
+      <button mat-raised-button
+              color="primary">SAVE</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+
+<input [(ngModel)]="test">
+
+<pre>{{ test | json}}</pre>

@@ -17,10 +17,10 @@ import { ConfigEffects } from './+state/config.effects';
     VendorModule,
     StoreModule.forFeature('config', configReducer, { initialState: configInitialState }),
     EffectsModule.forFeature([ConfigEffects]),
-    // ConfigRoutingModule,
+    ConfigRoutingModule,
   ],
   providers: [ElectronService, ConfigService, ConfigEffects],
   declarations: [ConfigComponent],
-  // exports: [RouterModule, VendorModule],
+  exports: [ConfigRoutingModule, ConfigComponent],
 })
 export class ConfigModule {}
