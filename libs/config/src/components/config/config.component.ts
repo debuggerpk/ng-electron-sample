@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfigState, Configuration } from '@reaction/config';
 import { Observable } from 'rxjs/Observable';
@@ -28,18 +28,14 @@ export class ConfigComponent implements OnInit, OnDestroy {
   constructor(private _store: Store<ConfigState>, private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this._store.select('config').subscribe(data => console.log(data));
-
     this.configurationForm = this._formBuilder.group({
-      outlet_id: [],
-      api_key: [],
-      api_gateway: [],
+      outlet_id: ['', Validators.required],
+      api_key: ['', Validators.required],
+      api_gateway: ['', Validators.required],
       local_gateway: [],
     });
 
-    // this._subscription$ = this.configuration$.subscribe(data => {
-    //   console.log(data);
-    // });
+    this._store.select('config').subscribe(data => this.configurationForm.patchValue(data));
   }
 
   ngOnDestroy(): void {

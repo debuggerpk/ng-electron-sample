@@ -57,8 +57,6 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 // import 'zone.js/dist/zone-mix'; // Included with Angular CLI.
 // import 'zone.js/dist/zone-patch-electron';
 
-import { IpcRenderer } from 'electron';
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
@@ -72,6 +70,8 @@ import { IpcRenderer } from 'electron';
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+import { IpcRenderer } from 'electron';
 
 export interface ReactionWindow {
   ipc: IpcRenderer;

@@ -5,7 +5,6 @@ import { ConfigRoutes } from '@reaction/config';
 
 export const RootRoutes: Routes = [
   { path: 'config', loadChildren: '@reaction/config#ConfigModule' },
-  // { path: '', children: ConfigRoutes },
   { path: '**', redirectTo: '' },
 ];
 
