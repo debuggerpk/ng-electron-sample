@@ -64,7 +64,7 @@
     "@types/node": "~9.6.6",
     "browser-sync": "^2.24.0",
     "codelyzer": "^4.3.0",
-    "electron": "^1.8.6",
+    "electron": "^2.0.0",
     "electron-devtools-installer": "^2.2.3",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
