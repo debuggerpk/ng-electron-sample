@@ -12,8 +12,8 @@ import { SharedModule } from '@reaction/shared';
 import { environment } from '../environments/environment';
 import { RootComponent } from './root.component';
 import { RootRoutingModule } from './root.routing';
-import { ReactionRouterSerializer, reducers, metaReducers } from './+state';
-import { MainEffects } from './+state/main.effects';
+import { ReactionRouterSerializer, reducers, metaReducers } from './state';
+import { MainEffects } from './state/main.effects';
 
 @NgModule({
   imports: [

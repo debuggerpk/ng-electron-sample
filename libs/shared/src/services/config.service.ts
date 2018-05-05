@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { ElectronService } from 'ngx-electron';
 import { ConfigState } from '../models';
 import { Configuration, ConfigurationErrors } from '../models/config';
-import { GetConfig, GetConfigDone } from '@reaction/config/src/+state/config.actions';
+import { GetConfig, GetConfigDone } from '@reaction/config/src/state/config.actions';
 
 /**
  * Configuration service that handles all aspects of Configuration
