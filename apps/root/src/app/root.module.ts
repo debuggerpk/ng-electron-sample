@@ -22,9 +22,9 @@ import { MainEffects } from './+state/main.effects';
     BrowserAnimationsModule,
     BrowserModule,
     NxModule.forRoot(),
-    SharedModule,
     // @reaction modules
-    ConfigModule,
+    SharedModule,
+    ConfigModule, // TODO: Fix the service for lazy loading
     RootRoutingModule,
     // @ngrx redux store
     StoreModule.forRoot(reducers, { metaReducers }),

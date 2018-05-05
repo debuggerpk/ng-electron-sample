@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { GetConfig } from '@reaction/config';
+import { ConfigService } from '@reaction/shared';
 
 @Component({
   selector: 'reaction-root',
@@ -8,9 +8,9 @@ import { GetConfig } from '@reaction/config';
   styleUrls: ['./root.component.scss'],
 })
 export class RootComponent implements OnInit {
-  constructor(private _store: Store<any>) {}
+  constructor(private _configService: ConfigService) {}
 
   ngOnInit() {
-    this._store.dispatch(new GetConfig());
+    this._configService.getConfig();
   }
 }

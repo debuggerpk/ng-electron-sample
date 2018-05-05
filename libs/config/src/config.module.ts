@@ -18,6 +18,5 @@ import { ConfigRoutingModule } from './config.routing';
   ],
   providers: [ConfigEffects],
   declarations: [ConfigComponent],
-  exports: [ConfigRoutingModule, ConfigComponent],
 })
 export class ConfigModule {}

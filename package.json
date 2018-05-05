@@ -12,7 +12,7 @@
     "e2e": "ng e2e",
     "explore": "source-map-explorer dist/main.bundle.js dist/main.bundle.js.map",
     "vexplore": "source-map-explorer dist/vendor.bundle.js dist/vendor.bundle.js.map",
-    "format-scripts": "prettier --write './{apps,libs,standalone,tasks}/**/*.ts'",
+    "format-scripts": "prettier --write './{apps,libs,desktop,tasks}/**/*.ts'",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:build": "./node_modules/.bin/nx affected:build",
     "affected:e2e": "./node_modules/.bin/nx affected:e2e",
@@ -103,15 +103,10 @@
     },
     "mac": {
       "category": "public.app-category.retail",
-      "target": [
-        "dmg"
-      ]
+      "target": ["dmg"]
     },
     "linux": {
-      "target": [
-        "AppImage",
-        "snap"
-      ]
+      "target": ["AppImage", "snap"]
     },
     "asar": true
   }
