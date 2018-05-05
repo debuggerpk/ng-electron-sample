@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+// tslint:disable-next-line:nx-enforce-module-boundaries
 import { Configuration, ConfigurationErrors } from '@reaction/shared';
 
 export enum ConfigActionTypes {

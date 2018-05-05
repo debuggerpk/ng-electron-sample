@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+// tslint:disable-next-line:nx-enforce-module-boundaries
 import { ConfigService } from '@reaction/shared';
 import { map, tap } from 'rxjs/operators';
 import {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ConfigService } from '@reaction/shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'reaction-root',
@@ -8,9 +9,9 @@ import { ConfigService } from '@reaction/shared';
   styleUrls: ['./root.component.scss'],
 })
 export class RootComponent implements OnInit {
-  constructor(private _configService: ConfigService) {}
+  constructor(private _configService: ConfigService, private _router: Router) {}
 
   ngOnInit() {
-    this._configService.routeToConfigRoot();
+    this._router.navigate(['/config']);
   }
 }

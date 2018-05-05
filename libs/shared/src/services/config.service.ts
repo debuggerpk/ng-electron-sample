@@ -1,10 +1,10 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ElectronService } from 'ngx-electron';
-import { ConfigState } from '../models';
-import { Configuration, ConfigurationErrors } from '../models/config';
+// tslint:disable-next-line:nx-enforce-module-boundaries
 import { GetConfig, GetConfigDone } from '@reaction/config/src/state/config.actions';
+import { ElectronService } from 'ngx-electron';
+import { ConfigState, Configuration, ConfigurationErrors } from '../models';
 
 /**
  * Configuration service that handles all aspects of Configuration
@@ -73,11 +73,23 @@ export class ConfigService {
     return this._electron.isElectronApp;
   }
 
-  public routeToConfigRoot() {
+  /**
+   * Route to Config Root
+   *
+   *
+   * @memberOf ConfigService
+   */
+  public routeToConfigRoot(): void {
     this._zone.run(() => this._router.navigate(['/config']));
   }
 
-  public routeToConfigEdit() {
+  /**
+   * Route to Config Edit
+   *
+   *
+   * @memberOf ConfigService
+   */
+  public routeToConfigEdit(): void {
     this._zone.run(() => this._router.navigate(['/config/edit']));
   }
 
