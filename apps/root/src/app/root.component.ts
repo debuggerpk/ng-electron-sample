@@ -11,6 +11,6 @@ export class RootComponent implements OnInit {
   constructor(private _configService: ConfigService) {}
 
   ngOnInit() {
-    this._configService.getConfig();
+    this._configService.routeToConfigRoot();
   }
 }

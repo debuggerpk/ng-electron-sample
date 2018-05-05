@@ -5,8 +5,9 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '@reaction/shared';
 import { ConfigEffects } from './state/config.effects';
 import { configReducer, initialState as configInitialState } from './state/config.reducer';
-import { ConfigComponent } from './components/config/config.component';
+import { ConfigEditComponent } from './components/config-edit/config-edit.component';
 import { ConfigRoutingModule } from './config.routing';
+import { ConfigRootComponent } from './components/config-root/config-root.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ConfigRoutingModule } from './config.routing';
     ConfigRoutingModule,
   ],
   providers: [ConfigEffects],
-  declarations: [ConfigComponent],
+  declarations: [ConfigEditComponent, ConfigRootComponent],
 })
 export class ConfigModule {}

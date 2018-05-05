@@ -24,7 +24,7 @@ import { MainEffects } from './state/main.effects';
     NxModule.forRoot(),
     // @reaction modules
     SharedModule,
-    ConfigModule, // TODO: Fix the service for lazy loading
+    // ConfigModule, // TODO: Fix the service for lazy loading
     RootRoutingModule,
     // @ngrx redux store
     StoreModule.forRoot(reducers, { metaReducers }),

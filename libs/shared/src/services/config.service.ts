@@ -73,10 +73,12 @@ export class ConfigService {
     return this._electron.isElectronApp;
   }
 
-  public navigateToConfig() {
-    this._zone.run(() => {
-      this._router.navigate(['/config']);
-    });
+  public routeToConfigRoot() {
+    this._zone.run(() => this._router.navigate(['/config']));
+  }
+
+  public routeToConfigEdit() {
+    this._zone.run(() => this._router.navigate(['/config/edit']));
   }
 
   /**

@@ -2,8 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ConfigState, Configuration } from '@reaction/shared';
-import { Observable } from 'rxjs/Observable';
-import { ISubscription } from 'rxjs/Subscription';
 
 const x: Configuration = {
   outlet_id: '',
@@ -13,17 +11,12 @@ const x: Configuration = {
 };
 
 @Component({
-  selector: 'reaction-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.scss'],
+  selector: 'reaction-config-edit',
+  templateUrl: './config-edit.component.html',
+  styleUrls: ['./config-edit.component.scss'],
 })
-export class ConfigComponent implements OnInit, OnDestroy {
-  public configuration$: Observable<Configuration>;
+export class ConfigEditComponent implements OnInit, OnDestroy {
   public configurationForm: FormGroup;
-
-  public test: string;
-
-  private _subscription$: ISubscription;
 
   constructor(private _store: Store<ConfigState>, private _formBuilder: FormBuilder) {}
 
@@ -38,7 +31,5 @@ export class ConfigComponent implements OnInit, OnDestroy {
     this._store.select('config').subscribe(data => this.configurationForm.patchValue(data));
   }
 
-  ngOnDestroy(): void {
-    // this._subscription$.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }
