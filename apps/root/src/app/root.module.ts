@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
 import { ConfigModule } from '@reaction/config';
-import { SharedModule } from '@reaction/shared';
+import { VendorModule } from '@reaction/vendor';
 import { environment } from '../environments/environment';
 import { RootComponent } from './root.component';
 import { RootRoutingModule } from './root.routing';
@@ -23,7 +23,7 @@ import { MainEffects } from './state/main.effects';
     BrowserModule,
     NxModule.forRoot(),
     // @reaction modules
-    SharedModule,
+    VendorModule,
     // ConfigModule, // TODO: Fix the service for lazy loading
     RootRoutingModule,
     // @ngrx redux store

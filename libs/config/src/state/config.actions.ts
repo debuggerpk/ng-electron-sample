@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-// tslint:disable-next-line:nx-enforce-module-boundaries
-import { Configuration, ConfigurationErrors } from '@reaction/shared';
+import { Configuration, ConfigurationErrors } from '../models';
 
 export enum ConfigActionTypes {
   GetConfig = '[CONFIG] Get Config Start',

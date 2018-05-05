@@ -1,8 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-// tslint:disable-next-line:nx-enforce-module-boundaries
-import { GetConfig, GetConfigDone } from '@reaction/config/src/state/config.actions';
+import { GetConfig, GetConfigDone } from '../state/config.actions';
 import { ElectronService } from 'ngx-electron';
 import { ConfigState, Configuration, ConfigurationErrors } from '../models';
 

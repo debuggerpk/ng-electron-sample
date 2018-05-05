@@ -1,4 +1,4 @@
-import { Configuration } from '@reaction/shared';
+import { Configuration } from '../models';
 import { ConfigActionTypes, ConfigActions } from './config.actions';
 
 /**

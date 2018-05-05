@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ConfigState, Configuration } from '@reaction/shared';
+import { ConfigState, Configuration } from '../../models';
 
 const x: Configuration = {
   outlet_id: '',
