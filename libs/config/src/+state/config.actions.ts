@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Configuration, ConfigurationErrors } from '../models/config';
+import { Configuration, ConfigurationErrors } from '@reaction/shared';
 
 export enum ConfigActionTypes {
   GetConfig = '[CONFIG] Get Config Start',

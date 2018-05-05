@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ConfigService, GetConfig } from '@reaction/config';
-import { Router } from '@angular/router';
+import { GetConfig } from '@reaction/config';
 
 @Component({
   selector: 'reaction-root',

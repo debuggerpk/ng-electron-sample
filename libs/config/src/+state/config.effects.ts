@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { ConfigService } from '../services/config.service';
+import { ConfigService } from '@reaction/shared';
 import {
   ConfigActions,
   ConfigActionTypes,
@@ -16,7 +16,6 @@ import {
   ConfigValidationSuccess,
   ConfigValidationError,
 } from './config.actions';
-import { ConfigState } from './config.reducer';
 
 @Injectable()
 export class ConfigEffects {

@@ -8,12 +8,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ElectronService } from 'ngx-electron';
+import { ConfigService } from './services';
 
 const NG_MODULES = [FlexLayoutModule, FormsModule, ReactiveFormsModule, HttpClientModule];
 const MAT_MODULES = [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule];
 
 @NgModule({
   imports: [CommonModule, NG_MODULES, MAT_MODULES],
+  providers: [ConfigService, ElectronService],
   exports: [NG_MODULES, MAT_MODULES],
 })
 export class SharedModule {}

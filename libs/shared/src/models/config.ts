@@ -2,6 +2,10 @@ export interface ConfigurationErrors {
   [key: string]: boolean;
 }
 
+export interface ConfigState {
+  readonly config: Configuration;
+}
+
 export interface Configuration {
   outlet_id: string;
   api_key: string;

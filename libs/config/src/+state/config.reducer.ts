@@ -1,14 +1,11 @@
 import { Action } from '@ngrx/store';
 import { ConfigActions, ConfigActionTypes } from './config.actions';
-import { Configuration } from '../models/config';
+import { Configuration } from '@reaction/shared';
 
 /**
  * Interface to the part of the Store containing ConfigState
  * and other information related to ConfigData.
  */
-export interface ConfigState {
-  readonly config: Configuration;
-}
 
 export const initialState: Configuration = {
   outlet_id: null,

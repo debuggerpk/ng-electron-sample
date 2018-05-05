@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
 import { Configuration, ConfigurationErrors } from '../models/config';
 import { Store } from '@ngrx/store';
-import { ConfigState } from '@reaction/config/src/+state/config.reducer';
+import { ConfigState } from '../models';
 import { GetConfig, GetConfigDone } from '@reaction/config/src/+state/config.actions';
 import { Router } from '@angular/router';
 
