@@ -1,7 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConfigRoutes } from '@reaction/config';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 export const RootRoutes: Routes = [
   { path: 'config', loadChildren: '@reaction/config#ConfigModule' },

@@ -1,6 +1,5 @@
-import { Action } from '@ngrx/store';
-import { ConfigActions, ConfigActionTypes } from './config.actions';
 import { Configuration } from '@reaction/shared';
+import { ConfigActionTypes, ConfigActions } from './config.actions';
 
 /**
  * Interface to the part of the Store containing ConfigState

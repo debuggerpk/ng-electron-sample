@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { DataPersistence } from '@nrwl/nx';
-import { Observable } from 'rxjs/Observable';
-import { map, switchMap, tap } from 'rxjs/operators';
 import { ConfigService } from '@reaction/shared';
+import { map, tap } from 'rxjs/operators';
 import {
-  ConfigActions,
   ConfigActionTypes,
+  ConfigValidationError,
+  ConfigValidationSuccess,
+  GetConfig,
+  GetConfigDone,
   GetConfigFromElectron,
   GetConfigFromLocalStorage,
   ValidateConfig,
-  GetConfigDone,
-  GetConfig,
-  ConfigValidationSuccess,
-  ConfigValidationError,
 } from './config.actions';
 
 @Injectable()

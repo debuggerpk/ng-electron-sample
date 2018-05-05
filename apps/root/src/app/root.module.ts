@@ -7,13 +7,13 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
-import { ConfigModule, ConfigComponent } from '@reaction/config';
+import { ConfigModule } from '@reaction/config';
 import { SharedModule } from '@reaction/shared';
 import { environment } from '../environments/environment';
-import { ReactionRouterSerializer, reducers, metaReducers } from './+state';
-import { MainEffects } from './+state/main.effects';
 import { RootComponent } from './root.component';
 import { RootRoutingModule } from './root.routing';
+import { ReactionRouterSerializer, reducers, metaReducers } from './+state';
+import { MainEffects } from './+state/main.effects';
 
 @NgModule({
   imports: [
