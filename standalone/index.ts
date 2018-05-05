@@ -17,8 +17,8 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   y: store.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
-    experimentalFeatures: true,
-    // nodeIntegration: false,
+    // experimentalFeatures: true,
+    nodeIntegration: false,
     preload: path.join(__dirname, 'preload.js'),
   },
 };
@@ -34,7 +34,7 @@ const createWindow: () => void = () => {
   mainWindowRef.loadURL(url);
   if (debugMode) {
     // Open the DevTools.
-    installExtension(REDUX_DEVTOOLS);
+    installExtension(REDUX_DEVTOOLS.id);
     mainWindowRef.webContents.openDevTools();
   }
   mainWindowRef.on('closed', () => {
