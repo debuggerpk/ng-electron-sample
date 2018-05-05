@@ -8,7 +8,7 @@ export const RootRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(RootRoutes, { initialNavigation: 'disabled' })],
+  imports: [CommonModule, RouterModule.forRoot(RootRoutes)],
   exports: [RouterModule],
 })
 export class RootRoutingModule {}

@@ -1,11 +1,17 @@
-@import 'variables';
-@import 'type/type';
-@import '~@angular/material/theming';
+@import "variables";
+@import "type/type";
+@import "~normalize-scss/sass/normalize";
+@import "~@angular/material/theming";
+
+/**
+ * Normalizing CSS
+ */
+@include normalize;
 
 /**
   * Material Styles
   */
-@include mat-core();
+@include mat-core;
 
 $reaction-colors-primary: mat-palette($mat-blue);
 $reaction-colors-accent: mat-palette($mat-pink);
