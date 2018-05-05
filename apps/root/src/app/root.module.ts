@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
 import { ConfigModule, ConfigComponent } from '@reaction/config';
-import { VendorModule } from '@reaction/vendor';
+import { SharedModule } from '@reaction/shared';
 import { environment } from '../environments/environment';
 import { ReactionRouterSerializer, reducers, metaReducers } from './+state';
 import { MainEffects } from './+state/main.effects';
@@ -22,7 +22,7 @@ import { RootRoutingModule } from './root.routing';
     BrowserAnimationsModule,
     BrowserModule,
     NxModule.forRoot(),
-    VendorModule,
+    SharedModule,
     // @reaction modules
     ConfigModule,
     RootRoutingModule,

@@ -16,4 +16,4 @@ const MAT_MODULES = [MatButtonModule, MatCardModule, MatFormFieldModule, MatInpu
   imports: [CommonModule, NG_MODULES, MAT_MODULES],
   exports: [NG_MODULES, MAT_MODULES],
 })
-export class VendorModule {}
+export class SharedModule {}

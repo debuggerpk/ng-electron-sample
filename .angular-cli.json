@@ -48,8 +48,8 @@
       "tags": []
     },
     {
-      "name": "vendor",
-      "root": "libs/vendor/src",
+      "name": "shared",
+      "root": "libs/shared/src",
       "test": "../../../test.js",
       "appRoot": "",
       "tags": []

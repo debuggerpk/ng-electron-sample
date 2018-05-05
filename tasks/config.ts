@@ -1,7 +1,7 @@
 export const PROXY = 'HMR-Proxy';
 
 export const Paths = {
-  electron_src: './standalone/**/*.ts',
+  electron_src: './desktop/**/*.ts',
   electron_dest: './dist/',
   app_src: ['./apps/root/src/**/*.ts', './apps/root/src/**/*.html', './apps/root/src/**/*.scss'],
   lib_src: ['./libs/**/*.ts'],

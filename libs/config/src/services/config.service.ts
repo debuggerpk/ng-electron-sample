@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
  */
 @Injectable()
 export class ConfigService {
-  private _config: Configuration;
   private _reaction = window.reaction;
 
   constructor(

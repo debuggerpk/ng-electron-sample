@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { VendorModule } from '@reaction/vendor';
+import { SharedModule } from '@reaction/shared';
 import { ElectronService } from 'ngx-electron';
 import { ConfigComponent } from './components/config/config.component';
 import { ConfigRoutes, ConfigRoutingModule } from './config.routing';
@@ -14,7 +14,7 @@ import { ConfigEffects } from './+state/config.effects';
 @NgModule({
   imports: [
     CommonModule,
-    VendorModule,
+    SharedModule,
     StoreModule.forFeature('config', configReducer, { initialState: configInitialState }),
     EffectsModule.forFeature([ConfigEffects]),
     ConfigRoutingModule,

@@ -95,14 +95,14 @@
     "zone.js": "^0.8.26"
   },
   "build": {
-    "appId": "com.electron.retail-reaction",
+    "appId": "com.retail-reaction",
     "directories": {
-      "buildResources": "standalone/resources",
+      "buildResources": "desktop/resources",
       "output": "packages",
       "app": "dist"
     },
     "mac": {
-      "category": "public.app-category.graphics-design",
+      "category": "public.app-category.retail",
       "target": [
         "dmg"
       ]
