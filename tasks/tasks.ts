@@ -44,8 +44,10 @@ export const buildElectronTask = () => {
   return (
     gulp
       .src([Paths.electron_src])
+      .pipe($.debug())
       // .pipe($.sourcemaps.init())
       .pipe($.typescript.createProject('./tsconfig.desktop.json')())
+      .pipe($.debug())
       // .pipe($.sourcemaps.write('.'))
       .pipe(gulp.dest(Paths.electron_dest))
   );

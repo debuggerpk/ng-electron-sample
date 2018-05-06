@@ -1,8 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { ConfigActionTypes, ConfigState, Configuration, ConfigurationErrors } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
-import { ConfigState, Configuration, ConfigurationErrors } from '../models';
 import { GetConfig, GetConfigDone } from '../state/config.actions';
 
 /**
@@ -43,7 +43,7 @@ export class ConfigService {
    *
    * @memberOf ConfigService
    */
-  public getConfigFromElectron: () => void = () => this._reaction.ipc.send('get-config');
+  public getConfigFromElectron: () => void = () => this._reaction.ipc.send(ConfigActionTypes.GetConfigFromElectron);
 
   /**
    * Gets the configuration from localstorage
@@ -130,7 +130,7 @@ export class ConfigService {
    * @memberOf ConfigService
    */
   private _onIpcGetConfig(): void {
-    this._reaction.ipc.on('get-config-reply', (event, payload: Configuration) => {
+    this._reaction.ipc.on(ConfigActionTypes.GetConfigDone, (event: Event, payload: Configuration) => {
       this._store.dispatch(new GetConfigDone(payload));
     });
   }
@@ -143,7 +143,7 @@ export class ConfigService {
    * @memberOf ConfigService
    */
   private _onIpcSaveConfig(): void {
-    this._reaction.ipc.on('save-config-reply', (event, response) => {
+    this._reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, response: boolean) => {
       console.log(response);
     });
   }

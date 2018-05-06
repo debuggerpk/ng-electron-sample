@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { ConfigActionTypes } from '@reaction/common/models';
 import { map, tap } from 'rxjs/operators';
 import { ConfigService } from '../services';
 import {
-  ConfigActionTypes,
   ConfigValidationError,
   ConfigValidationSuccess,
   GetConfig,

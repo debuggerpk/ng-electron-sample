@@ -31,3 +31,15 @@ export interface Configuration {
 export interface ConfigState {
   readonly config: Configuration;
 }
+
+export enum ConfigActionTypes {
+  GetConfig = '[CONFIG] Get Config Start',
+  GetConfigFromElectron = '[CONFIG] Get Electron Configuration',
+  GetConfigFromLocalStorage = '[CONFIG] Get LocalStorage Configuration',
+  GetConfigDone = '[CONFIG] Get Config Done',
+  ValidateConfig = '[CONFIG] Validate Configuration',
+  ConfigValidationSuccess = '[CONFIG] Validation Success',
+  ConfigValidationError = '[CONFIG] Validation Error',
+  SaveConfig = '[CONFIG] Save Config',
+  SaveConfigDone = '[CONFIG] Save Config Done',
+}

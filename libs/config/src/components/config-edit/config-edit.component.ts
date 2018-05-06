@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ConfigState } from '../../models';
+import { ConfigState } from '@reaction/common/models';
 
 @Component({
   selector: 'reaction-config-edit',

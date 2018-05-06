@@ -1,5 +1,5 @@
-import { Configuration } from '../models';
-import { ConfigActionTypes, ConfigActions } from './config.actions';
+import { ConfigActionTypes, Configuration } from '@reaction/common/models';
+import { ConfigActions } from './config.actions';
 
 /**
  * Interface to the part of the Store containing ConfigState

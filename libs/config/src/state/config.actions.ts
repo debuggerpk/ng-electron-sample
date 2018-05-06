@@ -1,17 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Configuration, ConfigurationErrors } from '../models';
-
-export enum ConfigActionTypes {
-  GetConfig = '[CONFIG] Get Config Start',
-  GetConfigFromElectron = '[CONFIG] Get Electron Configuration',
-  GetConfigFromLocalStorage = '[CONFIG] Get LocalStorage Configuration',
-  GetConfigDone = '[CONFIG] Get Config Done',
-  ValidateConfig = '[CONFIG] Validate Configuration',
-  ConfigValidationSuccess = '[CONFIG] Validation Success',
-  ConfigValidationError = '[CONFIG] Validation Error',
-  SaveConfig = '[CONFIG] Save Config',
-  SaveConfigDone = '[CONFIG] Save Config Done',
-}
+import { ConfigActionTypes, Configuration, ConfigurationErrors } from '@reaction/common/models';
 
 export class GetConfig implements Action {
   readonly type = ConfigActionTypes.GetConfig;

@@ -1,18 +1,19 @@
-import { ipcMain } from 'electron';
+import { ipcMain, Event } from 'electron';
 import { store } from './store';
+import { ConfigActionTypes, Configuration } from '@reaction/common/models';
 
-ipcMain.on('get-config', (event, payload) => {
-  event.sender.send(
-    'get-config-reply',
-    store.get('settings', {
-      outlet_id: null,
-      local_gateway: null,
-      api_key: null,
-      api_gateway: null,
-    }),
-  );
+const FALLBACK_CONFIG = {
+  outlet_id: '',
+  local_gateway: '',
+  api_key: '',
+  api_gateway: '',
+};
+
+ipcMain.on(ConfigActionTypes.GetConfigFromElectron, (event: Event) => {
+  event.sender.send(ConfigActionTypes.GetConfigDone, store.get('configuration', FALLBACK_CONFIG));
 });
 
-ipcMain.on('save-config', (event, payload) => {
-  event.sender.send('save-config-reply', store.set('store', payload));
+ipcMain.on(ConfigActionTypes.SaveConfig, (event: Event, payload: Configuration) => {
+  store.set('configuration', payload);
+  event.sender.send(ConfigActionTypes.SaveConfigDone, true);
 });

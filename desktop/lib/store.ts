@@ -1,3 +1,3 @@
-const Store = require('electron-store');
+const ElectronStore = require('electron-store');
 
-export const store = new Store({ name: 'config' });
+export const store = new ElectronStore({ name: 'config' });
