@@ -41,12 +41,14 @@ export const serveAppTask = () => {
  * Task to Build Electron
  */
 export const buildElectronTask = () => {
-  return gulp
-    .src([Paths.electron_src])
-    .pipe($.sourcemaps.init())
-    .pipe($.typescript())
-    .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest(Paths.electron_dest));
+  return (
+    gulp
+      .src([Paths.electron_src])
+      // .pipe($.sourcemaps.init())
+      .pipe($.typescript.createProject('./tsconfig.desktop.json')())
+      // .pipe($.sourcemaps.write('.'))
+      .pipe(gulp.dest(Paths.electron_dest))
+  );
 };
 
 /**

@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConfigEditComponent } from './components/config-edit/config-edit.component';
-import { ConfigRootComponent } from './components/config-root/config-root.component';
+import { ConfigEditComponent, ConfigRootComponent } from './components';
 
 export const ConfigRoutes: Routes = [
   {

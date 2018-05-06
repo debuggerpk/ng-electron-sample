@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ConfigService } from '../services';
 import { map, tap } from 'rxjs/operators';
+import { ConfigService } from '../services';
 import {
   ConfigActionTypes,
   ConfigValidationError,

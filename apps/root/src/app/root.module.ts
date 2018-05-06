@@ -7,7 +7,6 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
-import { ConfigModule } from '@reaction/config';
 import { VendorModule } from '@reaction/vendor';
 import { environment } from '../environments/environment';
 import { RootComponent } from './root.component';
@@ -24,7 +23,6 @@ import { MainEffects } from './state/main.effects';
     NxModule.forRoot(),
     // @reaction modules
     VendorModule,
-    // ConfigModule, // TODO: Fix the service for lazy loading
     RootRoutingModule,
     // @ngrx redux store
     StoreModule.forRoot(reducers, { metaReducers }),

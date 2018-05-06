@@ -1,14 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ConfigState, Configuration } from '../../models';
-
-const x: Configuration = {
-  outlet_id: '',
-  api_key: '',
-  api_gateway: '',
-  local_gateway: '',
-};
+import { ConfigState } from '../../models';
 
 @Component({
   selector: 'reaction-config-edit',

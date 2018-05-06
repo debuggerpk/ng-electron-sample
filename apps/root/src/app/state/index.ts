@@ -1,10 +1,10 @@
+import { RouterStateSnapshot } from '@angular/router';
+import { RouterStateSerializer, routerReducer } from '@ngrx/router-store';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
-import { RootState, ReactionRouterState } from './states';
-import { RouterStateSerializer, routerReducer } from '@ngrx/router-store';
-import { RouterStateSnapshot } from '@angular/router';
+import { ReactionRouterState, RootState } from './states';
 
 export class ReactionRouterSerializer implements RouterStateSerializer<ReactionRouterState> {
   serialize(routerState: RouterStateSnapshot): ReactionRouterState {
