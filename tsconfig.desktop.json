@@ -1,6 +1,18 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es5"
-  }
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "@reaction/*": ["libs/*"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "tmp"]
 }

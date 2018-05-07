@@ -5,7 +5,7 @@ import * as loadGulpPlugins from 'gulp-load-plugins';
 // import * as env from 'gulp-env';
 // import * as nodemon from 'gulp-nodemon';
 // import * as typescript from 'gulp-typescript';
-import { HmrBrowserSyncConfig, Paths, PROXY } from './config';
+import { HmrBrowserSyncConfig, PATHS, PROXY } from './config';
 
 const $ = loadGulpPlugins();
 
@@ -41,23 +41,23 @@ export const serveAppTask = () => {
  * Task to Build Electron
  */
 export const buildElectronTask = () => {
-  return (
-    gulp
-      .src([Paths.electron_src])
-      .pipe($.debug())
-      // .pipe($.sourcemaps.init())
-      .pipe($.typescript.createProject('./tsconfig.desktop.json')())
-      .pipe($.debug())
-      // .pipe($.sourcemaps.write('.'))
-      .pipe(gulp.dest(Paths.electron_dest))
-  );
+  // return (
+  //   gulp
+  //     .src([PATHS.electron_src])
+  //     .pipe($.debug())
+  //     // .pipe($.sourcemaps.init())
+  //     .pipe($.typescript.createProject('./tsconfig.desktop.json')())
+  //     .pipe($.debug())
+  //     // .pipe($.sourcemaps.write('.'))
+  //     .pipe(gulp.dest(PATHS.electron_dest))
+  // );
 };
 
 /**
  * Task to Serve Built Electron
  */
 export const serveElectronTask = () => {
-  const electronIns = exec(`electron ${Paths.electron_dest}`);
+  const electronIns = exec(`electron ${PATHS.electron.dest}`);
 
   electronIns.stdout.pipe(process.stdout);
 
@@ -122,9 +122,9 @@ export const serveHmrTask = done => {
  */
 export const serveElectronHmrTask = done => {
   return $.nodemon({
-    exec: `electron ${Paths.electron_dest}`,
-    ignore: [`${Paths.electron_dest}apps/**/*.*`, `${Paths.electron_dest}libs/**/*.*`],
-    watch: [Paths.electron_dest],
+    exec: `electron ${PATHS.electron.dest}`,
+    ignore: [`${PATHS.electron.dest}/apps/**/*.*`, `${PATHS.electron.dest}/libs/**/*.*`],
+    watch: [`${PATHS.electron.dest}/**/*.*`],
   }).on('start', () => {
     proxyCli(PROXY, HmrBrowserSyncConfig);
   });
