@@ -41,5 +41,7 @@ export enum ConfigActionTypes {
   ConfigValidationSuccess = '[CONFIG] Validation Success',
   ConfigValidationError = '[CONFIG] Validation Error',
   SaveConfig = '[CONFIG] Save Config',
+  SaveConfigToElectron = '[CONFIG] Save Electron Configuration',
+  SaveConfigToLocalStorage = '[CONFIG] Save LocalStarage Configuration',
   SaveConfigDone = '[CONFIG] Save Config Done',
 }

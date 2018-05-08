@@ -41,6 +41,18 @@ export class SaveConfig implements Action {
   constructor(public payload: Configuration) {}
 }
 
+export class SaveConfigToElectron implements Action {
+  readonly type = ConfigActionTypes.SaveConfigToElectron;
+
+  constructor(public payload: Configuration) {}
+}
+
+export class SaveConfigToLocalStorage implements Action {
+  readonly type = ConfigActionTypes.SaveConfigToLocalStorage;
+
+  constructor(public payload: Configuration) {}
+}
+
 export class SaveConfigDone implements Action {
   readonly type = ConfigActionTypes.SaveConfigDone;
 }
@@ -54,4 +66,6 @@ export type ConfigActions =
   | ConfigValidationSuccess
   | ConfigValidationError
   | SaveConfig
+  | SaveConfigToElectron
+  | SaveConfigToLocalStorage
   | SaveConfigDone;

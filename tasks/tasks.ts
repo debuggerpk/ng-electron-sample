@@ -38,22 +38,6 @@ export const serveAppTask = () => {
 };
 
 /**
- * Task to Build Electron
- */
-export const buildElectronTask = () => {
-  // return (
-  //   gulp
-  //     .src([PATHS.electron_src])
-  //     .pipe($.debug())
-  //     // .pipe($.sourcemaps.init())
-  //     .pipe($.typescript.createProject('./tsconfig.desktop.json')())
-  //     .pipe($.debug())
-  //     // .pipe($.sourcemaps.write('.'))
-  //     .pipe(gulp.dest(PATHS.electron_dest))
-  // );
-};
-
-/**
  * Task to Serve Built Electron
  */
 export const serveElectronTask = () => {

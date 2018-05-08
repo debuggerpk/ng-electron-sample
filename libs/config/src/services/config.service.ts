@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ConfigActionTypes, ConfigState, Configuration, ConfigurationErrors } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
-import { GetConfig, GetConfigDone } from '../state/config.actions';
+import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config.actions';
 
 /**
  * Configuration service that handles all aspects of Configuration
@@ -60,6 +60,9 @@ export class ConfigService {
         local_gateway: '',
       }),
     );
+
+  public saveConfigToElectron: (config: Configuration) => void = config =>
+    this._reaction.ipc.send(ConfigActionTypes.SaveConfigToElectron, config);
 
   /**
    * Checks if the application is rendered inside Electron
@@ -144,7 +147,7 @@ export class ConfigService {
    */
   private _onIpcSaveConfig(): void {
     this._reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, response: boolean) => {
-      console.log(response);
+      this._store.dispatch(new SaveConfigDone());
     });
   }
 }

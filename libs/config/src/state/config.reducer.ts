@@ -17,27 +17,27 @@ export const initialState: Configuration = {
 export function configReducer(state = initialState, action: ConfigActions): Configuration {
   switch (action.type) {
     case ConfigActionTypes.GetConfig:
-      return { ...state };
+      return state;
 
     case ConfigActionTypes.GetConfigFromElectron:
-      return { ...state };
+      return state;
 
     case ConfigActionTypes.GetConfigFromLocalStorage:
-      return { ...state };
+      return state;
 
     case ConfigActionTypes.GetConfigDone:
       return { ...state, ...action.payload };
 
     case ConfigActionTypes.ValidateConfig:
-      return { ...state, ...action.payload };
+      return state;
 
     case ConfigActionTypes.ConfigValidationSuccess:
-      return { ...state };
+      return state;
 
     case ConfigActionTypes.ConfigValidationError:
       return { ...state, errors: action.payload };
 
     default:
-      return { ...state };
+      return state;
   }
 }

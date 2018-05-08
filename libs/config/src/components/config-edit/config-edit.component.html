@@ -5,7 +5,8 @@
     <span>My Application</span>
   </mat-toolbar>
   <mat-card class="config-card">
-    <form [formGroup]="configurationForm">
+    <form  [formGroup]="configurationForm"
+          (submit)="onSubmit()">
       <mat-card-content fxFlex
                         fxLayout="column">
         <!-- Outlet ID -->

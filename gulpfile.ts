@@ -14,7 +14,6 @@ import { PATHS } from './tasks/config';
 import {
   buildAppTask,
   serveAppTask,
-  buildElectronTask,
   serveElectronTask,
   setLaunchVariableTask,
   serveHmrTask,
@@ -40,19 +39,6 @@ gulp.task('serve:hmr', serveHmrTask);
 gulp.task('set:launchVar', setLaunchVariableTask);
 gulp.task('set:hmrVar', setHmrVariableTask);
 
-/**
- * Adding Watchers
- */
-gulp.task('watch:app', done => {
-  gulp.watch(PATHS.app.src.watch, gulp.series(buildAppTask));
-  done();
-});
-
-gulp.task('watch:libs', done => {
-  gulp.watch(PATHS.lib.src.watch, gulp.series(buildAppTask));
-  done();
-});
-
 gulp.task('watch:electron', done => {
   gulp.watch(PATHS.electron.src.watch, gulp.series(['rollup:electron']));
   done();
@@ -61,15 +47,6 @@ gulp.task('watch:electron', done => {
 /**
  * Gulp Tasks
  */
-gulp.task(
-  'serve',
-  gulp.series(
-    'build:electron',
-    gulp.parallel(['serve:app', 'watch:app', 'watch:electron', 'serve:electron', 'watch:libs']),
-  ),
-);
+gulp.task('serve', gulp.series('build:electron', gulp.parallel(['serve:app', 'watch:electron', 'serve:electron'])));
 
-gulp.task(
-  'default',
-  gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron', 'watch:libs'])),
-);
+gulp.task('default', gulp.series('build:electron', 'set:hmrVar', gulp.parallel(['serve:hmr', 'watch:electron'])));

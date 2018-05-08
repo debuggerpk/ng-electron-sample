@@ -11,6 +11,10 @@ import {
   GetConfigFromElectron,
   GetConfigFromLocalStorage,
   ValidateConfig,
+  SaveConfig,
+  SaveConfigToElectron,
+  SaveConfigToLocalStorage,
+  SaveConfigDone,
 } from './config.actions';
 
 @Injectable()
@@ -52,6 +56,23 @@ export class ConfigEffects {
   validationError$ = this._actions.pipe(
     ofType<ConfigValidationError>(ConfigActionTypes.ConfigValidationError),
     tap(() => this._config.routeToConfigEdit()),
+  );
+
+  @Effect()
+  saveConfig$ = this._actions.pipe(
+    ofType<SaveConfig>(ConfigActionTypes.SaveConfig),
+    map(
+      action =>
+        this._config.isElectronApp()
+          ? new SaveConfigToElectron(action.payload)
+          : new SaveConfigToLocalStorage(action.payload),
+    ),
+  );
+
+  @Effect({ dispatch: false })
+  saveConfigToElectron$ = this._actions.pipe(
+    ofType<SaveConfigToElectron>(ConfigActionTypes.SaveConfigToElectron),
+    tap(action => this._config.saveConfigToElectron(action.payload)),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}

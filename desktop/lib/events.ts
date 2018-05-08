@@ -13,7 +13,7 @@ ipcMain.on(ConfigActionTypes.GetConfigFromElectron, (event: Event) => {
   event.sender.send(ConfigActionTypes.GetConfigDone, store.get('configuration', FALLBACK_CONFIG));
 });
 
-ipcMain.on(ConfigActionTypes.SaveConfig, (event: Event, payload: Configuration) => {
+ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Configuration) => {
   store.set('configuration', payload);
   event.sender.send(ConfigActionTypes.SaveConfigDone, true);
 });
