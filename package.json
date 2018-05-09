@@ -1,8 +1,10 @@
 {
   "name": "retail-reaction",
   "productName": "Retail Reaction",
+  "description": "",
+  "homepage": "https://www.reaction.live/",
   "version": "0.0.1",
-  "license": "MIT",
+  "license": "Proprietary",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -67,6 +69,7 @@
     "codelyzer": "^4.3.0",
     "devtron": "^1.4.0",
     "electron": "^2.0.0",
+    "electron-builder": "^20.13.3",
     "electron-devtools-installer": "^2.2.4",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
@@ -113,15 +116,10 @@
     },
     "mac": {
       "category": "public.app-category.retail",
-      "target": [
-        "dmg"
-      ]
+      "target": ["dmg"]
     },
     "linux": {
-      "target": [
-        "AppImage",
-        "snap"
-      ]
+      "target": ["AppImage", "snap"]
     },
     "asar": true
   }

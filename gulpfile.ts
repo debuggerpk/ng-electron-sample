@@ -1,7 +1,7 @@
 import * as gulp from 'gulp';
 import { ngServeHMR } from './tasks/angular';
 import { PATHS } from './tasks/config';
-import { restartElectron, runElectron } from './tasks/electron';
+import { restartElectron, runElectron, writeDesktopPackageJson, installElectronDependencies } from './tasks/electron';
 import { environmentHMR } from './tasks/environment';
 import { electronMainBundle, electronPreloadBundle } from './tasks/rollup';
 
@@ -25,10 +25,20 @@ gulp.task('environment:hmr', environmentHMR);
 
 gulp.task('electron:run', runElectron);
 gulp.task('electron:restart', restartElectron);
+gulp.task('electron:package', writeDesktopPackageJson);
+gulp.task('electron:deps', installElectronDependencies);
 
 gulp.task('watch:electron', done => {
   gulp.watch(PATHS.electron.src.watch, gulp.series(['rollup:electron', 'electron:restart']));
   done();
 });
 
-gulp.task('serve', gulp.series(['environment:hmr', 'rollup:electron', 'ng:hmr', 'electron:run', 'watch:electron']));
+gulp.task(
+  'serve',
+  gulp.series([
+    gulp.parallel(['environment:hmr', 'rollup:electron', gulp.series(['electron:package', 'electron:deps'])]),
+    'ng:hmr',
+    'electron:run',
+    'watch:electron',
+  ]),
+);
