@@ -40,6 +40,7 @@
     "usb": "1.4.0"
   },
   "devDependencies": {
+    "@akanass/rx-http-request": "^2.7.1",
     "@angular/animations": "5.2.10",
     "@angular/cdk": "^5.2.5",
     "@angular/cli": "1.7.4",

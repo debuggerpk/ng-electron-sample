@@ -57,6 +57,21 @@
       "tags": []
     },
     {
+      "name": "datum",
+      "root": "libs/datum/src",
+      "test": "../../../test.js",
+      "prefix": "reaction-data",
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "services",
+      "root": "libs/services/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": []
+    },
+    {
       "name": "vendor",
       "root": "libs/vendor/src",
       "test": "../../../test.js",

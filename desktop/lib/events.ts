@@ -1,5 +1,6 @@
 import { ipcMain, Event } from 'electron';
 import { store } from './store';
+import { getOutlet, getShifts } from './api';
 import { ConfigActionTypes, Configuration } from '@reaction/common/models';
 
 const FALLBACK_CONFIG = {
@@ -11,6 +12,14 @@ const FALLBACK_CONFIG = {
 
 ipcMain.on(ConfigActionTypes.GetConfigFromElectron, (event: Event) => {
   event.sender.send(ConfigActionTypes.GetConfigDone, store.get('configuration', FALLBACK_CONFIG));
+
+  getShifts().subscribe(data => {
+    store.set('shifts', data.body);
+  });
+
+  getOutlet().subscribe(data => {
+    store.set('outlet', data.body);
+  });
 });
 
 ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Configuration) => {
