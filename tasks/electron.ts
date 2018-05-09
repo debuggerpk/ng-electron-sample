@@ -6,9 +6,6 @@ const electron = require('electron');
 let child = null;
 
 export const runElectron = done => {
-  // child = cp.spawn(electron, ['.'], { stdio: 'inherit' }).on('close', () => {
-  //   process.exit();
-  // });
   child = spawn(<any>electron, [PATHS.electron.dest], { stdio: 'inherit' });
 
   child.on('close', () => process.exit());
