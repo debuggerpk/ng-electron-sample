@@ -20,4 +20,8 @@ export const ngServeHMR = done => {
   ng.on('error', error => {
     throw error;
   });
+
+  process.on('exit', () => {
+    ng.kill();
+  });
 };

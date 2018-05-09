@@ -46,6 +46,13 @@ const createWindow: () => void = () => {
   mainWindowRef.on('resize', () => {
     store.set('windowBounds', mainWindowRef.getBounds());
   });
+
+  // TODO: investigate why this is not working with electron 2
+  // mainWindowRef.webContents.on('did-frame-finish-load', event => {
+  //   if (isDev) {
+  //     require('devtron').install();
+  //   }
+  // });
 };
 
 app.on('ready', createWindow);

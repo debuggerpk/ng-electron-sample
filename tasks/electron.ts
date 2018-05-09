@@ -51,9 +51,13 @@ export const installElectronDependencies = done => {
 export const runElectron = done => {
   child = spawn(<any>electron, [PATHS.electron.dest], { stdio: 'inherit' });
 
-  child.on('close', () => process.exit());
+  // child.on('close', () => process.exit());
   child.on('error', error => {
     throw error;
+  });
+
+  process.on('exit', () => {
+    child.kill();
   });
 
   done();

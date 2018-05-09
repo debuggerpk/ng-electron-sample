@@ -15,5 +15,5 @@ ipcMain.on(ConfigActionTypes.GetConfigFromElectron, (event: Event) => {
 
 ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Configuration) => {
   store.set('configuration', payload);
-  event.sender.send(ConfigActionTypes.SaveConfigDone, true);
+  event.sender.send(ConfigActionTypes.SaveConfigDone, payload);
 });

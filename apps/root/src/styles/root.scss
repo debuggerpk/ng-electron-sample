@@ -20,3 +20,7 @@ $reaction-colors-warn: mat-palette($mat-deep-orange);
 $reaction-colors-theme: mat-light-theme($reaction-colors-primary, $reaction-colors-accent, $reaction-colors-warn);
 
 @include angular-material-theme($reaction-colors-theme);
+
+body {
+    background-color: rgb(245, 245, 245);
+}

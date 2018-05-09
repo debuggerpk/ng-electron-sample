@@ -1,11 +1,8 @@
 <div class="config-page"
      fxLayout="column"
      fxLayoutAlign="center center">
-  <mat-toolbar>
-    <span>My Application</span>
-  </mat-toolbar>
   <mat-card class="config-card">
-    <form  [formGroup]="configurationForm"
+    <form [formGroup]="configurationForm"
           (submit)="onSubmit()">
       <mat-card-content fxFlex
                         fxLayout="column">
