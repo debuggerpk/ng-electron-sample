@@ -2,9 +2,6 @@ import * as browserSync from 'browser-sync';
 import { exec } from 'child_process';
 import * as gulp from 'gulp';
 import * as loadGulpPlugins from 'gulp-load-plugins';
-// import * as env from 'gulp-env';
-// import * as nodemon from 'gulp-nodemon';
-// import * as typescript from 'gulp-typescript';
 import { HmrBrowserSyncConfig, PATHS, PROXY } from './config';
 
 const $ = loadGulpPlugins();

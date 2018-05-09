@@ -8,7 +8,7 @@ import * as path from 'path';
 let mainWindowRef: Electron.BrowserWindow = null;
 
 const debugMode = true;
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV === 'development';
 
 const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   width: store.get('windowBounds.width', 800),
@@ -17,7 +17,6 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   y: store.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
-    // experimentalFeatures: true,
     nodeIntegration: false,
     preload: path.join(__dirname, 'preload.js'),
   },
@@ -25,10 +24,10 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
 
 const createWindow: () => void = () => {
   // TODO: account for packaging builds or reuse 'build'.
+  // TODO: build electron binaries on for electron development environment
+  // TODO: fix live reload
   const url =
-    isDev && process.env.LAUNCH_MODE !== 'build'
-      ? 'http://localhost:4200'
-      : `file:///${__dirname}/apps/root/index.html`;
+    isDev && process.env.LAUNCH_MODE === 'hmr' ? 'http://localhost:4200' : `file:///${__dirname}/apps/root/index.html`;
   console.log(`Main Window Proxy: ${url}`);
   mainWindowRef = new BrowserWindow(mainWindowSettings);
   mainWindowRef.loadURL(url);
