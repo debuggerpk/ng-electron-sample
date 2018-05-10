@@ -1,4 +1,4 @@
-import { ConfigActionTypes, Configuration } from '@reaction/common/models';
+import { ConfigActionTypes, Configuration } from '../../../../common/models/index';
 import { ConfigActions } from './config.actions';
 
 /**

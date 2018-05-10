@@ -16,6 +16,6 @@ export interface Outlet {
 }
 
 export enum OutletActionTypes {
-  GetOutlet = '[Outlet] Get Outlet',
-  GetOutletDone = '[Outlet] Get Outlet Done',
+  GetOutlet = '[OUTLET] Get Outlet',
+  GetOutletDone = '[OUTLET] Get Outlet Done',
 }

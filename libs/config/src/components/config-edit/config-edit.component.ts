@@ -2,8 +2,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { ConfigState } from '@reaction/common/models';
-import { SaveConfig } from '../../state/config.actions';
+// tslint:disable-next-line:nx-enforce-module-boundaries
+import { RootState } from '@reaction/common/models';
+import { configActions } from '@reaction/data';
 
 @Component({
   selector: 'reaction-config-edit',
@@ -13,7 +14,7 @@ import { SaveConfig } from '../../state/config.actions';
 export class ConfigEditComponent implements OnInit, OnDestroy {
   public configurationForm: FormGroup;
 
-  constructor(private _store: Store<ConfigState>, private _formBuilder: FormBuilder) {}
+  constructor(private _store: Store<RootState>, private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.configurationForm = this._formBuilder.group({
@@ -30,7 +31,7 @@ export class ConfigEditComponent implements OnInit, OnDestroy {
     if (this.configurationForm.valid) {
       console.log(this.configurationForm.value);
       const data = { ...this.configurationForm.value };
-      this._store.dispatch(new SaveConfig(data));
+      this._store.dispatch(new configActions.SaveConfig(data));
       // TODO: this is a hack, ngrx resets the form after we submit. investigate
       this.configurationForm.patchValue(data);
     }

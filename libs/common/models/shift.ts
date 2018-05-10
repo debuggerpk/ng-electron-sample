@@ -15,11 +15,9 @@ export interface Shift {
 }
 
 export enum ShiftActionTypes {
-  GetAllShifts = '[Shifts] Get All',
-  CreateNewShift = '[Shifts] Create New',
-  EndShift = '[Shifts] End Shift',
-  SaveShift = '[Shifts] Save Shift',
-  SaveShiftDone = '[Shifts] Shift Saved',
-  SyncShifts = '[Shifts] Sync',
-  DataUpdated = '[Shifts] Data Updated',
+  GetAllShifts = '[SHIFTS] Get All',
+  CreateNewShift = '[SHIFTS] Create New',
+  EndShift = '[SHIFTS] End Shift',
+  SaveShift = '[SHIFTS] Save Shift',
+  SaveShiftDone = '[SHIFTS] Shift Saved',
 }

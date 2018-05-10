@@ -10,10 +10,10 @@ export interface LineItem {
 }
 
 export enum LineItemActionTypes {
-  AddToOrder = '[Line Item] Add to Order',
-  RemoveFromOrder = '[Line Item] Remove from Order',
-  CalculateItemsTotal = '[Line Item] Calculate Total',
-  CalcualteDiscount = '[Line Item] Calculate Discount',
-  CalculateTax = '[Line Item] Calculate Tax',
-  CaluclateLineItemSale = '[Line Item] Calculate Sale',
+  AddToOrder = '[LINE ITEM] Add to Order',
+  RemoveFromOrder = '[LINE ITEM] Remove from Order',
+  CalculateItemsTotal = '[LINE ITEM] Calculate Total',
+  CalcualteDiscount = '[LINE ITEM] Calculate Discount',
+  CalculateTax = '[LINE ITEM] Calculate Tax',
+  CaluclateLineItemSale = '[LINE ITEM] Calculate Sale',
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ConfigActionTypes, ConfigState, Configuration, ConfigurationErrors } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
-import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config.actions';
+import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config/config.actions';
 
 /**
  * Configuration service that handles all aspects of Configuration
