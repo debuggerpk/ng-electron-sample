@@ -10,6 +10,8 @@ import { CategoriesEffects } from './state/categories/categories.effects';
 import { categoriesReducer, initialState as categoriesInitialState } from './state/categories/categories.reducer';
 import { ConfigEffects } from './state/config/config.effects';
 import { configReducer, initialState as configInitialState } from './state/config/config.reducer';
+import { DiscountsEffects } from './state/discounts/discounts.effects';
+import { discountsReducer, initialState as discountsInitialState } from './state/discounts/discounts.reducer';
 import { InvoicesEffects } from './state/invoices/invoices.effects';
 import { initialState as invoicesInitialState, invoicesReducer } from './state/invoices/invoices.reducer';
 import { ItemsEffects } from './state/items/items.effects';
@@ -32,6 +34,8 @@ export const datumRoutes: Route[] = [];
     EffectsModule.forFeature([CategoriesEffects]),
     StoreModule.forFeature('config', configReducer, { initialState: configInitialState }),
     EffectsModule.forFeature([ConfigEffects]),
+    StoreModule.forFeature('discounts', discountsReducer, { initialState: discountsInitialState }),
+    EffectsModule.forFeature([DiscountsEffects]),
     StoreModule.forFeature('items', itemsReducer, { initialState: itemsInitialState }),
     EffectsModule.forFeature([ItemsEffects]),
     StoreModule.forFeature('orders', ordersReducer, { initialState: ordersInitialState }),
@@ -54,6 +58,7 @@ export const datumRoutes: Route[] = [];
     InvoicesEffects,
     ElectronService,
     ConfigService,
+    DiscountsEffects,
   ],
 })
 export class DataModule {}

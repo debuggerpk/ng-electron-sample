@@ -6,12 +6,7 @@ import { ConfigRoutingModule } from './config.routing';
 import { DataModule } from '@reaction/data';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    VendorModule,
-    ConfigRoutingModule,
-    DataModule,
-  ],
+  imports: [CommonModule, VendorModule, ConfigRoutingModule, DataModule],
   declarations: [ConfigEditComponent, ConfigRootComponent],
   exports: [DataModule],
 })

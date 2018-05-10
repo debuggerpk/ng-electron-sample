@@ -7,4 +7,3 @@ export * from './root';
 export * from './shift';
 export * from './user';
 // end:ng42.barrel
-
