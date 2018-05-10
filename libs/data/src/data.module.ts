@@ -14,6 +14,8 @@ import { OutletEffects } from './state/outlet/outlet.effects';
 import { initialState as outletInitialState, outletReducer } from './state/outlet/outlet.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { initialState as shiftsInitialState, shiftsReducer } from './state/shifts/shifts.reducer';
+import { invoicesReducer, initialState as invoicesInitialState } from './state/invoices/invoices.reducer';
+import { InvoicesEffects } from './state/invoices/invoices.effects';
 
 export const datumRoutes: Route[] = [];
 
@@ -32,8 +34,10 @@ export const datumRoutes: Route[] = [];
     EffectsModule.forFeature([OutletEffects]),
     StoreModule.forFeature('shifts', shiftsReducer, { initialState: shiftsInitialState }),
     EffectsModule.forFeature([ShiftsEffects]),
+    StoreModule.forFeature('invoices', invoicesReducer, { initialState: invoicesInitialState }),
+    EffectsModule.forFeature([InvoicesEffects]),
   ],
   exports: [RouterModule, VendorModule],
-  providers: [OutletEffects, ItemsEffects, CategoriesEffects, ShiftsEffects, OrdersEffects],
+  providers: [OutletEffects, ItemsEffects, CategoriesEffects, ShiftsEffects, OrdersEffects, InvoicesEffects],
 })
-export class DatumModule {}
+export class DataModule {}

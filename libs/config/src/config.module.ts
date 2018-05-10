@@ -9,6 +9,7 @@ import { ConfigRoutingModule } from './config.routing';
 import { ConfigService } from './services';
 import { ConfigEffects } from './state/config.effects';
 import { configReducer, initialState as configInitialState } from './state/config.reducer';
+import { DataModule } from '@reaction/data';
 
 @NgModule({
   imports: [
@@ -17,8 +18,10 @@ import { configReducer, initialState as configInitialState } from './state/confi
     StoreModule.forFeature('config', configReducer, { initialState: configInitialState }),
     EffectsModule.forFeature([ConfigEffects]),
     ConfigRoutingModule,
+    DataModule,
   ],
   providers: [ElectronService, ConfigService, ConfigEffects],
   declarations: [ConfigEditComponent, ConfigRootComponent],
+  exports: [DataModule],
 })
 export class ConfigModule {}
