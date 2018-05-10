@@ -13,6 +13,7 @@ import { RootComponent } from './root.component';
 import { RootRoutingModule } from './root.routing';
 import { ReactionRouterSerializer, reducers, metaReducers } from './state';
 import { MainEffects } from './state/main.effects';
+import { DatumModule } from '@reaction/datum';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { MainEffects } from './state/main.effects';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([MainEffects]),
     StoreRouterConnectingModule,
+    DatumModule,
   ],
   declarations: [RootComponent],
   bootstrap: [RootComponent],

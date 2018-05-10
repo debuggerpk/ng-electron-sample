@@ -1,14 +1,16 @@
-export interface OrderTable {
+export interface OrderSection {
   section: string;
-  number: number;
+  table: number;
 }
 
 export interface OrderProperties {
   invoice: number;
-  table: OrderTable;
   bank: string;
   people: number;
   card_recp: string | null;
+  section: OrderSection;
+  tip: number;
+  table?: string;
 }
 
 export interface Order {
