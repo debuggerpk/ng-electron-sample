@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Route, RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { VendorModule } from '@reaction/vendor';
@@ -20,15 +19,14 @@ import { OrdersEffects } from './state/orders/orders.effects';
 import { initialState as ordersInitialState, ordersReducer } from './state/orders/orders.reducer';
 import { OutletEffects } from './state/outlet/outlet.effects';
 import { initialState as outletInitialState, outletReducer } from './state/outlet/outlet.reducer';
+import { SectionsEffects } from './state/sections/sections.effects';
+import { initialState as sectionsInitialState, sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { initialState as shiftsInitialState, shiftsReducer } from './state/shifts/shifts.reducer';
-
-export const datumRoutes: Route[] = [];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(datumRoutes),
     VendorModule,
     StoreModule.forFeature('categories', categoriesReducer, { initialState: categoriesInitialState }),
     EffectsModule.forFeature([CategoriesEffects]),
@@ -46,19 +44,22 @@ export const datumRoutes: Route[] = [];
     EffectsModule.forFeature([ShiftsEffects]),
     StoreModule.forFeature('invoices', invoicesReducer, { initialState: invoicesInitialState }),
     EffectsModule.forFeature([InvoicesEffects]),
+    StoreModule.forFeature('sections', sectionsReducer, { initialState: sectionsInitialState }),
+    EffectsModule.forFeature([SectionsEffects]),
   ],
-  exports: [RouterModule, VendorModule],
+  exports: [VendorModule],
   providers: [
-    OutletEffects,
-    ItemsEffects,
     CategoriesEffects,
     ConfigEffects,
-    ShiftsEffects,
-    OrdersEffects,
-    InvoicesEffects,
-    ElectronService,
     ConfigService,
     DiscountsEffects,
+    ElectronService,
+    InvoicesEffects,
+    ItemsEffects,
+    OrdersEffects,
+    OutletEffects,
+    SectionsEffects,
+    ShiftsEffects,
   ],
 })
 export class DataModule {}
