@@ -8,3 +8,8 @@ export interface Category {
 export interface CategoryState {
   readonly categories: Array<Category>;
 }
+
+export enum CategoryActionTypes {
+  LoadAllCategories = '[CATEGORY] Load All',
+  LoadAllCategoriesDone = '[CATEGORY] Load All Done',
+}

@@ -3857,6 +3857,14 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
+google-closure-compiler@^20180506.0.0:
+  version "20180506.0.0"
+  resolved "https://registry.yarnpkg.com/google-closure-compiler/-/google-closure-compiler-20180506.0.0.tgz#f59cc34dbf8c9a4f48fba3ebb2cf098d25e345ab"
+  dependencies:
+    chalk "^1.0.0"
+    vinyl "^2.0.1"
+    vinyl-sourcemaps-apply "^0.2.0"
+
 got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
@@ -8260,7 +8268,7 @@ source-map@0.1.x, source-map@^0.1.38:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@0.5.x, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.0, source-map@~0.5.1:
+source-map@0.5.x, source-map@^0.5.1, source-map@^0.5.3, source-map@^0.5.6, source-map@^0.5.7, source-map@~0.5.0, source-map@~0.5.1:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
@@ -9356,6 +9364,12 @@ vinyl-sourcemap@^1.1.0:
     remove-bom-buffer "^3.0.0"
     vinyl "^2.0.0"
 
+vinyl-sourcemaps-apply@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vinyl-sourcemaps-apply/-/vinyl-sourcemaps-apply-0.2.1.tgz#ab6549d61d172c2b1b87be5c508d239c8ef87705"
+  dependencies:
+    source-map "^0.5.1"
+
 vinyl@^0.4.0:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-0.4.6.tgz#2f356c87a550a255461f36bbeb2a5ba8bf784847"
@@ -9371,7 +9385,7 @@ vinyl@^0.5.0:
     clone-stats "^0.0.1"
     replace-ext "0.0.1"
 
-vinyl@^2.0.0, vinyl@^2.1.0:
+vinyl@^2.0.0, vinyl@^2.0.1, vinyl@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-2.1.0.tgz#021f9c2cf951d6b939943c89eb5ee5add4fd924c"
   dependencies:

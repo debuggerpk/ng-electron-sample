@@ -1,5 +1,5 @@
-import { Action } from '@ngrx/store';
-import { ShiftState, ShiftActionTypes, shiftAdapter } from '@reaction/common/models';
+import { ShiftActionTypes, ShiftState } from '@reaction/common/models';
+import { shiftAdapter } from './shift.adapter';
 import { ShiftsActions } from './shifts.actions';
 
 export const initialState: ShiftState = shiftAdapter.getInitialState({
@@ -8,7 +8,13 @@ export const initialState: ShiftState = shiftAdapter.getInitialState({
 
 export function shiftsReducer(state = initialState, action: ShiftsActions): ShiftState {
   switch (action.type) {
-    case ShiftActionTypes.AddNew:
+    case ShiftActionTypes.LoadAllShifts:
+      return state;
+
+    case ShiftActionTypes.LoadAllShiftsDone:
+      return shiftAdapter.addAll(action.payload, state);
+
+    case ShiftActionTypes.AddNewShift:
       return state;
 
     default:

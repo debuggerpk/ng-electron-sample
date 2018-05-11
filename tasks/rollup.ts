@@ -7,6 +7,7 @@ import * as source from 'vinyl-source-stream';
 import { PATHS } from './config';
 
 const typescript = require('rollup-plugin-typescript2');
+const closure = require('google-closure-compiler').gulp();
 
 const $ = loadGulpPlugins();
 
@@ -77,8 +78,14 @@ const rollupJS = (inputFile: string, options, cache) => {
       .pipe(source(inputFile, `${PATHS.electron.src.folder}`))
       // we need to buffer the output, since many gulp plugins don't support streams.
       .pipe(buffer())
-      // size before
-      .pipe($.size({ showFiles: true, showTotal: false }))
+      // google closure compile
+      // .pipe(
+      //   closure({
+      //     compilation_level: 'SIMPLE',
+      //     language_in: 'ECMASCRIPT6_STRICT',
+      //     language_out: 'ECMASCRIPT5_STRICT',
+      //   }),
+      // )
       // initialize sourcemaps
       // .pipe($.sourcemaps.init({ loadMaps: true }))
       // some transformations like uglify, rename, etc.

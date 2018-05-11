@@ -27,6 +27,8 @@ export class ValidateConfig implements Action {
 
 export class ConfigValidationSuccess implements Action {
   readonly type = ConfigActionTypes.ConfigValidationSuccess;
+
+  constructor(public payload: Configuration) {}
 }
 
 export class ConfigValidationError implements Action {

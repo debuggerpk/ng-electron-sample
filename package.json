@@ -73,6 +73,7 @@
     "electron": "^2.0.0",
     "electron-builder": "^20.13.3",
     "electron-devtools-installer": "^2.2.4",
+    "google-closure-compiler": "^20180506.0.0",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-debug": "^4.0.0",

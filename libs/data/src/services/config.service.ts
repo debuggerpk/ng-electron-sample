@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ConfigActionTypes, ConfigState, Configuration, ConfigurationErrors } from '@reaction/common/models';
+import { ConfigActionTypes, Configuration, ConfigurationErrors, RootState } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
 import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config/config.actions';
 
@@ -13,10 +13,8 @@ import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config/config
  */
 @Injectable()
 export class ConfigService {
-  private _reaction = window.reaction;
-
   constructor(
-    private _store: Store<ConfigState>,
+    private _store: Store<RootState>,
     private _electron: ElectronService,
     private _router: Router,
     private _zone: NgZone,
@@ -43,7 +41,7 @@ export class ConfigService {
    *
    * @memberOf ConfigService
    */
-  public getConfigFromElectron: () => void = () => this._reaction.ipc.send(ConfigActionTypes.GetConfigFromElectron);
+  public getConfigFromElectron: () => void = () => window.reaction.ipc.send(ConfigActionTypes.GetConfigFromElectron);
 
   /**
    * Gets the configuration from localstorage
@@ -62,7 +60,7 @@ export class ConfigService {
     );
 
   public saveConfigToElectron: (config: Configuration) => void = config =>
-    this._reaction.ipc.send(ConfigActionTypes.SaveConfigToElectron, config);
+    window.reaction.ipc.send(ConfigActionTypes.SaveConfigToElectron, config);
 
   /**
    * Checks if the application is rendered inside Electron
@@ -123,7 +121,7 @@ export class ConfigService {
    * @memberOf ConfigService
    */
   private _onIpcGetConfig(): void {
-    this._reaction.ipc.on(ConfigActionTypes.GetConfigDone, (event: Event, payload: Configuration) => {
+    window.reaction.ipc.on(ConfigActionTypes.GetConfigDone, (event: Event, payload: Configuration) => {
       this._store.dispatch(new GetConfigDone(payload));
     });
   }
@@ -136,7 +134,7 @@ export class ConfigService {
    * @memberOf ConfigService
    */
   private _onIpcSaveConfig(): void {
-    this._reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, payload: Configuration) => {
+    window.reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, payload: Configuration) => {
       this._store.dispatch(new SaveConfigDone(payload));
     });
   }

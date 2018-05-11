@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ConfigActionTypes } from '@reaction/common/models';
-import { map, tap } from 'rxjs/operators';
-import { ConfigService } from '../../services/index';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { ConfigService } from '../../services';
+import { LoadAllShifts } from '../shifts/shifts.actions';
 import {
   ConfigValidationError,
   ConfigValidationSuccess,
@@ -10,11 +11,11 @@ import {
   GetConfigDone,
   GetConfigFromElectron,
   GetConfigFromLocalStorage,
-  ValidateConfig,
   SaveConfig,
+  SaveConfigDone,
   SaveConfigToElectron,
   SaveConfigToLocalStorage,
-  SaveConfigDone,
+  ValidateConfig,
 } from './config.actions';
 
 @Injectable()
@@ -48,8 +49,14 @@ export class ConfigEffects {
     ofType<ValidateConfig>(ConfigActionTypes.ValidateConfig),
     map(action => {
       const errors = this._config.validateConfig(action.payload);
-      return errors ? new ConfigValidationError(errors) : new ConfigValidationSuccess();
+      return errors ? new ConfigValidationError(errors) : new ConfigValidationSuccess(action.payload);
     }),
+  );
+
+  @Effect()
+  validationSuccess = this._actions.pipe(
+    ofType<ConfigValidationSuccess>(ConfigActionTypes.ConfigValidationSuccess),
+    map(action => new SaveConfigDone(action.payload)),
   );
 
   @Effect({ dispatch: false })
@@ -73,6 +80,12 @@ export class ConfigEffects {
   saveConfigToElectron$ = this._actions.pipe(
     ofType<SaveConfigToElectron>(ConfigActionTypes.SaveConfigToElectron),
     tap(action => this._config.saveConfigToElectron(action.payload)),
+  );
+
+  @Effect()
+  saveConfigDone$ = this._actions.pipe(
+    ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
+    switchMap(action => [new LoadAllShifts()]),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}
