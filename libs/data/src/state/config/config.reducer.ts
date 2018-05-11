@@ -38,10 +38,16 @@ export function configReducer(state = initialState, action: ConfigActions): Conf
       return { ...state, errors: action.payload };
 
     case ConfigActionTypes.SaveConfig:
-      return { ...state, ...action.payload };
+      return { ...state };
+
+    case ConfigActionTypes.SaveConfigToElectron:
+      return { ...state };
+
+    case ConfigActionTypes.SaveConfigToLocalStorage:
+      return { ...state };
 
     case ConfigActionTypes.SaveConfigDone:
-      return;
+      return { ...state, ...action.payload };
 
     default:
       return state;

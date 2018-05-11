@@ -1,31 +1,15 @@
 import { Action } from '@ngrx/store';
-import { ShiftsActions, ShiftsActionTypes } from './shifts.actions';
+import { ShiftState, ShiftActionTypes, shiftAdapter } from '@reaction/common/models';
+import { ShiftsActions } from './shifts.actions';
 
-/**
- * Interface for the 'Shifts' data used in
- *  - ShiftsState, and
- *  - shiftsReducer
- */
-export interface ShiftsData {}
+export const initialState: ShiftState = shiftAdapter.getInitialState({
+  selectedShiftId: null,
+});
 
-/**
- * Interface to the part of the Store containing ShiftsState
- * and other information related to ShiftsData.
- */
-export interface ShiftsState {
-  readonly shifts: ShiftsData;
-}
-
-export const initialState: ShiftsData = {};
-
-export function shiftsReducer(state = initialState, action: ShiftsActions): ShiftsData {
+export function shiftsReducer(state = initialState, action: ShiftsActions): ShiftState {
   switch (action.type) {
-    case ShiftsActionTypes.ShiftsAction:
+    case ShiftActionTypes.AddNew:
       return state;
-
-    case ShiftsActionTypes.ShiftsLoaded: {
-      return { ...state, ...action.payload };
-    }
 
     default:
       return state;

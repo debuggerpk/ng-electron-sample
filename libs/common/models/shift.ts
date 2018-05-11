@@ -1,3 +1,5 @@
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 export interface ShiftProperties {
   password: string;
 }
@@ -14,10 +16,21 @@ export interface Shift {
   outlet: number;
 }
 
+export interface ShiftState extends EntityState<Shift> {
+  selectedShiftId: string;
+}
+
+const shiftIdSelector = (shift: Shift) => shift.uuid;
+const shiftSorter = (a: Shift, b: Shift) => a.started_at > b.started_at;
+
+export const shiftAdapter: EntityAdapter<Shift> = createEntityAdapter<Shift>({ selectId: shiftIdSelector, sortComparer: shiftSorter });
+
 export enum ShiftActionTypes {
-  GetAllShifts = '[SHIFTS] Get All',
-  CreateNewShift = '[SHIFTS] Create New',
-  EndShift = '[SHIFTS] End Shift',
-  SaveShift = '[SHIFTS] Save Shift',
-  SaveShiftDone = '[SHIFTS] Shift Saved',
+  LoadAll = '[SHIFTS] Load All',
+  LoadAllDone = '[SHIFTS] Load All Done',
+  AddNew = '[SHIFTS] Add New',
+  AddNewDone = '[SHIFTS] Add New Done',
+  End = '[SHIFT] End',
+  Update = '[SHIFTS] Update',
+  UpdateDone = '[SHIFTS] Update Done',
 }

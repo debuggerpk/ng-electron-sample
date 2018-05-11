@@ -76,23 +76,13 @@ export class ConfigService {
   }
 
   /**
-   * Route to Config Root
+   * Route to Configuration
    *
    *
    * @memberOf ConfigService
    */
-  public routeToConfigRoot(): void {
+  public routeToConfig(): void {
     this._zone.run(() => this._router.navigate(['/config']));
-  }
-
-  /**
-   * Route to Config Edit
-   *
-   *
-   * @memberOf ConfigService
-   */
-  public routeToConfigEdit(): void {
-    this._zone.run(() => this._router.navigate(['/config/edit']));
   }
 
   /**
@@ -146,8 +136,8 @@ export class ConfigService {
    * @memberOf ConfigService
    */
   private _onIpcSaveConfig(): void {
-    this._reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, response: boolean) => {
-      this._store.dispatch(new SaveConfigDone());
+    this._reaction.ipc.on(ConfigActionTypes.SaveConfigDone, (event, payload: Configuration) => {
+      this._store.dispatch(new SaveConfigDone(payload));
     });
   }
 }

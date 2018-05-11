@@ -15,6 +15,10 @@ export interface Outlet {
   roles: Array<number>;
 }
 
+export interface OutletState {
+  readonly outlet: Outlet;
+}
+
 export enum OutletActionTypes {
   GetOutlet = '[OUTLET] Get Outlet',
   GetOutletDone = '[OUTLET] Get Outlet Done',

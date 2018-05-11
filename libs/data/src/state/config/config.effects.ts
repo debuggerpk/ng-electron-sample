@@ -55,7 +55,7 @@ export class ConfigEffects {
   @Effect({ dispatch: false })
   validationError$ = this._actions.pipe(
     ofType<ConfigValidationError>(ConfigActionTypes.ConfigValidationError),
-    tap(() => this._config.routeToConfigEdit()),
+    tap(() => this._config.routeToConfig()),
   );
 
   @Effect()

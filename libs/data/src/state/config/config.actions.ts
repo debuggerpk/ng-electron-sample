@@ -55,6 +55,8 @@ export class SaveConfigToLocalStorage implements Action {
 
 export class SaveConfigDone implements Action {
   readonly type = ConfigActionTypes.SaveConfigDone;
+
+  constructor(public payload: Configuration) {}
 }
 
 export type ConfigActions =

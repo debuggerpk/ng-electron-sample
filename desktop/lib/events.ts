@@ -1,7 +1,7 @@
 import { ipcMain, Event } from 'electron';
 import { store } from './store';
 import { getOutlet, getShifts } from './api';
-import { ConfigActionTypes, Configuration } from '@reaction/common/models';
+import { ConfigActionTypes, Configuration } from '@reaction/common/models/config';
 
 const FALLBACK_CONFIG = {
   outlet_id: '',

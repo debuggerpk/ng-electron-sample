@@ -1,22 +1,12 @@
 import { Action } from '@ngrx/store';
+import { Shift, ShiftActionTypes } from '@reaction/common/models';
 
-export enum ShiftsActionTypes {
-  ShiftsAction = '[Shifts] Action',
-  LoadShifts = '[Shifts] Load Data',
-  ShiftsLoaded = '[Shifts] Data Loaded',
+export class AddNewShift implements Action {
+  readonly type = ShiftActionTypes.AddNew;
+}
+export class AddNewShiftDone implements Action {
+  readonly type = ShiftActionTypes.AddNewDone;
+  constructor(public payload: Shift) {}
 }
 
-export class Shifts implements Action {
-  readonly type = ShiftsActionTypes.ShiftsAction;
-}
-export class LoadShifts implements Action {
-  readonly type = ShiftsActionTypes.LoadShifts;
-  constructor(public payload: any) {}
-}
-
-export class ShiftsLoaded implements Action {
-  readonly type = ShiftsActionTypes.ShiftsLoaded;
-  constructor(public payload: any) {}
-}
-
-export type ShiftsActions = Shifts | LoadShifts | ShiftsLoaded;
+export type ShiftsActions = AddNewShift | AddNewShiftDone;

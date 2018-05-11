@@ -6,10 +6,6 @@ import { ConfigEditComponent, ConfigRootComponent } from './components';
 export const ConfigRoutes: Routes = [
   {
     path: '',
-    component: ConfigRootComponent,
-  },
-  {
-    path: 'edit',
     component: ConfigEditComponent,
   },
 ];

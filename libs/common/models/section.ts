@@ -5,3 +5,7 @@ export interface Section {
   short_name: string;
   outlet: number;
 }
+
+export interface SectionState {
+  readonly sections: Array<Section>;
+}

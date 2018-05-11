@@ -36,7 +36,7 @@ gulp.task('watch:electron', done => {
 gulp.task(
   'serve',
   gulp.series([
-    gulp.parallel(['environment:hmr', 'rollup:electron', 'electron:package', 'electron:deps']),
+    gulp.parallel(['environment:hmr', 'rollup:electron', 'electron:package']),
     'ng:hmr',
     'electron:run',
     'watch:electron',

@@ -6,3 +6,7 @@ export interface Discount {
   outlet: number;
   discount: number;
 }
+
+export interface DiscountState {
+  readonly discounts: Array<Discount>;
+}

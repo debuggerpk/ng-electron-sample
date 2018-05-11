@@ -62,11 +62,16 @@ const rollupOptions = {
   external: generateExModules(),
   plugins: [typescript({ tsconfig: PATHS.electron.src.tsConfig })],
   format: 'cjs',
+  treeshake: true,
 };
 
-const rollupJS = (inputFile: string, options) => {
+const rollupJS = (inputFile: string, options, cache) => {
+  options = { cache, ...options };
   return (
     rollup({ input: `${PATHS.electron.src.folder}/${inputFile}`, ...options })
+      .on('bundle', () => {
+        cache = cache;
+      })
       // rollup({ input: `${PATHS.src.folder}/${PATHS.src.scripts.source}/${inputFile}`, ...options })
       // point to the entry file.
       .pipe(source(inputFile, `${PATHS.electron.src.folder}`))
@@ -91,12 +96,15 @@ const rollupJS = (inputFile: string, options) => {
   );
 };
 
+const electronCache = null;
+const preloadCache = null;
+
 export const electronMainBundle = () => {
-  return rollupJS(PATHS.electron.src.entryPoints.index, rollupOptions);
+  return rollupJS(PATHS.electron.src.entryPoints.index, rollupOptions, electronCache);
 };
 
 export const electronPreloadBundle = () => {
-  return rollupJS(PATHS.electron.src.entryPoints.preload, rollupOptions);
+  return rollupJS(PATHS.electron.src.entryPoints.preload, rollupOptions, preloadCache);
 };
 
 // export const backgroundScriptBundle = () => {
