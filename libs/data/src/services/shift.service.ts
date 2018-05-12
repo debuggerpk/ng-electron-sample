@@ -24,7 +24,7 @@ export class ShiftService {
   }
 
   private _onLoadAllShifts(): void {
-    window.reaction.ipc.on(ShiftActionTypes.LoadAllShiftsDone, (event: Event, payload: Shift) => {
+    window.reaction.ipc.on(ShiftActionTypes.LoadAllShiftsDone, (event: Event, payload: Array<Shift>) => {
       this._store.dispatch(new LoadAllShiftsDone(payload));
     });
   }

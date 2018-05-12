@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ConfigActionTypes } from '@reaction/common/models';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { ConfigService } from '../../services';
 import { LoadAllShifts } from '../shifts/shifts.actions';
 import {
@@ -85,7 +85,7 @@ export class ConfigEffects {
   @Effect()
   saveConfigDone$ = this._actions.pipe(
     ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    switchMap(action => [new LoadAllShifts()]),
+    mergeMap(action => [new LoadAllShifts()]),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}

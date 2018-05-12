@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import installExtension, { REDUX_DEVTOOLS } from 'electron-devtools-installer';
-import { store } from './lib/store';
+import { configStore } from './lib/store';
 import './lib/events';
 
 import * as path from 'path';
@@ -11,10 +11,10 @@ const debugMode = true;
 const isDev = process.env.NODE_ENV === 'development';
 
 const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
-  width: store.get('windowBounds.width', 800),
-  height: store.get('windowBounds.height', 640),
-  x: store.get('windowBounds.x', 320),
-  y: store.get('windowBounds.y', 102),
+  width: configStore.get('windowBounds.width', 800),
+  height: configStore.get('windowBounds.height', 640),
+  x: configStore.get('windowBounds.x', 320),
+  y: configStore.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
     nodeIntegration: false,
@@ -44,7 +44,7 @@ const createWindow: () => void = () => {
   });
 
   mainWindowRef.on('resize', () => {
-    store.set('windowBounds', mainWindowRef.getBounds());
+    configStore.set('windowBounds', mainWindowRef.getBounds());
   });
 
   // TODO: investigate why this is not working with electron 2
