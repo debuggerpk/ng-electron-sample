@@ -30,15 +30,12 @@ ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Confi
 
 ipcMain.on(ShiftActionTypes.LoadAllShifts, (event: Event) => {
   let shifts = dataStore.get('shifts', { last_updated: null, data: [] });
-
-  // This updated shifts in the background;
-  if (!shifts.last_updated || (shifts.last_updated && new Date().getTime() - shifts.last_updated.getTime() > 36000)) {
+  console.log(new Date().getTime() - new Date(shifts.last_updated).getTime());
+  // This updates shifts in the background if the last update is more than 2 hours;
+  if (!shifts.last_updated || new Date().getTime() - new Date(shifts.last_updated).getTime() > 1000 * 60 * 60 * 2) {
     getShifts().subscribe(response => {
       if (response.response.statusCode === 200) {
-        shifts = {
-          last_updated: new Date(),
-          data: response.body,
-        };
+        shifts = { last_updated: new Date(), data: response.body };
         dataStore.set('shifts', shifts);
         event.sender.send(ShiftActionTypes.LoadAllShiftsDone, shifts.data);
       }
