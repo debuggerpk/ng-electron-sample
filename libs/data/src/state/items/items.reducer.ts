@@ -1,31 +1,16 @@
 import { Action } from '@ngrx/store';
-import { ItemsActions, ItemsActionTypes } from './items.actions';
+import { ItemActions } from './items.actions';
+import { Item, ItemActionTypes } from '@reaction/common/models';
 
-/**
- * Interface for the 'Items' data used in
- *  - ItemsState, and
- *  - itemsReducer
- */
-export interface ItemsData {}
+export const initialState: Array<Item> = [];
 
-/**
- * Interface to the part of the Store containing ItemsState
- * and other information related to ItemsData.
- */
-export interface ItemsState {
-  readonly items: ItemsData;
-}
-
-export const initialState: ItemsData = {};
-
-export function itemsReducer(state = initialState, action: ItemsActions): ItemsData {
+export function itemsReducer(state = initialState, action: ItemActions): Array<Item> {
   switch (action.type) {
-    case ItemsActionTypes.ItemsAction:
+    case ItemActionTypes.LoadAllItems:
       return state;
 
-    case ItemsActionTypes.ItemsLoaded: {
-      return { ...state, ...action.payload };
-    }
+    case ItemActionTypes.LoadAllItemsDone:
+      return action.payload;
 
     default:
       return state;

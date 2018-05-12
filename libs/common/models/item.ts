@@ -13,3 +13,8 @@ export interface Item {
 export interface ItemState {
   readonly items: Array<Item>;
 }
+
+export enum ItemActionTypes {
+  LoadAllItems = '[CATEGORY] Load All Items',
+  LoadAllItemsDone = '[CATEGORY] Load All Items Done',
+}

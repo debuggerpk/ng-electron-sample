@@ -4,8 +4,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { VendorModule } from '@reaction/vendor';
 import { ElectronService } from 'ngx-electron';
-import { CategoryService, ConfigService, DiscountService, ShiftService } from './services';
-import { CategoriesEffects } from './state/categories/categories.effects';
+import { CategoryService, ConfigService, DiscountService, ItemService, ShiftService } from './services';
+import { CategoryEffects } from './state/categories/categories.effects';
 import { categoriesReducer, initialState as categoriesInitialState } from './state/categories/categories.reducer';
 import { ConfigEffects } from './state/config/config.effects';
 import { configReducer, initialState as configInitialState } from './state/config/config.reducer';
@@ -22,14 +22,14 @@ import { initialState as outletInitialState, outletReducer } from './state/outle
 import { SectionsEffects } from './state/sections/sections.effects';
 import { initialState as sectionsInitialState, sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
-import { initialState as shiftsInitialState, shiftsReducer } from './state/shifts/shifts.reducer';
+import { shiftsReducer } from './state/shifts/shifts.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     VendorModule,
     StoreModule.forFeature('categories', categoriesReducer, { initialState: categoriesInitialState }),
-    EffectsModule.forFeature([CategoriesEffects]),
+    EffectsModule.forFeature([CategoryEffects]),
     StoreModule.forFeature('config', configReducer, { initialState: configInitialState }),
     EffectsModule.forFeature([ConfigEffects]),
     StoreModule.forFeature('discounts', discountsReducer, { initialState: discountsInitialState }),
@@ -40,7 +40,7 @@ import { initialState as shiftsInitialState, shiftsReducer } from './state/shift
     EffectsModule.forFeature([OrdersEffects]),
     StoreModule.forFeature('outlet', outletReducer, { initialState: outletInitialState }),
     EffectsModule.forFeature([OutletEffects]),
-    StoreModule.forFeature('shifts', shiftsReducer, { initialState: shiftsInitialState }),
+    StoreModule.forFeature('shifts', shiftsReducer),
     EffectsModule.forFeature([ShiftsEffects]),
     StoreModule.forFeature('invoices', invoicesReducer, { initialState: invoicesInitialState }),
     EffectsModule.forFeature([InvoicesEffects]),
@@ -50,7 +50,7 @@ import { initialState as shiftsInitialState, shiftsReducer } from './state/shift
   exports: [VendorModule],
   providers: [
     CategoryService,
-    CategoriesEffects,
+    CategoryEffects,
     ConfigEffects,
     ConfigService,
     DiscountsEffects,
@@ -58,6 +58,7 @@ import { initialState as shiftsInitialState, shiftsReducer } from './state/shift
     ElectronService,
     InvoicesEffects,
     ItemsEffects,
+    ItemService,
     OrdersEffects,
     OutletEffects,
     SectionsEffects,

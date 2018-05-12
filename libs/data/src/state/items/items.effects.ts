@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { ItemsActions, ItemsActionTypes, LoadItems, ItemsLoaded } from './items.actions';
-import { ItemsState } from './items.reducer';
-import { DataPersistence } from '@nrwl/nx';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { ItemActionTypes, RootState } from '@reaction/common/models';
+import { ItemService } from '../../services';
+import { LoadAllItems } from './items.actions';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class ItemsEffects {
-  @Effect() effect$ = this.actions$.ofType(ItemsActionTypes.ItemsAction);
+  @Effect({ dispatch: false })
+  LoadAllItems$ = this._actions.pipe(
+    ofType<LoadAllItems>(ItemActionTypes.LoadAllItems),
+    tap(action => this._items.loadAllItems()),
+  );
 
-  @Effect()
-  loadItems$ = this.dataPersistence.fetch(ItemsActionTypes.LoadItems, {
-    run: (action: LoadItems, state: ItemsState) => {
-      return new ItemsLoaded(state);
-    },
-
-    onError: (action: LoadItems, error) => {
-      console.error('Error', error);
-    },
-  });
-
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<ItemsState>) {}
+  constructor(private _actions: Actions, private _items: ItemService) {}
 }

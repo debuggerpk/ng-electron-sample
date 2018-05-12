@@ -19,6 +19,7 @@ import {
   SaveConfigToLocalStorage,
   ValidateConfig,
 } from './config.actions';
+import { LoadAllItems } from '@reaction/data/src/state/items/items.actions';
 
 @Injectable()
 export class ConfigEffects {
@@ -87,7 +88,7 @@ export class ConfigEffects {
   @Effect()
   saveConfigDone$ = this._actions.pipe(
     ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    mergeMap(action => [new LoadAllCategories(), new LoadAllDiscounts(), new LoadAllShifts()]),
+    mergeMap(action => [new LoadAllCategories(), new LoadAllDiscounts(), new LoadAllItems(), new LoadAllShifts()]),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}

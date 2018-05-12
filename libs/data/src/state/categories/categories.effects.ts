@@ -7,12 +7,7 @@ import { LoadAllCategories } from '@reaction/data/src/state/categories/categorie
 import { tap } from 'rxjs/operators';
 
 @Injectable()
-export class CategoriesEffects {
-  // @Effect({ dispatch: false })
-  // loadAllShifts$ = this._actions.pipe(
-  //   ofType<LoadAllShifts>(ShiftActionTypes.LoadAllShifts),
-  //   tap(action => this._shift.loadAllShifts()),
-  // );
+export class CategoryEffects {
   @Effect({ dispatch: false })
   LoadAllCategories$ = this._actions.pipe(
     ofType<LoadAllCategories>(CategoryActionTypes.LoadAllCategories),

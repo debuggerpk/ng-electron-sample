@@ -1,22 +1,13 @@
 import { Action } from '@ngrx/store';
+import { ItemActionTypes, Item } from '@reaction/common/models';
 
-export enum ItemsActionTypes {
-  ItemsAction = '[Items] Action',
-  LoadItems = '[Items] Load Data',
-  ItemsLoaded = '[Items] Data Loaded',
+export class LoadAllItems implements Action {
+  readonly type = ItemActionTypes.LoadAllItems;
 }
 
-export class Items implements Action {
-  readonly type = ItemsActionTypes.ItemsAction;
-}
-export class LoadItems implements Action {
-  readonly type = ItemsActionTypes.LoadItems;
-  constructor(public payload: any) {}
+export class LoadAllItemsDone implements Action {
+  readonly type = ItemActionTypes.LoadAllItemsDone;
+  constructor(public payload: Array<Item>) {}
 }
 
-export class ItemsLoaded implements Action {
-  readonly type = ItemsActionTypes.ItemsLoaded;
-  constructor(public payload: any) {}
-}
-
-export type ItemsActions = Items | LoadItems | ItemsLoaded;
+export type ItemActions = LoadAllItems | LoadAllItemsDone;

@@ -1,13 +1,14 @@
 import {
+  CategoryActionTypes,
   ConfigActionTypes,
   Configuration,
-  CategoryActionTypes,
-  ShiftActionTypes,
   DiscountActionTypes,
+  ItemActionTypes,
+  ShiftActionTypes,
 } from '@reaction/common/models';
 import { MutateDataType } from '@reaction/common/utils/mutate-type';
 import { Event, ipcMain } from 'electron';
-import { getShifts, getCategories, getDiscounts } from './api';
+import { getCategories, getDiscounts, getItems, getShifts } from './api';
 import { configStore, dataStore } from './store';
 
 const FB_CONFIG = {
@@ -76,6 +77,25 @@ ipcMain.on(DiscountActionTypes.LoadAllDiscounts, (event: Event) => {
 });
 
 /**
+ * Item Ipc Events
+ */
+ipcMain.on(ItemActionTypes.LoadAllItems, (event: Event) => {
+  let items = dataStore.get('items', { last_updated: null, data: [] });
+
+  if (!items.last_updated || new Date().getTime() - new Date(items.last_updated).getTime() > 1000 * 60 * 60 * 2) {
+    getItems().subscribe(response => {
+      if (response.response.statusCode === 200) {
+        items = { last_updated: new Date(), data: response.body };
+        dataStore.set('items', items);
+        event.sender.send(ItemActionTypes.LoadAllItemsDone, items.data);
+      }
+    });
+  }
+
+  event.sender.send(ItemActionTypes.LoadAllItemsDone, items.data);
+});
+
+/**
  * Shift Ipc Events
  */
 
@@ -83,7 +103,7 @@ ipcMain.on(ShiftActionTypes.LoadAllShifts, (event: Event) => {
   let shifts = dataStore.get('shifts', { last_updated: null, data: [] });
 
   shifts.data = shifts.data.map(MutateDataType.shift);
-  // This updates shifts in the background if the last update is more than 2 hours;
+
   if (!shifts.last_updated || new Date().getTime() - new Date(shifts.last_updated).getTime() > 1000 * 60 * 60 * 2) {
     getShifts().subscribe(response => {
       if (response.response.statusCode === 200) {

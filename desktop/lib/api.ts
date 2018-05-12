@@ -25,6 +25,14 @@ export const getDiscounts = () => {
   return RxHR.get(url, { headers, json: true });
 };
 
+export const getItems = () => {
+  const config = getConfiguration();
+  const url = `${config.api_gateway}/outlets/outlets/${config.outlet_id}/items/`;
+  const headers = getHeaders();
+
+  return RxHR.get(url, { headers, json: true });
+};
+
 export const getOutlet = () => {
   const config = getConfiguration();
   const url = `${config.api_gateway}/outlets/outlets/${config.outlet_id}/`;
