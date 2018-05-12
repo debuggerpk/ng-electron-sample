@@ -10,6 +10,6 @@ export interface CategoryState {
 }
 
 export enum CategoryActionTypes {
-  LoadAllCategories = '[CATEGORY] Load All',
-  LoadAllCategoriesDone = '[CATEGORY] Load All Done',
+  LoadAllCategories = '[CATEGORY] Load All Categories',
+  LoadAllCategoriesDone = '[CATEGORY] Load All Categories Done',
 }

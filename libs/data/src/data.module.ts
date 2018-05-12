@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { VendorModule } from '@reaction/vendor';
 import { ElectronService } from 'ngx-electron';
-import { ConfigService, ShiftService } from './services';
+import { CategoryService, ConfigService, ShiftService } from './services';
 import { CategoriesEffects } from './state/categories/categories.effects';
 import { categoriesReducer, initialState as categoriesInitialState } from './state/categories/categories.reducer';
 import { ConfigEffects } from './state/config/config.effects';
@@ -49,6 +49,7 @@ import { initialState as shiftsInitialState, shiftsReducer } from './state/shift
   ],
   exports: [VendorModule],
   providers: [
+    CategoryService,
     CategoriesEffects,
     ConfigEffects,
     ConfigService,

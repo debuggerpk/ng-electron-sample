@@ -27,7 +27,7 @@ import { DataModule } from '@reaction/data';
     RootRoutingModule,
     // @ngrx redux store
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 30 }) : [],
     EffectsModule.forRoot([MainEffects]),
     StoreRouterConnectingModule,
     DataModule,

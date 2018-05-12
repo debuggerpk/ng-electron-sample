@@ -30,6 +30,10 @@ export const reducers: ActionReducerMap<RoutertState> = {
   router: routerReducer,
 };
 
-export const logStore = (reducer: ActionReducer<RoutertState>): any => storeLogger()(reducer);
+export const logStore = (reducer: ActionReducer<RoutertState>) =>
+  storeLogger({
+    collapsed: true,
+    filter: { blacklist: ['@ngrx/store/update-reducers'] },
+  })(reducer);
 
 export const metaReducers: MetaReducer<RoutertState>[] = !environment.production ? [logStore, storeFreeze] : [];

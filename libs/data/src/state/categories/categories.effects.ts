@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { CategoriesActions, CategoriesActionTypes, LoadCategories, CategoriesLoaded } from './categories.actions';
-import { CategoriesState } from './categories.reducer';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { DataPersistence } from '@nrwl/nx';
+import { RootState, CategoryActionTypes } from '@reaction/common/models';
+import { CategoryService } from '../../services';
+import { LoadAllCategories } from '@reaction/data/src/state/categories/categories.actions';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class CategoriesEffects {
-  @Effect() effect$ = this.actions$.ofType(CategoriesActionTypes.CategoriesAction);
+  // @Effect({ dispatch: false })
+  // loadAllShifts$ = this._actions.pipe(
+  //   ofType<LoadAllShifts>(ShiftActionTypes.LoadAllShifts),
+  //   tap(action => this._shift.loadAllShifts()),
+  // );
+  @Effect({ dispatch: false })
+  LoadAllCategories$ = this._actions.pipe(
+    ofType<LoadAllCategories>(CategoryActionTypes.LoadAllCategories),
+    tap(action => this._category.loadAllCategories()),
+  );
 
-  @Effect()
-  loadCategories$ = this.dataPersistence.fetch(CategoriesActionTypes.LoadCategories, {
-    run: (action: LoadCategories, state: CategoriesState) => {
-      return new CategoriesLoaded(state);
-    },
-
-    onError: (action: LoadCategories, error) => {
-      console.error('Error', error);
-    },
-  });
-
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<CategoriesState>) {}
+  constructor(private _actions: Actions, private _category: CategoryService) {}
 }

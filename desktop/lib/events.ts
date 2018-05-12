@@ -1,8 +1,8 @@
-import { ipcMain, Event } from 'electron';
+import { ConfigActionTypes, Configuration, CategoryActionTypes, ShiftActionTypes } from '@reaction/common/models';
+import { MutateDataType } from '@reaction/common/utils/mutate-type';
+import { Event, ipcMain } from 'electron';
+import { getShifts, getCategories } from './api';
 import { configStore, dataStore } from './store';
-import { getOutlet, getShifts, getDiscounts } from './api';
-import { ConfigActionTypes, Configuration } from '@reaction/common/models/config';
-import { ShiftActionTypes, Shift } from '@reaction/common/models/shift';
 
 const FB_CONFIG = {
   outlet_id: '',
@@ -25,12 +25,36 @@ ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Confi
 });
 
 /**
+ * Categories Ipc Events
+ */
+
+ipcMain.on(CategoryActionTypes.LoadAllCategories, (event: Event) => {
+  let categories = dataStore.get('categories', { last_updated: null, data: [] });
+
+  if (
+    !categories.last_updated ||
+    new Date().getTime() - new Date(categories.last_updated).getTime() > 1000 * 60 * 60 * 2
+  ) {
+    getCategories().subscribe(response => {
+      if (response.response.statusCode === 200) {
+        categories = { last_updated: new Date(), data: response.body };
+        dataStore.set('categories', categories);
+        event.sender.send(CategoryActionTypes.LoadAllCategoriesDone, categories.data);
+      }
+    });
+  }
+
+  event.sender.send(CategoryActionTypes.LoadAllCategoriesDone, categories.data);
+});
+
+/**
  * Shift Ipc Events
  */
 
 ipcMain.on(ShiftActionTypes.LoadAllShifts, (event: Event) => {
   let shifts = dataStore.get('shifts', { last_updated: null, data: [] });
-  console.log(new Date().getTime() - new Date(shifts.last_updated).getTime());
+
+  shifts.data = shifts.data.map(MutateDataType.shift);
   // This updates shifts in the background if the last update is more than 2 hours;
   if (!shifts.last_updated || new Date().getTime() - new Date(shifts.last_updated).getTime() > 1000 * 60 * 60 * 2) {
     getShifts().subscribe(response => {
@@ -41,5 +65,6 @@ ipcMain.on(ShiftActionTypes.LoadAllShifts, (event: Event) => {
       }
     });
   }
+
   event.sender.send(ShiftActionTypes.LoadAllShiftsDone, shifts.data);
 });

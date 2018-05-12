@@ -4,6 +4,7 @@ import { ConfigActionTypes } from '@reaction/common/models';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { ConfigService } from '../../services';
 import { LoadAllShifts } from '../shifts/shifts.actions';
+import { LoadAllCategories } from '../categories/categories.actions';
 import {
   ConfigValidationError,
   ConfigValidationSuccess,
@@ -85,7 +86,7 @@ export class ConfigEffects {
   @Effect()
   saveConfigDone$ = this._actions.pipe(
     ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    mergeMap(action => [new LoadAllShifts()]),
+    mergeMap(action => [new LoadAllShifts(), new LoadAllCategories()]),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}

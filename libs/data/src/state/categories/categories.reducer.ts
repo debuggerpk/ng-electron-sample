@@ -1,31 +1,16 @@
 import { Action } from '@ngrx/store';
-import { CategoriesActions, CategoriesActionTypes } from './categories.actions';
+import { Category, CategoryActionTypes } from '@reaction/common/models';
+import { CategoryActions } from './categories.actions';
 
-/**
- * Interface for the 'Categories' data used in
- *  - CategoriesState, and
- *  - categoriesReducer
- */
-export interface CategoriesData {}
+export const initialState = [];
 
-/**
- * Interface to the part of the Store containing CategoriesState
- * and other information related to CategoriesData.
- */
-export interface CategoriesState {
-  readonly categories: CategoriesData;
-}
-
-export const initialState: CategoriesData = {};
-
-export function categoriesReducer(state = initialState, action: CategoriesActions): CategoriesData {
+export function categoriesReducer(state = initialState, action: CategoryActions): Array<Category> {
   switch (action.type) {
-    case CategoriesActionTypes.CategoriesAction:
+    case CategoryActionTypes.LoadAllCategories:
       return state;
 
-    case CategoriesActionTypes.CategoriesLoaded: {
-      return { ...state, ...action.payload };
-    }
+    case CategoryActionTypes.LoadAllCategoriesDone:
+      return action.payload;
 
     default:
       return state;
