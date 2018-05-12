@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { DiscountsActions, DiscountsActionTypes, LoadDiscounts, DiscountsLoaded } from './discounts.actions';
-import { DiscountsState } from './discounts.reducer';
-import { DataPersistence } from '@nrwl/nx';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { DiscountService } from '../../services';
+import { LoadAllDiscounts } from '@reaction/data/src/state/discounts/discounts.actions';
+import { DiscountActionTypes } from '@reaction/common/models';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class DiscountsEffects {
-  @Effect() effect$ = this.actions$.ofType(DiscountsActionTypes.DiscountsAction);
+  // @Effect({ dispatch: false })
+  // LoadAllCategories$ = this._actions.pipe(
+  //   ofType<LoadAllCategories>(CategoryActionTypes.LoadAllCategories),
+  //   tap(action => this._category.loadAllCategories()),
+  // );
 
-  @Effect()
-  loadDiscounts$ = this.dataPersistence.fetch(DiscountsActionTypes.LoadDiscounts, {
-    run: (action: LoadDiscounts, state: DiscountsState) => {
-      return new DiscountsLoaded(state);
-    },
+  @Effect({ dispatch: false })
+  LoadAllDiscounts$ = this._actions.pipe(
+    ofType<LoadAllDiscounts>(DiscountActionTypes.LoadAllDiscounts),
+    tap(action => this._discount.loadAllDiscounts()),
+  );
 
-    onError: (action: LoadDiscounts, error) => {
-      console.error('Error', error);
-    },
-  });
-
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<DiscountsState>) {}
+  constructor(private _actions: Actions, private _discount: DiscountService) {}
 }

@@ -12,6 +12,6 @@ export interface DiscountState {
 }
 
 export enum DiscountActionTypes {
-  LoadAllDiscounts = '[DISCOUNT] Load All',
-  LoadAllDiscountsDone = '[DISCOUNT] Load All Done',
+  LoadAllDiscounts = '[DISCOUNT] Load All Discounts',
+  LoadAllDiscountsDone = '[DISCOUNT] Load All Discounts Done',
 }

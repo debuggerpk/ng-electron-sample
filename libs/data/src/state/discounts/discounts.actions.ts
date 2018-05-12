@@ -1,22 +1,13 @@
 import { Action } from '@ngrx/store';
+import { DiscountActionTypes, Discount } from '@reaction/common/models';
 
-export enum DiscountsActionTypes {
-  DiscountsAction = '[Discounts] Action',
-  LoadDiscounts = '[Discounts] Load Data',
-  DiscountsLoaded = '[Discounts] Data Loaded',
+export class LoadAllDiscounts implements Action {
+  readonly type = DiscountActionTypes.LoadAllDiscounts;
 }
 
-export class Discounts implements Action {
-  readonly type = DiscountsActionTypes.DiscountsAction;
-}
-export class LoadDiscounts implements Action {
-  readonly type = DiscountsActionTypes.LoadDiscounts;
-  constructor(public payload: any) {}
+export class LoadAllDiscountsDone implements Action {
+  readonly type = DiscountActionTypes.LoadAllDiscountsDone;
+  constructor(public payload: Array<Discount>) {}
 }
 
-export class DiscountsLoaded implements Action {
-  readonly type = DiscountsActionTypes.DiscountsLoaded;
-  constructor(public payload: any) {}
-}
-
-export type DiscountsActions = Discounts | LoadDiscounts | DiscountsLoaded;
+export type DiscountActions = LoadAllDiscounts | LoadAllDiscountsDone;

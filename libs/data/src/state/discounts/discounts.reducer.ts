@@ -1,31 +1,16 @@
 import { Action } from '@ngrx/store';
-import { DiscountsActions, DiscountsActionTypes } from './discounts.actions';
+import { Discount, DiscountActionTypes } from '@reaction/common/models';
+import { DiscountActions } from '@reaction/data/src/state/discounts/discounts.actions';
 
-/**
- * Interface for the 'Discounts' data used in
- *  - DiscountsState, and
- *  - discountsReducer
- */
-export interface DiscountsData {}
+export const initialState: Array<Discount> = [];
 
-/**
- * Interface to the part of the Store containing DiscountsState
- * and other information related to DiscountsData.
- */
-export interface DiscountsState {
-  readonly discounts: DiscountsData;
-}
-
-export const initialState: DiscountsData = {};
-
-export function discountsReducer(state = initialState, action: DiscountsActions): DiscountsData {
+export function discountsReducer(state = initialState, action: DiscountActions): Array<Discount> {
   switch (action.type) {
-    case DiscountsActionTypes.DiscountsAction:
+    case DiscountActionTypes.LoadAllDiscounts:
       return state;
 
-    case DiscountsActionTypes.DiscountsLoaded: {
-      return { ...state, ...action.payload };
-    }
+    case DiscountActionTypes.LoadAllDiscountsDone:
+      return action.payload;
 
     default:
       return state;

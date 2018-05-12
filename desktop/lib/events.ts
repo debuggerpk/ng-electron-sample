@@ -1,7 +1,13 @@
-import { ConfigActionTypes, Configuration, CategoryActionTypes, ShiftActionTypes } from '@reaction/common/models';
+import {
+  ConfigActionTypes,
+  Configuration,
+  CategoryActionTypes,
+  ShiftActionTypes,
+  DiscountActionTypes,
+} from '@reaction/common/models';
 import { MutateDataType } from '@reaction/common/utils/mutate-type';
 import { Event, ipcMain } from 'electron';
-import { getShifts, getCategories } from './api';
+import { getShifts, getCategories, getDiscounts } from './api';
 import { configStore, dataStore } from './store';
 
 const FB_CONFIG = {
@@ -45,6 +51,28 @@ ipcMain.on(CategoryActionTypes.LoadAllCategories, (event: Event) => {
   }
 
   event.sender.send(CategoryActionTypes.LoadAllCategoriesDone, categories.data);
+});
+
+/**
+ * Discount Ipc Events
+ */
+ipcMain.on(DiscountActionTypes.LoadAllDiscounts, (event: Event) => {
+  let discounts = dataStore.get('discounts', { last_updated: null, data: [] });
+
+  if (
+    !discounts.last_updated ||
+    new Date().getTime() - new Date(discounts.last_updated).getTime() > 1000 * 60 * 60 * 2
+  ) {
+    getDiscounts().subscribe(response => {
+      if (response.response.statusCode === 200) {
+        discounts = { last_updated: new Date(), data: response.body };
+        dataStore.set('categories', discounts);
+        event.sender.send(DiscountActionTypes.LoadAllDiscountsDone, discounts.data);
+      }
+    });
+  }
+
+  event.sender.send(DiscountActionTypes.LoadAllDiscountsDone, discounts.data);
 });
 
 /**
