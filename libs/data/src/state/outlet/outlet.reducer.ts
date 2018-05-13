@@ -1,31 +1,29 @@
 import { Action } from '@ngrx/store';
-import { OutletActions, OutletActionTypes } from './outlet.actions';
+import { Outlet, OutletActionTypes } from '@reaction/common/models';
+import { OutletActions } from './outlet.actions';
 
-/**
- * Interface for the 'Outlet' data used in
- *  - OutletState, and
- *  - outletReducer
- */
-export interface OutletData {}
+export const initialState: Outlet = {
+  id: null,
+  users: [],
+  name: null,
+  phone: null,
+  address: null,
+  country: null,
+  currency: null,
+  tax: null,
+  rims_branch_code: null,
+  api_key: null,
+  customer: null,
+  roles: [],
+};
 
-/**
- * Interface to the part of the Store containing OutletState
- * and other information related to OutletData.
- */
-export interface OutletState {
-  readonly outlet: OutletData;
-}
-
-export const initialState: OutletData = {};
-
-export function outletReducer(state = initialState, action: OutletActions): OutletData {
+export function outletReducer(state = initialState, action: OutletActions): Outlet {
   switch (action.type) {
-    case OutletActionTypes.OutletAction:
+    case OutletActionTypes.LoadOutlet:
       return state;
 
-    case OutletActionTypes.OutletLoaded: {
-      return { ...state, ...action.payload };
-    }
+    case OutletActionTypes.LoadOutletDone:
+      return action.payload;
 
     default:
       return state;

@@ -20,6 +20,6 @@ export interface OutletState {
 }
 
 export enum OutletActionTypes {
-  GetOutlet = '[OUTLET] Get Outlet',
-  GetOutletDone = '[OUTLET] Get Outlet Done',
+  LoadOutlet = '[OUTLET] Load Outlet',
+  LoadOutletDone = '[OUTLET] Load Outlet Done',
 }

@@ -40,6 +40,9 @@ testem.log
 # rollup cache
 .rpt2_cache/
 
+# electron build artifacts
+/package
+
 # System Files
 .DS_Store
 Thumbs.db

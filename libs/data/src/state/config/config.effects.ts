@@ -20,6 +20,7 @@ import {
   ValidateConfig,
 } from './config.actions';
 import { LoadAllItems } from '@reaction/data/src/state/items/items.actions';
+import { LoadOutlet } from '@reaction/data/src/state/outlet/outlet.actions';
 
 @Injectable()
 export class ConfigEffects {
@@ -88,7 +89,13 @@ export class ConfigEffects {
   @Effect()
   saveConfigDone$ = this._actions.pipe(
     ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    mergeMap(action => [new LoadAllCategories(), new LoadAllDiscounts(), new LoadAllItems(), new LoadAllShifts()]),
+    mergeMap(action => [
+      new LoadOutlet(),
+      new LoadAllCategories(),
+      new LoadAllDiscounts(),
+      new LoadAllItems(),
+      new LoadAllShifts(),
+    ]),
   );
 
   constructor(private _actions: Actions, private _config: ConfigService) {}

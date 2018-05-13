@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { OutletActions, OutletActionTypes, LoadOutlet, OutletLoaded } from './outlet.actions';
-import { OutletState } from './outlet.reducer';
-import { DataPersistence } from '@nrwl/nx';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { LoadOutlet } from './outlet.actions';
+import { OutletActionTypes } from '@reaction/common/models';
+import { tap } from 'rxjs/operators';
+import { OutletService } from '../../services';
 
 @Injectable()
 export class OutletEffects {
-  @Effect() effect$ = this.actions$.ofType(OutletActionTypes.OutletAction);
+  @Effect({ dispatch: false })
+  LoadOutlet$ = this._actions.pipe(
+    ofType<LoadOutlet>(OutletActionTypes.LoadOutlet),
+    tap(action => this._outlet.loadOutlet()),
+  );
 
-  @Effect()
-  loadOutlet$ = this.dataPersistence.fetch(OutletActionTypes.LoadOutlet, {
-    run: (action: LoadOutlet, state: OutletState) => {
-      return new OutletLoaded(state);
-    },
-
-    onError: (action: LoadOutlet, error) => {
-      console.error('Error', error);
-    },
-  });
-
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<OutletState>) {}
+  constructor(private _actions: Actions, private _outlet: OutletService) {}
 }

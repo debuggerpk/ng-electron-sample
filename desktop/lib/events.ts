@@ -5,10 +5,11 @@ import {
   DiscountActionTypes,
   ItemActionTypes,
   ShiftActionTypes,
+  OutletActionTypes,
 } from '@reaction/common/models';
 import { MutateDataType } from '@reaction/common/utils/mutate-type';
 import { Event, ipcMain } from 'electron';
-import { getCategories, getDiscounts, getItems, getShifts } from './api';
+import { getCategories, getDiscounts, getItems, getShifts, getOutlet } from './api';
 import { configStore, dataStore } from './store';
 
 const FB_CONFIG = {
@@ -29,6 +30,26 @@ ipcMain.on(ConfigActionTypes.GetConfigFromElectron, (event: Event) => {
 ipcMain.on(ConfigActionTypes.SaveConfigToElectron, (event: Event, payload: Configuration) => {
   configStore.set('configuration', payload);
   event.sender.send(ConfigActionTypes.SaveConfigDone, payload);
+});
+
+/**
+ * Outlet Ipc Events
+ */
+
+ipcMain.on(OutletActionTypes.LoadOutlet, (event: Event) => {
+  let outlet = dataStore.get('outlet', { last_updated: null, data: {} });
+
+  if (!outlet.last_updated || new Date().getTime() - new Date(outlet.last_updated).getTime() > 1000 * 60 * 60 * 2) {
+    getOutlet().subscribe(response => {
+      if (response.response.statusCode === 200) {
+        outlet = { last_updated: new Date(), data: response.body };
+        dataStore.set('outlet', outlet);
+        event.sender.send(OutletActionTypes.LoadOutletDone, outlet.data);
+      }
+    });
+  }
+
+  event.sender.send(OutletActionTypes.LoadOutletDone, outlet.data);
 });
 
 /**
