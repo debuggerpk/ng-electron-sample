@@ -31,6 +31,7 @@ import { SectionsEffects } from './state/sections/sections.effects';
 import { initialState as sectionsInitialState, sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { shiftsReducer } from './state/shifts/shifts.reducer';
+import { IpcReceiverService } from './services/ipc-receiver.service';
 
 @NgModule({
   imports: [
@@ -65,6 +66,7 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     DiscountService,
     ElectronService,
     InvoicesEffects,
+    IpcReceiverService,
     ItemsEffects,
     ItemService,
     OrdersEffects,
