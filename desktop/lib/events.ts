@@ -4,12 +4,13 @@ import {
   Configuration,
   DiscountActionTypes,
   ItemActionTypes,
-  ShiftActionTypes,
   OutletActionTypes,
+  SectionActionTypes,
+  ShiftActionTypes,
 } from '@reaction/common/models';
 import { MutateDataType } from '@reaction/common/utils/mutate-type';
 import { Event, ipcMain } from 'electron';
-import { getCategories, getDiscounts, getItems, getShifts, getOutlet } from './api';
+import { getCategories, getDiscounts, getItems, getOutlet, getSections, getShifts } from './api';
 import { configStore, dataStore } from './store';
 
 const FB_CONFIG = {
@@ -18,6 +19,8 @@ const FB_CONFIG = {
   api_key: '',
   api_gateway: '',
 };
+
+// TODO: Convert this into one big observable.
 
 /**
  * Configuration Ipc Events
@@ -114,6 +117,25 @@ ipcMain.on(ItemActionTypes.LoadAllItems, (event: Event) => {
   }
 
   event.sender.send(ItemActionTypes.LoadAllItemsDone, items.data);
+});
+
+/**
+ * Section Ipc Events
+ */
+ipcMain.on(SectionActionTypes.LoadAllSections, (event: Event) => {
+  let section = dataStore.get('sections', { last_updated: null, data: [] });
+
+  if (!section.last_updated || new Date().getTime() - new Date(section.last_updated).getTime() > 1000 * 60 * 60 * 2) {
+    getSections().subscribe(response => {
+      if (response.response.statusCode === 200) {
+        section = { last_updated: new Date(), data: response.body };
+        dataStore.set('sections', section);
+        event.sender.send(SectionActionTypes.LoadAllSectionsDone, section.data);
+      }
+    });
+  }
+
+  event.sender.send(SectionActionTypes.LoadAllSectionsDone, section.data);
 });
 
 /**

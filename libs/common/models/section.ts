@@ -9,3 +9,8 @@ export interface Section {
 export interface SectionState {
   readonly sections: Array<Section>;
 }
+
+export enum SectionActionTypes {
+  LoadAllSections = '[SECTION] Load All Sections',
+  LoadAllSectionsDone = '[SECTION] Load All Sections Done',
+}

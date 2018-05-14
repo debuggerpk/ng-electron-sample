@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
-import { SectionsActions, SectionsActionTypes, LoadSections, SectionsLoaded } from './sections.actions';
-import { SectionsState } from './sections.reducer';
-import { DataPersistence } from '@nrwl/nx';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { SectionActionTypes } from '@reaction/common/models';
+import { tap } from 'rxjs/operators';
+import { SectionService } from '../../services';
+import { LoadAllSections } from './sections.actions';
 
 @Injectable()
 export class SectionsEffects {
-  @Effect() effect$ = this.actions$.ofType(SectionsActionTypes.SectionsAction);
+  @Effect({ dispatch: false })
+  loadAllSections$ = this._actions.pipe(
+    ofType<LoadAllSections>(SectionActionTypes.LoadAllSections),
+    tap(() => this._section.loadAllSections()),
+  );
 
-  @Effect()
-  loadSections$ = this.dataPersistence.fetch(SectionsActionTypes.LoadSections, {
-    run: (action: LoadSections, state: SectionsState) => {
-      return new SectionsLoaded(state);
-    },
-
-    onError: (action: LoadSections, error) => {
-      console.error('Error', error);
-    },
-  });
-
-  constructor(private actions$: Actions, private dataPersistence: DataPersistence<SectionsState>) {}
+  constructor(private _actions: Actions, private _section: SectionService) {}
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConfigEditComponent, ConfigRootComponent } from './components';
+import { ConfigEditComponent } from './components';
 
 export const ConfigRoutes: Routes = [
   {
@@ -11,11 +11,8 @@ export const ConfigRoutes: Routes = [
 ];
 
 /**
- * The Routing module for child.
+ * The Routing module for ConfigModule
  *
- * TODO:
- * For some reasom, Electron is not loading form animations for child module.
- * till then, it needs to be done differently
  *
  * @export
  * @class ConfigRoutingModule

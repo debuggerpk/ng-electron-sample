@@ -1,31 +1,16 @@
 import { Action } from '@ngrx/store';
-import { SectionsActions, SectionsActionTypes } from './sections.actions';
+import { SectionActions } from './sections.actions';
+import { Section, SectionActionTypes } from '@reaction/common/models';
 
-/**
- * Interface for the 'Sections' data used in
- *  - SectionsState, and
- *  - sectionsReducer
- */
-export interface SectionsData {}
+export const initialState: Array<Section> = [];
 
-/**
- * Interface to the part of the Store containing SectionsState
- * and other information related to SectionsData.
- */
-export interface SectionsState {
-  readonly sections: SectionsData;
-}
-
-export const initialState: SectionsData = {};
-
-export function sectionsReducer(state = initialState, action: SectionsActions): SectionsData {
+export function sectionsReducer(state = initialState, action: SectionActions): Array<Section> {
   switch (action.type) {
-    case SectionsActionTypes.SectionsAction:
+    case SectionActionTypes.LoadAllSections:
       return state;
 
-    case SectionsActionTypes.SectionsLoaded: {
-      return { ...state, ...action.payload };
-    }
+    case SectionActionTypes.LoadAllSectionsDone:
+      return action.payload;
 
     default:
       return state;

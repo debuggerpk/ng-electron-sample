@@ -2102,6 +2102,10 @@ cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
 
+cuid@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/cuid/-/cuid-2.1.1.tgz#3b0fccbda1089ff123a127320c860b975200d62b"
+
 cuint@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"

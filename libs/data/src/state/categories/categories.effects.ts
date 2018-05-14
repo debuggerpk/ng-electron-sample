@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/nx';
-import { RootState, CategoryActionTypes } from '@reaction/common/models';
-import { CategoryService } from '../../services';
-import { LoadAllCategories } from '@reaction/data/src/state/categories/categories.actions';
+import { CategoryActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
+import { CategoryService } from '../../services';
+import { LoadAllCategories } from './categories.actions';
 
 @Injectable()
 export class CategoryEffects {

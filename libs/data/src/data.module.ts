@@ -4,7 +4,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { VendorModule } from '@reaction/vendor';
 import { ElectronService } from 'ngx-electron';
-import { CategoryService, ConfigService, DiscountService, ItemService, OutletService, ShiftService } from './services';
+import {
+  CategoryService,
+  ConfigService,
+  DiscountService,
+  ItemService,
+  OutletService,
+  SectionService,
+  ShiftService,
+} from './services';
 import { CategoryEffects } from './state/categories/categories.effects';
 import { categoriesReducer, initialState as categoriesInitialState } from './state/categories/categories.reducer';
 import { ConfigEffects } from './state/config/config.effects';
@@ -63,6 +71,7 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     OutletEffects,
     OutletService,
     SectionsEffects,
+    SectionService,
     ShiftsEffects,
     ShiftService,
   ],

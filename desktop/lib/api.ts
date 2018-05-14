@@ -41,6 +41,14 @@ export const getOutlet = () => {
   return RxHR.get(url, { headers, json: true });
 };
 
+export const getSections = () => {
+  const config = getConfiguration();
+  const url = `${config.api_gateway}/outlets/outlets/${config.outlet_id}/sections/`;
+  const headers = getHeaders();
+
+  return RxHR.get(url, { headers, json: true });
+};
+
 export const getShifts = () => {
   const config = getConfiguration();
   const url = `${config.api_gateway}/outlets/shifts/`;

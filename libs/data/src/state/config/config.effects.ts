@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ConfigActionTypes } from '@reaction/common/models';
-import { map, mergeMap, tap } from 'rxjs/operators';
+import { concatMap, map, tap } from 'rxjs/operators';
 import { ConfigService } from '../../services';
 import { LoadAllCategories } from '../categories/categories.actions';
 import { LoadAllDiscounts } from '../discounts/discounts.actions';
+import { LoadAllItems } from '../items/items.actions';
+import { LoadOutlet } from '../outlet/outlet.actions';
+import { LoadAllSections } from '../sections/sections.actions';
 import { LoadAllShifts } from '../shifts/shifts.actions';
 import {
   ConfigValidationError,
@@ -19,8 +22,6 @@ import {
   SaveConfigToLocalStorage,
   ValidateConfig,
 } from './config.actions';
-import { LoadAllItems } from '@reaction/data/src/state/items/items.actions';
-import { LoadOutlet } from '@reaction/data/src/state/outlet/outlet.actions';
 
 @Injectable()
 export class ConfigEffects {
@@ -89,12 +90,13 @@ export class ConfigEffects {
   @Effect()
   saveConfigDone$ = this._actions.pipe(
     ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    mergeMap(action => [
+    concatMap(action => [
       new LoadOutlet(),
-      new LoadAllCategories(),
-      new LoadAllDiscounts(),
-      new LoadAllItems(),
       new LoadAllShifts(),
+      new LoadAllDiscounts(),
+      new LoadAllSections(),
+      new LoadAllCategories(),
+      new LoadAllItems(),
     ]),
   );
 

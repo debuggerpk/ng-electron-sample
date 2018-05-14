@@ -3,4 +3,5 @@ export * from './config.service';
 export * from './discount.service';
 export * from './item.service';
 export * from './outlet.service';
+export * from './section.service';
 export * from './shift.service';
