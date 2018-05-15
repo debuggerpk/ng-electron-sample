@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { OrdersActions, OrdersActionTypes } from './orders.actions';
+import { OrdersActions, OrdersActionTypes } from '@reaction/common/actions';
 
 /**
  * Interface for the 'Orders' data used in

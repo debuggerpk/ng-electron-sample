@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Discount, DiscountActionTypes } from '@reaction/common/models';
-import { DiscountActions } from '@reaction/data/src/state/discounts/discounts.actions';
+import { DiscountActions } from '@reaction/common/actions';
 
 export const initialState: Array<Discount> = [];
 

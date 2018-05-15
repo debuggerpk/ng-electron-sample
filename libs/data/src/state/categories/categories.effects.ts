@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { CategoryActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { CategoryService } from '../../services';
-import { LoadAllCategories } from './categories.actions';
+import { LoadAllCategories } from '@reaction/common/actions';
 
 @Injectable()
 export class CategoryEffects {

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Category, CategoryActionTypes } from '@reaction/common/models';
-import { CategoryActions } from './categories.actions';
+import { CategoryActions } from '@reaction/common/actions';
 
 export const initialState = [];
 

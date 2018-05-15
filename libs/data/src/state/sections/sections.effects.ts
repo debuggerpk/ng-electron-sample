@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { LoadAllSections } from '@reaction/common/actions';
 import { SectionActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { SectionService } from '../../services';
-import { LoadAllSections } from './sections.actions';
 
 @Injectable()
 export class SectionsEffects {

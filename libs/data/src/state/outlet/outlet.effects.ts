@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { LoadOutlet } from './outlet.actions';
+import { LoadOutlet } from '@reaction/common/actions';
 import { OutletActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { OutletService } from '../../services';

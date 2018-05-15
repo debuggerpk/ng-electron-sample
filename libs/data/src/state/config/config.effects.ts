@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ConfigActionTypes } from '@reaction/common/models';
-import { concatMap, map, tap } from 'rxjs/operators';
-import { ConfigService } from '../../services';
-import { LoadAllCategories } from '../categories/categories.actions';
-import { LoadAllDiscounts } from '../discounts/discounts.actions';
-import { LoadAllItems } from '../items/items.actions';
-import { LoadOutlet } from '../outlet/outlet.actions';
-import { LoadAllSections } from '../sections/sections.actions';
-import { LoadAllShifts } from '../shifts/shifts.actions';
 import {
   ConfigValidationError,
   ConfigValidationSuccess,
@@ -16,12 +7,21 @@ import {
   GetConfigDone,
   GetConfigFromElectron,
   GetConfigFromLocalStorage,
+  LoadAllCategories,
+  LoadAllDiscounts,
+  LoadAllItems,
+  LoadAllSections,
+  LoadAllShifts,
+  LoadOutlet,
   SaveConfig,
   SaveConfigDone,
   SaveConfigToElectron,
   SaveConfigToLocalStorage,
   ValidateConfig,
 } from '@reaction/common/actions';
+import { ConfigActionTypes } from '@reaction/common/models';
+import { concatMap, map, tap } from 'rxjs/operators';
+import { ConfigService } from '../../services';
 
 @Injectable()
 export class ConfigEffects {

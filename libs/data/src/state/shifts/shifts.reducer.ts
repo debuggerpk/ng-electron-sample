@@ -1,6 +1,6 @@
+import { ShiftsActions } from '@reaction/common/actions';
 import { ShiftActionTypes, ShiftState } from '@reaction/common/models';
 import { shiftAdapter } from './shift.adapter';
-import { ShiftsActions } from './shifts.actions';
 
 export const initialState: ShiftState = shiftAdapter.getInitialState({
   selectedShiftId: null,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { OrdersActions, OrdersActionTypes, LoadOrders, OrdersLoaded } from './orders.actions';
+import { OrdersActions, OrdersActionTypes, LoadOrders, OrdersLoaded } from '@reaction/common/actions';
 import { OrdersState } from './orders.reducer';
 import { DataPersistence } from '@nrwl/nx';
 

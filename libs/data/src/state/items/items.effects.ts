@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ItemActionTypes, RootState } from '@reaction/common/models';
 import { ItemService } from '../../services';
-import { LoadAllItems } from './items.actions';
+import { LoadAllItems } from '@reaction/common/actions';
 import { tap } from 'rxjs/operators';
 
 @Injectable()

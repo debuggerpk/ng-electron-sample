@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { RootState, Item, ItemActionTypes } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
 import { Event } from 'electron';
-import { LoadAllItemsDone } from '@reaction/data/src/state/items/items.actions';
+import { LoadAllItemsDone } from '@reaction/common/actions';
 
 @Injectable()
 export class ItemService {

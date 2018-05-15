@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Outlet, OutletActionTypes } from '@reaction/common/models';
-import { OutletActions } from './outlet.actions';
+import { OutletActions } from '@reaction/common/actions';
 
 export const initialState: Outlet = {
   id: null,

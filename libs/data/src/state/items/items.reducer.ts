@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ItemActions } from './items.actions';
+import { ItemActions } from '@reaction/common/actions';
 import { Item, ItemActionTypes } from '@reaction/common/models';
 
 export const initialState: Array<Item> = [];

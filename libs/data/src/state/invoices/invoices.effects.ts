@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { InvoicesActions, InvoicesActionTypes, LoadInvoices, InvoicesLoaded } from './invoices.actions';
+import { InvoicesActions, InvoicesActionTypes, LoadInvoices, InvoicesLoaded } from '@reaction/common/actions';
 import { InvoicesState } from './invoices.reducer';
 import { DataPersistence } from '@nrwl/nx';
 

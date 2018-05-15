@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SectionActions } from './sections.actions';
+import { SectionActions } from '@reaction/common/actions';
 import { Section, SectionActionTypes } from '@reaction/common/models';
 
 export const initialState: Array<Section> = [];

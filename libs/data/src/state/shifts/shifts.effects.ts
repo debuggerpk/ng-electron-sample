@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { LoadAllShifts } from '@reaction/common/actions';
 import { ShiftActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { ShiftService } from '../../services';
-import { LoadAllShifts } from './shifts.actions';
 
 @Injectable()
 export class ShiftsEffects {

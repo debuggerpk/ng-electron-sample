@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootState, ShiftActionTypes, Shift } from '@reaction/common/models';
 import { MutateDataType } from '@reaction/common/utils/mutate-type';
-import { LoadAllShiftsDone } from '../state/shifts/shifts.actions';
+import { LoadAllShiftsDone } from '@reaction/common/actions';
 import { Event } from 'electron';
 import { ElectronService } from 'ngx-electron';
 
