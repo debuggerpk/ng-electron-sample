@@ -1,9 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { GetConfig, GetConfigDone, SaveConfigDone } from '@reaction/common/actions';
 import { ConfigActionTypes, Configuration, ConfigurationErrors, RootState } from '@reaction/common/models';
 import { ElectronService } from 'ngx-electron';
-import { GetConfig, GetConfigDone, SaveConfigDone } from '../state/config/config.actions';
 
 /**
  * Configuration service that handles all aspects of Configuration

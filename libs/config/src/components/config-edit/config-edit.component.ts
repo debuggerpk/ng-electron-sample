@@ -1,10 +1,8 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-// tslint:disable-next-line:nx-enforce-module-boundaries
+import { actions } from '@reaction/common';
 import { ConfigState } from '@reaction/common/models';
-import { configActions } from '@reaction/data';
 
 @Component({
   selector: 'reaction-config-edit',
@@ -33,7 +31,7 @@ export class ConfigEditComponent implements OnInit, OnDestroy {
 
   public onSubmit() {
     if (this.configurationForm.valid) {
-      this._store.dispatch(new configActions.SaveConfig(this.configurationForm.value));
+      this._store.dispatch(new actions.SaveConfig(this.configurationForm.value));
     }
   }
 

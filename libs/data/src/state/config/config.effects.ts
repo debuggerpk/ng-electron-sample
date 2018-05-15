@@ -21,7 +21,7 @@ import {
   SaveConfigToElectron,
   SaveConfigToLocalStorage,
   ValidateConfig,
-} from './config.actions';
+} from '@reaction/common/actions';
 
 @Injectable()
 export class ConfigEffects {
