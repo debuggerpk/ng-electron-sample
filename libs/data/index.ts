@@ -1,3 +1,6 @@
+/**
+ * Imports
+ */
 import * as categoryActions from './src/state/categories/categories.actions';
 import * as configActions from './src/state/config/config.actions';
 import * as invoiceActions from './src/state/invoices/invoices.actions';
@@ -7,7 +10,10 @@ import * as outletActions from './src/state/outlet/outlet.actions';
 import * as shiftActions from './src/state/shifts/shifts.actions';
 import * as dataServices from './src/services';
 
-export { DataModule } from './src/data.module';
+/**
+ * Exports
+ */
+
 export {
   categoryActions,
   configActions,
@@ -18,3 +24,4 @@ export {
   shiftActions,
   dataServices,
 };
+export { DataModule } from './src/data.module';

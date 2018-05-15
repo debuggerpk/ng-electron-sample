@@ -13,6 +13,9 @@ import {
   SectionService,
   ShiftService,
 } from './services';
+import { IpcService } from './services/ipc.service';
+import { IpcReceiverService } from './services/ipc-receiver.service';
+import { IpcSenderService } from './services/ipc-sender.service';
 import { CategoryEffects } from './state/categories/categories.effects';
 import { categoriesReducer, initialState as categoriesInitialState } from './state/categories/categories.reducer';
 import { ConfigEffects } from './state/config/config.effects';
@@ -31,7 +34,6 @@ import { SectionsEffects } from './state/sections/sections.effects';
 import { initialState as sectionsInitialState, sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { shiftsReducer } from './state/shifts/shifts.reducer';
-import { IpcReceiverService } from './services/ipc-receiver.service';
 
 @NgModule({
   imports: [
@@ -58,8 +60,8 @@ import { IpcReceiverService } from './services/ipc-receiver.service';
   ],
   exports: [VendorModule],
   providers: [
-    CategoryService,
     CategoryEffects,
+    CategoryService,
     ConfigEffects,
     ConfigService,
     DiscountsEffects,
@@ -67,6 +69,8 @@ import { IpcReceiverService } from './services/ipc-receiver.service';
     ElectronService,
     InvoicesEffects,
     IpcReceiverService,
+    IpcSenderService,
+    IpcService,
     ItemsEffects,
     ItemService,
     OrdersEffects,

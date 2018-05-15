@@ -10,7 +10,10 @@
       "name": "root",
       "root": "apps/root/src",
       "outDir": "dist/apps/root",
-      "assets": ["assets", "favicon.ico"],
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -18,7 +21,9 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "reaction-root",
-      "styles": ["styles.scss"],
+      "styles": [
+        "styles.scss"
+      ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -49,6 +54,13 @@
       "root": "libs/data/src",
       "test": "../../../test.js",
       "prefix": "reaction-data",
+      "appRoot": "",
+      "tags": []
+    },
+    {
+      "name": "shifts",
+      "root": "libs/shifts/src",
+      "test": "../../../test.js",
       "appRoot": "",
       "tags": []
     },
