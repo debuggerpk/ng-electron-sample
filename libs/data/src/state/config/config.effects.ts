@@ -22,6 +22,7 @@ import {
 import { ConfigActionTypes } from '@reaction/common/models';
 import { concatMap, map, tap } from 'rxjs/operators';
 import { ConfigService } from '../../services';
+import { IpcService } from '@reaction/data/src/services/ipc.service';
 
 @Injectable()
 export class ConfigEffects {
@@ -34,7 +35,7 @@ export class ConfigEffects {
   @Effect({ dispatch: false })
   getConfigFromElectron$ = this._actions.pipe(
     ofType<GetConfigFromElectron>(ConfigActionTypes.GetConfigFromElectron),
-    tap(() => this._config.getConfigFromElectron()),
+    tap(action => this._ipc.send(action)),
   );
 
   @Effect({ dispatch: false })
@@ -100,5 +101,5 @@ export class ConfigEffects {
     ]),
   );
 
-  constructor(private _actions: Actions, private _config: ConfigService) {}
+  constructor(private _actions: Actions, private _config: ConfigService, private _ipc: IpcService) {}
 }

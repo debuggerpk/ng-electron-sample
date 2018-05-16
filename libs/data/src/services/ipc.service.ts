@@ -12,7 +12,7 @@ export class IpcService implements OnDestroy {
     this.subscription$ = this._receiver.subscribe();
   }
 
-  next(action: Action) {
+  send(action: Action) {
     this._sender.next(action);
   }
 

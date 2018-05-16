@@ -122,7 +122,9 @@ export class ConfigService {
    */
   private _onIpcGetConfig(): void {
     window.reaction.ipc.on(ConfigActionTypes.GetConfigDone, (event: Event, payload: Configuration) => {
-      this._store.dispatch(new GetConfigDone(payload));
+      console.log(event);
+      console.log(payload);
+      // this._store.dispatch(new GetConfigDone(payload));
     });
   }
 

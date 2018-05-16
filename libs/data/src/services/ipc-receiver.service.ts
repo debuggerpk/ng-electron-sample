@@ -20,7 +20,7 @@ export class IpcReceiverService {
         window.reaction.ipc,
         'reaction',
         (event: Event, action: Action) => action,
-      ).pipe(tap(this._dispatchToStore));
+      ).pipe(tap(action => this._dispatchToStore(action)));
     } else {
       this.reciever$ = new Observable<Action>();
     }

@@ -1,6 +1,8 @@
 import { RxHR } from '@akanass/rx-http-request';
 import { Configuration } from '@reaction/common/models';
-import { configStore } from './store';
+import { configStore, dataStore } from './store';
+import { map, tap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 const REQUEST_HEADERS = { json: true };
 
@@ -34,11 +36,20 @@ export const getItems = () => {
 };
 
 export const getOutlet = () => {
-  const config = getConfiguration();
-  const url = `${config.api_gateway}/outlets/outlets/${config.outlet_id}/`;
-  const headers = getHeaders();
+  let outlet = dataStore.get('outlet', null);
 
-  return RxHR.get(url, { headers, json: true });
+  if (!outlet || new Date().getTime() - new Date(outlet.last_updated).getTime() > 1000 * 60 * 60 * 2) {
+    const config = getConfiguration();
+    const url = `${config.api_gateway}/outlets/outlets/${config.outlet_id}/`;
+    const headers = getHeaders();
+
+    return RxHR.get(url, { headers, json: true }).pipe(
+      map(response => (response.response.statusCode === 200 ? response.body : {})),
+      tap(data => dataStore.set('outlet', { data, last_updated: new Date() })),
+    );
+  } else {
+    return of(outlet.data);
+  }
 };
 
 export const getSections = () => {
