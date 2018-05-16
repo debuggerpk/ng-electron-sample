@@ -25,8 +25,9 @@ gulp.task('environment:hmr', environmentHMR);
 
 gulp.task('electron:run', runElectron);
 gulp.task('electron:restart', restartElectron);
-gulp.task('electron:package', writeDesktopPackageJson);
-gulp.task('electron:deps', installElectronDependencies);
+gulp.task('electron:pkg:write', writeDesktopPackageJson);
+gulp.task('electron:pkg:build', installElectronDependencies);
+gulp.task('electron:deps', gulp.series(['electron:pkg:write', 'electron:pkg:build']));
 
 gulp.task('watch:electron', done => {
   gulp.watch(PATHS.electron.src.watch, gulp.series(['rollup:electron', 'electron:restart']));
@@ -35,10 +36,5 @@ gulp.task('watch:electron', done => {
 
 gulp.task(
   'serve',
-  gulp.series([
-    gulp.parallel(['environment:hmr', 'rollup:electron', 'electron:package']),
-    'ng:hmr',
-    'electron:run',
-    'watch:electron',
-  ]),
+  gulp.series([gulp.parallel(['environment:hmr', 'rollup:electron']), 'ng:hmr', 'electron:run', 'watch:electron']),
 );
