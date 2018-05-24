@@ -10,10 +10,7 @@
       "name": "root",
       "root": "apps/root/src",
       "outDir": "dist/apps/root",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -21,9 +18,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "reaction-root",
-      "styles": [
-        "styles.scss"
-      ],
+      "styles": ["styles.scss"],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -39,6 +34,12 @@
       "root": "libs/auth/src",
       "test": "../../../test.js",
       "prefix": "reaction-auth",
+      "tags": []
+    },
+    {
+      "name": "common",
+      "root": "libs/config",
+      "appRoot": "",
       "tags": []
     },
     {

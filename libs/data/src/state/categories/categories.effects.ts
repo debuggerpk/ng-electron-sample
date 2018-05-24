@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { LoadAllCategories } from '@reaction/common/actions';
 import { CategoryActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { CategoryService } from '../../services';
-import { LoadAllCategories } from '@reaction/common/actions';
 
 @Injectable()
 export class CategoryEffects {

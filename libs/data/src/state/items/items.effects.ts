@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ItemActionTypes, RootState } from '@reaction/common/models';
-import { ItemService } from '../../services';
 import { LoadAllItems } from '@reaction/common/actions';
+import { ItemActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
+import { ItemService } from '../../services';
 
 @Injectable()
 export class ItemsEffects {

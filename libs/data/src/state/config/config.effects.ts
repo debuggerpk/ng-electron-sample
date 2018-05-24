@@ -21,8 +21,7 @@ import {
 } from '@reaction/common/actions';
 import { ConfigActionTypes } from '@reaction/common/models';
 import { concatMap, map, tap } from 'rxjs/operators';
-import { ConfigService } from '../../services';
-import { IpcService } from '@reaction/data/src/services/ipc.service';
+import { ConfigService, IpcService } from '../../services';
 
 @Injectable()
 export class ConfigEffects {

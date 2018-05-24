@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { LoadOutlet } from '@reaction/common/actions';
 import { OutletActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
-import { OutletService, IpcService } from '../../services';
+import { IpcService, OutletService } from '../../services';
 
 @Injectable()
 export class OutletEffects {

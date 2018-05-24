@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import { SectionActions } from '@reaction/common/actions';
 import { Section, SectionActionTypes } from '@reaction/common/models';
 

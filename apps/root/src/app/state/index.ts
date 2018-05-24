@@ -4,7 +4,7 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
-import { ReactionRouter, RoutertState } from '@reaction/common/models/';
+import { ReactionRouter, RoutertState } from '@reaction/common/models';
 
 export class ReactionRouterSerializer implements RouterStateSerializer<ReactionRouter> {
   serialize(routerState: RouterStateSnapshot): ReactionRouter {

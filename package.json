@@ -107,7 +107,7 @@
     "rollup-plugin-typescript2": "^0.13.0",
     "rollup-stream": "^1.23.1",
     "ts-node": "~6.0.3",
-    "tslint": "~5.10.0",
+    "tslint": "~5.7.0",
     "typescript": "2.6.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
@@ -123,15 +123,10 @@
     },
     "mac": {
       "category": "public.app-category.retail",
-      "target": [
-        "dmg"
-      ]
+      "target": ["dmg"]
     },
     "linux": {
-      "target": [
-        "AppImage",
-        "snap"
-      ]
+      "target": ["AppImage", "snap"]
     },
     "asar": true
   }

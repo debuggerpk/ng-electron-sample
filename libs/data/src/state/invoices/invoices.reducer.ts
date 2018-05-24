@@ -1,5 +1,4 @@
-import { Action } from '@ngrx/store';
-import { InvoicesActions, InvoicesActionTypes } from '@reaction/common/actions';
+import { InvoicesActionTypes, InvoicesActions } from '@reaction/common/actions';
 
 /**
  * Interface for the 'Invoices' data used in
