@@ -11,6 +11,7 @@
           <input matInput
                  placeholder="Outlet ID"
                  formControlName="outlet_id">
+          <mat-label>Outlet ID</mat-label>
           <mat-hint>
             The Outlet ID at which POS is place (contact support for help)
           </mat-hint>
@@ -20,18 +21,22 @@
           <input matInput
                  placeholder="API Key"
                  formControlName="api_key">
+          <mat-label>API Key</mat-label>
         </mat-form-field>
         <!-- API Gateway -->
         <mat-form-field appearance="outline">
           <input matInput
                  placeholder="API Gateway"
                  formControlName="api_gateway">
+          <mat-label>API Gateway</mat-label>
         </mat-form-field>
         <!-- Local Gateway -->
         <mat-form-field appearance="outline">
           <input matInput
                  placeholder="Local Gateway"
                  formControlName="local_gateway">
+          <mat-label>Local Gateway</mat-label>
+          <mat-hint>This is where the local server is running. Used to sync tablets</mat-hint>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions fxLayout="row"
