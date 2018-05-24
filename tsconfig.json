@@ -7,12 +7,37 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@reaction/*": ["libs/*"]
+      "@reaction/*": [
+        "libs/*"
+      ],
+      "@reaction/auth": [
+        "libs/auth/src/index.ts"
+      ],
+      "@reaction/config": [
+        "libs/config/src/index.ts"
+      ],
+      "@reaction/data": [
+        "libs/data/src/index.ts"
+      ],
+      "@reaction/shifts": [
+        "libs/shifts/src/index.ts"
+      ],
+      "@reaction/vendor": [
+        "libs/vendor/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

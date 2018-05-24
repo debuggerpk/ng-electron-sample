@@ -78,6 +78,8 @@ const rollupJS = (inputFile: string, options, cache) => {
       .pipe(source(inputFile, `${PATHS.electron.src.folder}`))
       // we need to buffer the output, since many gulp plugins don't support streams.
       .pipe(buffer())
+      // initialize sourcemaps
+      .pipe($.sourcemaps.init({ loadMaps: true }))
       // google closure compile
       // .pipe(
       //   closure({
@@ -86,9 +88,7 @@ const rollupJS = (inputFile: string, options, cache) => {
       //     language_out: 'ECMASCRIPT5_STRICT',
       //   }),
       // )
-      // initialize sourcemaps
-      // .pipe($.sourcemaps.init({ loadMaps: true }))
-      // some transformations like uglify, rename, etc.
+      // rename
       .pipe(
         $.rename(path => {
           path.extname = '.js';
@@ -97,7 +97,7 @@ const rollupJS = (inputFile: string, options, cache) => {
       // size after
       .pipe($.size({ showFiles: true, showTotal: false }))
       // write source maps
-      // .pipe($.sourcemaps.write('.'))
+      .pipe($.sourcemaps.write('.'))
       // write to destination
       .pipe(gulp.dest(PATHS.electron.dest))
   );

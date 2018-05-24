@@ -1,0 +1,29 @@
+{
+  "npmScope": "reaction",
+  "projects": {
+    "root": {
+      "tags": []
+    },
+    "root-e2e": {
+      "tags": []
+    },
+    "auth": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "config": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    },
+    "shifts": {
+      "tags": []
+    },
+    "vendor": {
+      "tags": []
+    }
+  }
+}

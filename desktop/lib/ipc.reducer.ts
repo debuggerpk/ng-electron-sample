@@ -1,14 +1,12 @@
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { concat } from 'rxjs/observable/concat';
-import { merge } from 'rxjs/observable/merge';
-import { filter, map, tap, switchMap } from 'rxjs/operators';
-import { ReAction, ConfigActionTypes, OutletActionTypes } from '@reaction/common/models';
-import { ipcMain, Event } from 'electron';
-import { Observable } from 'rxjs/Observable';
 import { actions } from '@reaction/common';
+import { ConfigActionTypes, OutletActionTypes, ReAction } from '@reaction/common/models';
+import { Event, ipcMain } from 'electron';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { merge } from 'rxjs/observable/merge';
+import { filter, map, switchMap } from 'rxjs/operators';
+import { getOutlet } from './api';
 import { configStore } from './store';
 import { windowsRef } from './windows-ref';
-import { getOutlet } from './api';
 
 const FB_CONFIG = {
   outlet_id: '',

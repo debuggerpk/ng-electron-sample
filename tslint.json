@@ -5,7 +5,7 @@
     "callable-types": true,
     "class-name": true,
     "forin": true,
-    "import-blacklist": [true, "rxjs"],
+    "import-blacklist": [true],
     "interface-over-type-literal": true,
     "member-access": false,
     "member-ordering": [
