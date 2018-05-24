@@ -1,10 +1,11 @@
 import * as path from 'path';
 import { app, BrowserWindow } from 'electron';
 import { configStore } from './lib/store';
-import { IS_DEV, IS_HMR } from './lib/helpers';
+import { IS_DEV, IS_HMR, installElectronDeveloperExtensions } from './lib/helpers';
 import { windowsRef } from './lib/windows-ref';
 
 import './lib/ipc.reducer';
+import { Browser } from 'protractor';
 
 // const debugMode = true;
 // const isDev = process.env.NODE_ENV === 'development';
@@ -25,11 +26,12 @@ const createWindow: () => void = () => {
   const url = IS_DEV && IS_HMR ? 'http://localhost:4200' : `file:///${__dirname}/apps/root/index.html`;
 
   windowsRef.main = new BrowserWindow(mainWindowSettings);
+  windowsRef.openDevTools(windowsRef.main);
   windowsRef.main.loadURL(url);
   windowsRef.main.on('closed', () => (windowsRef.main = null));
   windowsRef.main.on('resize', () => configStore.set('windowBounds', windowsRef.main.getBounds()));
 
-  windowsRef.installDevTools(windowsRef.main);
+  installElectronDeveloperExtensions();
 };
 
 app.on('ready', createWindow);

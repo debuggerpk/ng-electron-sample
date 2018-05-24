@@ -1,4 +1,5 @@
 import { IS_DEV } from './helpers';
+import { BrowserWindow, app } from 'electron';
 
 class WindowsReferences {
   private _main: Electron.BrowserWindow = null;
@@ -11,13 +12,10 @@ class WindowsReferences {
     this._main = mainWindow;
   }
 
-  installDevTools(win: Electron.BrowserWindow) {
-    if (IS_DEV) {
-      // we only require this in dev-mode;
-      const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
-      installExtension(REACT_DEVELOPER_TOOLS.id);
-      win.webContents.openDevTools();
-    }
+  openDevTools(win: Electron.BrowserWindow) {
+    win.webContents.on('devtools-opened', () => console.log('Opening Devtools'));
+    // tslint:disable-next-line:no-unused-expression
+    IS_DEV && win.webContents.openDevTools();
   }
 }
 
