@@ -1,9 +1,8 @@
 import { RxHR } from '@akanass/rx-http-request';
-import { Configuration, Outlet, Item, Discount, Section, Category } from '@reaction/common/models';
+import { Category, Configuration, Discount, Item, Outlet, Section } from '@reaction/common/models';
+import { Observable, of as observableOf } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { configStore, dataStore } from './store';
-import { map, tap, catchError } from 'rxjs/operators';
-import { of as observableOf } from 'rxjs/observable/of';
-import { Observable } from 'rxjs';
 
 export const getConfiguration: () => Configuration = () => configStore.get('configuration');
 export const getHeaders = () => ({ 'API-KEY': getConfiguration().api_key });
@@ -39,10 +38,10 @@ export function getForOutlet<T>(endpointName: string): Observable<T> {
       json: true,
     }).pipe(
       map(response => response.body),
-      tap(data => dataStore.set(endpointName, { data, udpated_at: new Date() })),
-      catchError(() => observableOf(<T>data.data)),
+      tap(reponnse => dataStore.set(endpointName, { reponnse, udpated_at: new Date() })),
+      catchError<T, T>(() => observableOf<T>(data.data)),
     );
   } else {
-    return observableOf(<T>data.data);
+    return observableOf<T>(data.data);
   }
 }
