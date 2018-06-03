@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { RootState } from '../../../../../common/models/index';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Observable ,  fromEvent ,  Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
 export class IpcReceiverService {

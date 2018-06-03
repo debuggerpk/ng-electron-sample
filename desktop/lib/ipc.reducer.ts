@@ -14,8 +14,7 @@ import {
   Item,
 } from '@reaction/common/models';
 import { Event, ipcMain } from 'electron';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { merge } from 'rxjs/observable/merge';
+import { fromEvent ,  merge } from 'rxjs';
 import { filter, map, switchMap, tap, take, finalize } from 'rxjs/operators';
 import { ofType } from './utils/rx-operators';
 import { getOutlet, getForOutlet } from './api';

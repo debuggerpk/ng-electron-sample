@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { RootState } from '@reaction/common/models';
 import { actions } from '@reaction/common';
 import { dataServices } from '@reaction/data';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'reaction-root',
