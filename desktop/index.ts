@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { app, BrowserWindow } from 'electron';
 import { configStore } from './lib/store';
-import { IS_DEV, IS_HMR, installElectronDeveloperExtensions } from './lib/helpers';
+import { IS_DEV, IS_HMR, installElectronDeveloperExtensions } from './lib/utils/electron-helpers';
 import { windowsRef } from './lib/windows-ref';
 
 import './lib/ipc.reducer';

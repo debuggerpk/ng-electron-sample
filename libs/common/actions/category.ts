@@ -1,10 +1,10 @@
-import { CategoryActionTypes, Category, ReAction } from '../models';
+import { CategoryActionTypes, Category, FluxStandardAction } from '../models';
 
-export class LoadAllCategories implements ReAction {
+export class LoadAllCategories implements FluxStandardAction {
   readonly type = CategoryActionTypes.LoadAllCategories;
 }
 
-export class LoadAllCategoriesDone implements ReAction {
+export class LoadAllCategoriesDone implements FluxStandardAction {
   readonly type = CategoryActionTypes.LoadAllCategoriesDone;
   constructor(public payload: Array<Category>) {}
 }

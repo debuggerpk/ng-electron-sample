@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "reaction-root",
+      "reaction",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "reaction-root",
+      "reaction-vendor",
       "kebab-case"
     ]
   }

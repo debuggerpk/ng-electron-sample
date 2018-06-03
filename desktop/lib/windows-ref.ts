@@ -1,4 +1,4 @@
-import { IS_DEV } from './helpers';
+import { IS_DEV } from './utils/electron-helpers';
 import { BrowserWindow, app } from 'electron';
 
 class WindowsReferences {

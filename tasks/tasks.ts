@@ -102,13 +102,15 @@ export const serveHmrTask = done => {
  * @param done - Callback function to signal task completion.
  */
 export const serveElectronHmrTask = done => {
-  return $.nodemon({
-    exec: `electron ${PATHS.electron.dest}`,
-    ignore: [`${PATHS.electron.dest}/apps/**/*.*`, `${PATHS.electron.dest}/libs/**/*.*`],
-    watch: [`${PATHS.electron.dest}/**/*.*`],
-  }).on('start', () => {
-    proxyCli(PROXY, HmrBrowserSyncConfig);
-  });
+  return $
+    .nodemon({
+      exec: `electron ${PATHS.electron.dest}`,
+      ignore: [`${PATHS.electron.dest}/apps/**/*.*`, `${PATHS.electron.dest}/libs/**/*.*`],
+      watch: [`${PATHS.electron.dest}/**/*.*`],
+    })
+    .on('start', () => {
+      proxyCli(PROXY, HmrBrowserSyncConfig);
+    });
 };
 
 /**

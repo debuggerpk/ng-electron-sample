@@ -30,6 +30,7 @@ export class ConfigEditComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit() {
+    console.log('submitting');
     if (this.configurationForm.valid) {
       this._store.dispatch(new actions.SaveConfig(this.configurationForm.value));
     }

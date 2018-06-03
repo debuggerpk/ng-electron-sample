@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
-import { RootState } from '@reaction/common/models';
+import { RootState } from '../../../../../common/models/index';
 import { Observable } from 'rxjs/Observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { tap } from 'rxjs/operators';

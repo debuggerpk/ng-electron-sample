@@ -1,10 +1,10 @@
-import { OutletActionTypes, Outlet, ReAction } from '@reaction/common/models';
+import { OutletActionTypes, Outlet, FluxStandardAction } from '@reaction/common/models';
 
-export class LoadOutlet implements ReAction {
+export class LoadOutlet implements FluxStandardAction {
   readonly type = OutletActionTypes.LoadOutlet;
 }
 
-export class LoadOutletDone implements ReAction {
+export class LoadOutletDone implements FluxStandardAction {
   readonly type = OutletActionTypes.LoadOutletDone;
 
   constructor(public payload: Outlet) {}

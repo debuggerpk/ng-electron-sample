@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { IpcReceiverService } from './ipc-receiver.service';
-import { IpcSenderService } from './ipc-sender.service';
+import { IpcReceiverService } from './ipc-io/ipc-receiver.service';
+import { IpcSenderService } from './ipc-io/ipc-sender.service';
 import { Action } from '@ngrx/store';
 
 @Injectable()

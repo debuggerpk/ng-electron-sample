@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const RootRoutes: Routes = [
   { path: 'config', loadChildren: '@reaction/config#ConfigModule' },
+  { path: 'shifts', loadChildren: '@reaction/shifts#ShiftsModule' },
   { path: '**', redirectTo: '' },
 ];
 

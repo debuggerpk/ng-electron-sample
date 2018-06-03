@@ -1,10 +1,10 @@
-import { ItemActionTypes, Item, ReAction } from '@reaction/common/models';
+import { ItemActionTypes, Item, FluxStandardAction } from '@reaction/common/models';
 
-export class LoadAllItems implements ReAction {
+export class LoadAllItems implements FluxStandardAction {
   readonly type = ItemActionTypes.LoadAllItems;
 }
 
-export class LoadAllItemsDone implements ReAction {
+export class LoadAllItemsDone implements FluxStandardAction {
   readonly type = ItemActionTypes.LoadAllItemsDone;
   constructor(public payload: Array<Item>) {}
 }

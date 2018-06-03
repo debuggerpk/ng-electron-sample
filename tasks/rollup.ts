@@ -81,14 +81,17 @@ const rollupJS = (inputFile: string, options, cache) => {
       // initialize sourcemaps
       .pipe($.sourcemaps.init({ loadMaps: true }))
       // google closure compile
-      // .pipe(
-      //   closure({
-      //     compilation_level: 'SIMPLE',
-      //     language_in: 'ECMASCRIPT6_STRICT',
-      //     language_out: 'ECMASCRIPT5_STRICT',
-      //   }),
-      // )
+      .pipe(
+        closure({
+          compilation_level: 'SIMPLE',
+          language_in: 'ECMASCRIPT6_STRICT',
+          language_out: 'ECMASCRIPT6_STRICT',
+          assume_function_wrapper: true,
+          output_wrapper: '(function(){%output%})();',
+        }),
+      )
       // rename
+      .pipe($.rename(inputFile))
       .pipe(
         $.rename(path => {
           path.extname = '.js';

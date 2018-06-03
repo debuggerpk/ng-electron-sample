@@ -14,13 +14,15 @@ import {
   LoadAllShifts,
   LoadOutlet,
   SaveConfig,
-  SaveConfigDone,
   SaveConfigToElectron,
   SaveConfigToLocalStorage,
+  SaveConfigDone,
   ValidateConfig,
+  LoadAllData,
+  LoadAllDataDone,
 } from '@reaction/common/actions';
 import { ConfigActionTypes } from '@reaction/common/models';
-import { concatMap, map, tap } from 'rxjs/operators';
+import { mergeMap, map, tap, debounce } from 'rxjs/operators';
 import { ConfigService, IpcService } from '../../services';
 
 @Injectable()
@@ -28,19 +30,19 @@ export class ConfigEffects {
   @Effect()
   getConfig$ = this._actions.pipe(
     ofType<GetConfig>(ConfigActionTypes.GetConfig),
-    map(() => (this._config.isElectronApp() ? new GetConfigFromElectron() : new GetConfigFromLocalStorage())),
+    map(() => (this._configService.isElectronApp ? new GetConfigFromElectron() : new GetConfigFromLocalStorage())),
   );
 
   @Effect({ dispatch: false })
   getConfigFromElectron$ = this._actions.pipe(
     ofType<GetConfigFromElectron>(ConfigActionTypes.GetConfigFromElectron),
-    tap(action => this._ipc.send(action)),
+    tap(action => this._ipcService.send(action)),
   );
 
   @Effect({ dispatch: false })
   getConfigFromLocalStorage$ = this._actions.pipe(
     ofType<GetConfigFromLocalStorage>(ConfigActionTypes.GetConfigFromLocalStorage),
-    tap(() => this._config.getConfigFromLocalStorage()),
+    tap(() => console.log('TODO: Write for Browser')),
   );
 
   @Effect()
@@ -53,21 +55,15 @@ export class ConfigEffects {
   validateConfig$ = this._actions.pipe(
     ofType<ValidateConfig>(ConfigActionTypes.ValidateConfig),
     map(action => {
-      const errors = this._config.validateConfig(action.payload);
+      const errors = this._configService.validateConfig(action.payload);
       return errors ? new ConfigValidationError(errors) : new ConfigValidationSuccess(action.payload);
     }),
-  );
-
-  @Effect()
-  validationSuccess = this._actions.pipe(
-    ofType<ConfigValidationSuccess>(ConfigActionTypes.ConfigValidationSuccess),
-    map(action => new SaveConfigDone(action.payload)),
   );
 
   @Effect({ dispatch: false })
   validationError$ = this._actions.pipe(
     ofType<ConfigValidationError>(ConfigActionTypes.ConfigValidationError),
-    tap(() => this._config.routeToConfig()),
+    tap(() => this._configService.routeToConfig()),
   );
 
   @Effect()
@@ -75,7 +71,7 @@ export class ConfigEffects {
     ofType<SaveConfig>(ConfigActionTypes.SaveConfig),
     map(
       action =>
-        this._config.isElectronApp()
+        this._configService.isElectronApp
           ? new SaveConfigToElectron(action.payload)
           : new SaveConfigToLocalStorage(action.payload),
     ),
@@ -84,13 +80,24 @@ export class ConfigEffects {
   @Effect({ dispatch: false })
   saveConfigToElectron$ = this._actions.pipe(
     ofType<SaveConfigToElectron>(ConfigActionTypes.SaveConfigToElectron),
-    tap(action => this._config.saveConfigToElectron(action.payload)),
+    tap(action => this._ipcService.send(action)),
   );
 
   @Effect()
-  saveConfigDone$ = this._actions.pipe(
-    ofType<SaveConfigDone>(ConfigActionTypes.SaveConfigDone),
-    concatMap(action => [
+  validateOrSaveConfigSuccess$ = this._actions.pipe(
+    ofType<ConfigValidationSuccess | SaveConfigDone>(
+      ConfigActionTypes.ConfigValidationSuccess,
+      ConfigActionTypes.SaveConfigDone,
+    ),
+    map(action => new LoadAllData()),
+  );
+
+  @Effect()
+  loadAllData$ = this._actions.pipe(
+    ofType<LoadAllData>(ConfigActionTypes.LoadAllData),
+    tap(() => this._configService.ready$.next(false)),
+    tap(action => this._ipcService.send(action)),
+    mergeMap(action => [
       new LoadOutlet(),
       new LoadAllShifts(),
       new LoadAllDiscounts(),
@@ -100,5 +107,11 @@ export class ConfigEffects {
     ]),
   );
 
-  constructor(private _actions: Actions, private _config: ConfigService, private _ipc: IpcService) {}
+  @Effect({ dispatch: false })
+  loadAllDataDone$ = this._actions.pipe(
+    ofType(ConfigActionTypes.LoadAllDataDone),
+    tap(() => this._configService.ready$.next(true)),
+  );
+
+  constructor(private _actions: Actions, private _ipcService: IpcService, private _configService: ConfigService) {}
 }

@@ -44,4 +44,6 @@ export enum ConfigActionTypes {
   SaveConfigToElectron = '[CONFIG] Save Electron Configuration',
   SaveConfigToLocalStorage = '[CONFIG] Save LocalStarage Configuration',
   SaveConfigDone = '[CONFIG] Save Config Done',
+  LoadAllData = '[CONFIG] Load All Data',
+  LoadAllDataDone = '[CONFIG] Load All Data Done',
 }

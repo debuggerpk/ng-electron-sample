@@ -7,6 +7,11 @@
       "root": "apps/root",
       "sourceRoot": "apps/root/src",
       "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -16,13 +21,8 @@
             "main": "apps/root/src/main.ts",
             "tsConfig": "apps/root/tsconfig.app.json",
             "polyfills": "apps/root/src/polyfills.ts",
-            "assets": [
-              "apps/root/src/assets",
-              "apps/root/src/favicon.ico"
-            ],
-            "styles": [
-              "apps/root/src/styles.scss"
-            ],
+            "assets": ["apps/root/src/assets", "apps/root/src/favicon.ico"],
+            "styles": ["apps/root/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -60,7 +60,8 @@
           },
           "configurations": {
             "hmr": {
-              "browserTarget": "root:build:hmr"
+              "browserTarget": "root:build:hmr",
+              "hmrWarning": false
             },
             "production": {
               "browserTarget": "root:build:production"
@@ -81,25 +82,15 @@
             "polyfills": "apps/root/src/polyfills.ts",
             "tsConfig": "apps/root/tsconfig.spec.json",
             "scripts": [],
-            "styles": [
-              "apps/root/src/styles.scss"
-            ],
-            "assets": [
-              "apps/root/src/assets",
-              "apps/root/src/favicon.ico"
-            ]
+            "styles": ["apps/root/src/styles.scss"],
+            "assets": ["apps/root/src/assets", "apps/root/src/favicon.ico"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/root/tsconfig.app.json",
-              "apps/root/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/root/tsconfig.app.json", "apps/root/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -120,12 +111,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/root-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["apps/root-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -150,13 +137,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/auth/tsconfig.lib.json",
-              "libs/auth/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/auth/tsconfig.lib.json", "libs/auth/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -181,13 +163,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/common/tsconfig.lib.json",
-              "libs/common/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/common/tsconfig.lib.json", "libs/common/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
@@ -212,17 +189,12 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/config/tsconfig.lib.json",
-              "libs/config/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/config/tsconfig.lib.json", "libs/config/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
-      "prefix": "reaction-root"
+      "prefix": "reaction-config"
     },
     "data": {
       "root": "libs/data",
@@ -243,22 +215,22 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/data/tsconfig.lib.json",
-              "libs/data/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/data/tsconfig.lib.json", "libs/data/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
-      "prefix": "reaction-root"
+      "prefix": "reaction-data"
     },
     "shifts": {
       "root": "libs/shifts",
       "sourceRoot": "libs/shifts/src",
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -274,17 +246,12 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/shifts/tsconfig.lib.json",
-              "libs/shifts/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/shifts/tsconfig.lib.json", "libs/shifts/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },
-      "prefix": "reaction-root"
+      "prefix": "reaction-shifts"
     },
     "vendor": {
       "root": "libs/vendor",
@@ -305,13 +272,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "libs/vendor/tsconfig.lib.json",
-              "libs/vendor/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["libs/vendor/tsconfig.lib.json", "libs/vendor/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       },

@@ -4,12 +4,6 @@
     "outDir": "../../dist/out-tsc/apps/root",
     "module": "es2015"
   },
-  "include": [
-    "**/*.ts",
-    "../../libs/config/src/index.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "src/test.ts"
-  ]
+  "include": ["**/*.ts", "../../libs/config/src/index.ts", "../../libs/shifts/src/index.ts"],
+  "exclude": ["**/*.spec.ts", "src/test.ts"]
 }

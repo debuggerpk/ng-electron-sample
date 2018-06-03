@@ -15,6 +15,6 @@ export interface ItemState {
 }
 
 export enum ItemActionTypes {
-  LoadAllItems = '[CATEGORY] Load All Items',
-  LoadAllItemsDone = '[CATEGORY] Load All Items Done',
+  LoadAllItems = '[ITEM] Load All Items',
+  LoadAllItemsDone = '[ITEM] Load All Items Done',
 }
