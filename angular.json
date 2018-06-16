@@ -142,24 +142,13 @@
           }
         }
       },
-      "prefix": "reaction-root"
+      "prefix": "reaction-auth"
     },
     "common": {
       "root": "libs/common",
-      "sourceRoot": "libs/common/src",
+      "sourceRoot": "libs/common",
       "projectType": "library",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/common/src/test.ts",
-            "karmaConfig": "libs/common/karma.conf.js",
-            "scripts": [],
-            "styles": [],
-            "assets": [],
-            "tsConfig": "libs/common/tsconfig.spec.json"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -277,7 +266,7 @@
           }
         }
       },
-      "prefix": "reaction-root"
+      "prefix": "reaction-vendor"
     }
   },
   "defaultProject": "root",

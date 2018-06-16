@@ -4,6 +4,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { VendorModule } from '@reaction/vendor';
 import { ElectronService } from 'ngx-electron';
+import {
+  CategoryService,
+  ConfigService,
+  DiscountService,
+  IpcService,
+  ItemService,
+  OutletService,
+  SectionService,
+  ShiftService,
+} from './services';
 import { IpcReceiverService } from './services/ipc-io/ipc-receiver.service';
 import { IpcSenderService } from './services/ipc-io/ipc-sender.service';
 import { CategoryEffects } from './state/categories/categories.effects';
@@ -24,16 +34,6 @@ import { SectionsEffects } from './state/sections/sections.effects';
 import { sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { shiftsReducer } from './state/shifts/shifts.reducer';
-import {
-  CategoryService,
-  ConfigService,
-  DiscountService,
-  IpcService,
-  ItemService,
-  OutletService,
-  SectionService,
-  ShiftService,
-} from './services';
 
 @NgModule({
   imports: [

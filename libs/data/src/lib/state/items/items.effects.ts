@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { LoadAllItems } from '@reaction/common/actions';
 import { ItemActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
-import { ItemService, IpcService } from '../../services';
+import { IpcService } from '../../services';
 
 @Injectable()
 export class ItemsEffects {

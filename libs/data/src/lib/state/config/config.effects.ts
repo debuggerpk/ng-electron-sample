@@ -8,21 +8,20 @@ import {
   GetConfigFromElectron,
   GetConfigFromLocalStorage,
   LoadAllCategories,
+  LoadAllData,
   LoadAllDiscounts,
   LoadAllItems,
   LoadAllSections,
   LoadAllShifts,
   LoadOutlet,
   SaveConfig,
+  SaveConfigDone,
   SaveConfigToElectron,
   SaveConfigToLocalStorage,
-  SaveConfigDone,
   ValidateConfig,
-  LoadAllData,
-  LoadAllDataDone,
 } from '@reaction/common/actions';
 import { ConfigActionTypes } from '@reaction/common/models';
-import { mergeMap, map, tap, debounce } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { ConfigService, IpcService } from '../../services';
 
 @Injectable()

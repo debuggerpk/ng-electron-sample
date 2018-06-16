@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { LoadAllDiscounts } from '@reaction/common/actions';
 import { DiscountActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
-import { DiscountService, IpcService } from '../../services';
+import { IpcService } from '../../services';
 
 @Injectable()
 export class DiscountsEffects {

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RootState, Item, ItemActionTypes } from '@reaction/common/models';
-import { ElectronService } from 'ngx-electron';
-import { Event } from 'electron';
-import { LoadAllItemsDone } from '@reaction/common/actions';
+import { RootState } from '@reaction/common/models';
 
 @Injectable()
 export class ItemService {
