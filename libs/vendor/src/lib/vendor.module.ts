@@ -10,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgcFloatButtonModule } from 'ngc-float-button';
 
 const NG_MODULES = [FlexLayoutModule, ReactiveFormsModule, HttpClientModule];
 const MAT_MODULES = [
@@ -22,7 +21,7 @@ const MAT_MODULES = [
   MatSelectModule,
   MatToolbarModule,
 ];
-const THIRD_PARTY = [NgcFloatButtonModule];
+const THIRD_PARTY = [];
 
 @NgModule({
   imports: [CommonModule, NG_MODULES, MAT_MODULES, THIRD_PARTY],
