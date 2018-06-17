@@ -9,7 +9,7 @@ import {
   ConfigService,
   DiscountService,
   IpcService,
-  ItemService,
+  ProductService,
   OutletService,
   SectionService,
   ShiftService,
@@ -24,8 +24,8 @@ import { DiscountsEffects } from './state/discounts/discounts.effects';
 import { discountsReducer } from './state/discounts/discounts.reducer';
 import { InvoicesEffects } from './state/invoices/invoices.effects';
 import { invoicesReducer } from './state/invoices/invoices.reducer';
-import { ItemsEffects } from './state/items/items.effects';
-import { itemsReducer } from './state/items/items.reducer';
+import { ProductEffects } from './state/products/products.effects';
+import { productsReducer } from './state/products/products.reducer';
 import { OrdersEffects } from './state/orders/orders.effects';
 import { ordersReducer } from './state/orders/orders.reducer';
 import { OutletEffects } from './state/outlet/outlet.effects';
@@ -45,8 +45,8 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     EffectsModule.forFeature([ConfigEffects]),
     StoreModule.forFeature('discounts', discountsReducer),
     EffectsModule.forFeature([DiscountsEffects]),
-    StoreModule.forFeature('items', itemsReducer),
-    EffectsModule.forFeature([ItemsEffects]),
+    StoreModule.forFeature('products', productsReducer),
+    EffectsModule.forFeature([ProductEffects]),
     StoreModule.forFeature('orders', ordersReducer),
     EffectsModule.forFeature([OrdersEffects]),
     StoreModule.forFeature('outlet', outletReducer),
@@ -71,8 +71,8 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     IpcReceiverService,
     IpcSenderService,
     IpcService,
-    ItemsEffects,
-    ItemService,
+    ProductEffects,
+    ProductService,
     OrdersEffects,
     OutletEffects,
     OutletService,

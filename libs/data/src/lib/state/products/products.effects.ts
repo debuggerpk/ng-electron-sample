@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { LoadAllItems } from '@reaction/common/actions';
-import { ItemActionTypes } from '@reaction/common/models';
+import { LoadAllProducts } from '@reaction/common/actions';
+import { ProductActionTypes } from '@reaction/common/models';
 import { tap } from 'rxjs/operators';
 import { IpcService } from '../../services';
 
 @Injectable()
-export class ItemsEffects {
+export class ProductEffects {
   @Effect({ dispatch: false })
   LoadAllItems$ = this._actions.pipe(
-    ofType<LoadAllItems>(ItemActionTypes.LoadAllItems),
+    ofType<LoadAllProducts>(ProductActionTypes.LoadAllProducts),
     tap(action => this._ipc.send(action)),
   );
 

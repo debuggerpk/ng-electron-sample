@@ -4,7 +4,7 @@ import { ConfigState } from './config';
 import { ShiftState } from './shift';
 import { CategoryState } from './category';
 import { DiscountState } from './discount';
-
+import { ProductState } from './product';
 /**
  * Interface for the 'Router' state
  */
@@ -18,10 +18,10 @@ export interface ReactionRouter {
  * Interface to the part of the Store containing MainState
  * and other information related to MainData.
  */
-export interface RoutertState {
+export interface RouterState {
   readonly router: RouterReducerState<ReactionRouter>;
 }
 
-export interface RootState extends CategoryState, ConfigState, DiscountState, RouterState {
+export interface RootState extends CategoryState, ProductState, ConfigState, DiscountState, RouterState {
   readonly shifts: ShiftState;
 }

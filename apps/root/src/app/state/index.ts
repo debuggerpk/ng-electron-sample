@@ -4,7 +4,7 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { storeLogger } from 'ngrx-store-logger';
 import { environment } from '../../environments/environment';
-import { ReactionRouter, RoutertState } from '@reaction/common/models';
+import { ReactionRouter, RouterState } from '@reaction/common/models';
 
 export class ReactionRouterSerializer implements RouterStateSerializer<ReactionRouter> {
   serialize(routerState: RouterStateSnapshot): ReactionRouter {
@@ -26,14 +26,14 @@ export class ReactionRouterSerializer implements RouterStateSerializer<ReactionR
   }
 }
 
-export const reducers: ActionReducerMap<RoutertState> = {
+export const reducers: ActionReducerMap<RouterState> = {
   router: routerReducer,
 };
 
-export const logStore = (reducer: ActionReducer<RoutertState>) =>
+export const logStore = (reducer: ActionReducer<RouterState>) =>
   storeLogger({
     collapsed: true,
     filter: { blacklist: ['@ngrx/store/update-reducers'] },
   })(reducer);
 
-export const metaReducers: MetaReducer<RoutertState>[] = !environment.production ? [logStore, storeFreeze] : [];
+export const metaReducers: MetaReducer<RouterState>[] = !environment.production ? [logStore, storeFreeze] : [];

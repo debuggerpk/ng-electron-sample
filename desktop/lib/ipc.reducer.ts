@@ -1,24 +1,25 @@
 import { actions } from '@reaction/common';
 import {
-  ShiftActionTypes,
-  ConfigActionTypes,
-  OutletActionTypes,
-  FluxStandardAction,
-  DiscountActionTypes,
-  SectionActionTypes,
-  CategoryActionTypes,
-  ItemActionTypes,
-  Discount,
-  Section,
   Category,
-  Item,
+  CategoryActionTypes,
+  ConfigActionTypes,
+  Discount,
+  DiscountActionTypes,
+  FluxStandardAction,
+  Product,
+  ProductActionTypes,
+  OutletActionTypes,
+  Section,
+  SectionActionTypes,
+  ShiftActionTypes,
+  Shift,
 } from '@reaction/common/models';
 import { Event, ipcMain } from 'electron';
-import { fromEvent ,  merge } from 'rxjs';
-import { filter, map, switchMap, tap, take, finalize } from 'rxjs/operators';
-import { ofType } from './utils/rx-operators';
-import { getOutlet, getForOutlet } from './api';
+import { fromEvent, merge } from 'rxjs';
+import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
+import { getForOutlet, getOutlet } from './api';
 import { configStore, dataStore } from './store';
+import { ofType } from './utils/rx-operators';
 import { windowsRef } from './windows-ref';
 
 const FB_CONFIG = {
@@ -54,7 +55,9 @@ const getOutlet$ = listener$.pipe(
 
 const getShift$ = listener$.pipe(
   ofType<actions.LoadAllShifts>(ShiftActionTypes.LoadAllShifts),
-  map(() => new actions.LoadAllShiftsDone(dataStore.get('shifts', []))),
+  // map(() => new actions.LoadAllShiftsDone(dataStore.get('shifts', []))),
+  switchMap(() => getForOutlet<Array<Shift>>('shifts')),
+  map(payload => new actions.LoadAllShiftsDone(payload)),
 );
 
 const getDiscounts$ = listener$.pipe(
@@ -75,30 +78,11 @@ const getCategories$ = listener$.pipe(
   map(payload => new actions.LoadAllCategoriesDone(payload)),
 );
 
-const getItems$ = listener$.pipe(
-  ofType<actions.LoadAllItems>(ItemActionTypes.LoadAllItems),
-  switchMap(() => getForOutlet<Array<Item>>('items')),
-  map(payload => new actions.LoadAllItemsDone(payload)),
+const getProducts$ = listener$.pipe(
+  ofType<actions.LoadAllProducts>(ProductActionTypes.LoadAllProducts),
+  switchMap(() => getForOutlet<Array<Product>>('products')),
+  map(payload => new actions.LoadAllProductsDone(payload)),
 );
-
-const reducer$ = merge(
-  getConfig$,
-  saveConfig$,
-  getOutlet$,
-  getShift$,
-  getDiscounts$,
-  getSections$,
-  getCategories$,
-  getItems$,
-  // getAllData$,
-).subscribe(action => windowsRef.main.webContents.send('reaction', action));
-
-const getAllData$ = listener$
-  .pipe(
-    ofType<actions.LoadAllData>(ConfigActionTypes.LoadAllData),
-    tap(() => onGetAllData()),
-  )
-  .subscribe();
 
 const onGetAllData = () => {
   merge(
@@ -107,8 +91,30 @@ const onGetAllData = () => {
     getDiscounts$.pipe(take(1)),
     getSections$.pipe(take(1)),
     getCategories$.pipe(take(1)),
-    getItems$.pipe(take(1)),
+    getProducts$.pipe(take(1)),
   )
     .pipe(finalize(() => windowsRef.main.webContents.send('reaction', new actions.LoadAllDataDone())))
     .subscribe();
 };
+
+/**
+ * Reducing all Listeners
+ */
+
+merge(
+  getConfig$,
+  saveConfig$,
+  getOutlet$,
+  getShift$,
+  getDiscounts$,
+  getSections$,
+  getCategories$,
+  getProducts$,
+).subscribe(action => windowsRef.main.webContents.send('reaction', action));
+
+listener$
+  .pipe(
+    ofType<actions.LoadAllData>(ConfigActionTypes.LoadAllData),
+    tap(() => onGetAllData()),
+  )
+  .subscribe();

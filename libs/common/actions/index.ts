@@ -2,7 +2,7 @@ export * from './category';
 export * from './config';
 export * from './discount';
 export * from './invoice';
-export * from './item';
+export * from './product';
 export * from './order';
 export * from './outlet';
 export * from './section';

@@ -10,7 +10,7 @@ import {
   LoadAllCategories,
   LoadAllData,
   LoadAllDiscounts,
-  LoadAllItems,
+  LoadAllProducts,
   LoadAllSections,
   LoadAllShifts,
   LoadOutlet,
@@ -102,7 +102,7 @@ export class ConfigEffects {
       new LoadAllDiscounts(),
       new LoadAllSections(),
       new LoadAllCategories(),
-      new LoadAllItems(),
+      new LoadAllProducts(),
     ]),
   );
 

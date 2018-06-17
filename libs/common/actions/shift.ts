@@ -1,4 +1,5 @@
 import { FluxStandardAction, Shift, ShiftActionTypes } from '@reaction/common/models';
+import { ShiftProperties } from '@reaction/common/models/shift';
 
 export class LoadAllShifts implements FluxStandardAction {
   readonly type = ShiftActionTypes.LoadAllShifts;
@@ -11,6 +12,7 @@ export class LoadAllShiftsDone implements FluxStandardAction {
 
 export class AddNewShift implements FluxStandardAction {
   readonly type = ShiftActionTypes.AddNewShift;
+  constructor(public payload: ShiftProperties) {}
 }
 
 export class AddNewShiftDone implements FluxStandardAction {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
+import { Store } from '@ngrx/store';
+import { RootState } from '@reaction/common/models';
 
 /**
  * All we need to with shifts
@@ -9,5 +10,5 @@ import { ElectronService } from 'ngx-electron';
  */
 @Injectable()
 export class ShiftService {
-  constructor(private _electron: ElectronService) {}
+  constructor(private _store: Store<RootState>) {}
 }

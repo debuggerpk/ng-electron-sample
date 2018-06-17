@@ -1,7 +1,7 @@
 import { EntityState } from '@ngrx/entity';
 
 export interface ShiftProperties {
-  password?: string;
+  [key: string]: any;
 }
 
 export interface Shift {

@@ -12,6 +12,7 @@ export function shiftsReducer(state = initialState, action: ShiftsActions): Shif
       return state;
 
     case ShiftActionTypes.LoadAllShiftsDone:
+      console.log(action.payload);
       return shiftAdapter.addAll(action.payload, state);
 
     case ShiftActionTypes.AddNewShift:

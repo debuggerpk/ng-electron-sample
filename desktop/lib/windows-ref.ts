@@ -13,7 +13,6 @@ class WindowsReferences {
   }
 
   openDevTools(win: Electron.BrowserWindow) {
-    win.webContents.on('devtools-opened', () => console.log('Opening Devtools'));
     // tslint:disable-next-line:no-unused-expression
     IS_DEV && win.webContents.openDevTools();
   }

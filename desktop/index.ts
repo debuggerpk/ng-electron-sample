@@ -5,10 +5,7 @@ import { IS_DEV, IS_HMR, installElectronDeveloperExtensions } from './lib/utils/
 import { windowsRef } from './lib/windows-ref';
 
 import './lib/ipc.reducer';
-import { Browser } from 'protractor';
 
-// const debugMode = true;
-// const isDev = process.env.NODE_ENV === 'development';
 
 const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   width: configStore.get('windowBounds.width', 800),

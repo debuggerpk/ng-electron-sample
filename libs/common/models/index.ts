@@ -1,12 +1,12 @@
 export { Category, CategoryActionTypes, CategoryState } from './category';
 export { ConfigActionTypes, ConfigState, Configuration, ConfigurationErrors } from './config';
 export { Discount, DiscountActionTypes, DiscountState } from './discount';
-export { Item, ItemActionTypes, ItemState } from './item';
+export { Product, ProductActionTypes, ProductState } from './product';
 export { LineItem, LineItemActionTypes } from './line-item';
 export { Order, OrderActionTypes, OrderSection } from './order';
 export { Outlet, OutletActionTypes, OutletState } from './outlet';
 export { FluxStandardAction } from './utils';
-export { ReactionRouter, RootState, RoutertState } from './root';
+export { ReactionRouter, RootState, RouterState } from './root';
 export { Section, SectionActionTypes, SectionState } from './section';
 export { Shift, ShiftActionTypes, ShiftState } from './shift';
 export { User } from './user';

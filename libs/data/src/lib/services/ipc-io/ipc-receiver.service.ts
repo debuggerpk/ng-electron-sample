@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { RootState } from '../../../../../common/models/index';
-import { Observable ,  fromEvent ,  Subscription } from 'rxjs';
+import { Observable, fromEvent, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
