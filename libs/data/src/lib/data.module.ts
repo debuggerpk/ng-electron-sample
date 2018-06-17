@@ -16,20 +16,20 @@ import {
 } from './services';
 import { IpcReceiverService } from './services/ipc-io/ipc-receiver.service';
 import { IpcSenderService } from './services/ipc-io/ipc-sender.service';
-import { CategoryEffects } from './state/categories/categories.effects';
 import { categoriesReducer } from './state/categories/categories.reducer';
+import { CategoryEffects } from './state/categories/categories.effects';
 import { ConfigEffects } from './state/config/config.effects';
 import { configReducer } from './state/config/config.reducer';
 import { DiscountsEffects } from './state/discounts/discounts.effects';
 import { discountsReducer } from './state/discounts/discounts.reducer';
 import { InvoicesEffects } from './state/invoices/invoices.effects';
 import { invoicesReducer } from './state/invoices/invoices.reducer';
-import { ProductEffects } from './state/products/products.effects';
-import { productsReducer } from './state/products/products.reducer';
 import { OrdersEffects } from './state/orders/orders.effects';
 import { ordersReducer } from './state/orders/orders.reducer';
 import { OutletEffects } from './state/outlet/outlet.effects';
 import { outletReducer } from './state/outlet/outlet.reducer';
+import { ProductEffects } from './state/products/products.effects';
+import { productsReducer } from './state/products/products.reducer';
 import { SectionsEffects } from './state/sections/sections.effects';
 import { sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
@@ -71,11 +71,11 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     IpcReceiverService,
     IpcSenderService,
     IpcService,
-    ProductEffects,
-    ProductService,
     OrdersEffects,
     OutletEffects,
     OutletService,
+    ProductEffects,
+    ProductService,
     SectionsEffects,
     SectionService,
     ShiftsEffects,

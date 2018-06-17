@@ -1,9 +1,9 @@
 import { DiscountActions } from '@reaction/common/actions';
-import { Discount, DiscountActionTypes } from '@reaction/common/models';
+import { Discount, DiscountActionTypes, DiscountState } from '@reaction/common/models';
 
-export const initialState: Array<Discount> = [];
+export const initialState: DiscountState = [];
 
-export function discountsReducer(state = initialState, action: DiscountActions): Array<Discount> {
+export function discountsReducer(state = initialState, action: DiscountActions): DiscountState {
   switch (action.type) {
     case DiscountActionTypes.LoadAllDiscounts:
       return state;

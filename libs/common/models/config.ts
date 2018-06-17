@@ -22,16 +22,6 @@ export interface Configuration {
   errors?: ConfigurationErrors | null;
 }
 
-/**
- * State Definition for ConfigState
- *
- * @export
- * @interface ConfigState
- */
-export interface ConfigState {
-  readonly config: Configuration;
-}
-
 export enum ConfigActionTypes {
   GetConfig = '[CONFIG] Get Config Start',
   GetConfigFromElectron = '[CONFIG] Get Electron Configuration',

@@ -5,9 +5,7 @@ export interface Category {
   category: number;
 }
 
-export interface CategoryState {
-  readonly categories: Array<Category>;
-}
+export interface CategoryState extends Array<Category> {}
 
 export enum CategoryActionTypes {
   LoadAllCategories = '[CATEGORY] Load All Categories',

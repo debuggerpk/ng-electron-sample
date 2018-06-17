@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { actions } from '@reaction/common';
-import { ConfigState } from '@reaction/common/models';
+import { RootState } from '@reaction/common/models';
 
 @Component({
   selector: 'reaction-config-edit',
@@ -12,7 +12,7 @@ import { ConfigState } from '@reaction/common/models';
 export class ConfigEditComponent implements OnInit, OnDestroy {
   public configurationForm: FormGroup;
 
-  constructor(private _store: Store<ConfigState>, private _formBuilder: FormBuilder) {}
+  constructor(private _store: Store<RootState>, private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.configurationForm = this._formBuilder.group({

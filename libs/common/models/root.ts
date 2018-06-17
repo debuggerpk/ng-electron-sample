@@ -1,10 +1,12 @@
-import { Params, RouterState } from '@angular/router';
+import { Params } from '@angular/router';
 import { RouterReducerState } from '@ngrx/router-store';
-import { ConfigState } from './config';
-import { ShiftState } from './shift';
 import { CategoryState } from './category';
+import { Configuration } from './config';
 import { DiscountState } from './discount';
+import { Outlet } from './outlet';
 import { ProductState } from './product';
+import { SectionState } from './section';
+import { ShiftState } from './shift';
 /**
  * Interface for the 'Router' state
  */
@@ -22,6 +24,13 @@ export interface RouterState {
   readonly router: RouterReducerState<ReactionRouter>;
 }
 
-export interface RootState extends CategoryState, ProductState, ConfigState, DiscountState, RouterState {
+export interface RootState {
+  readonly categories: CategoryState;
+  readonly config: Configuration;
+  readonly discounts: DiscountState;
+  readonly outlet: Outlet;
+  readonly products: ProductState;
+  readonly router: RouterReducerState<ReactionRouter>;
+  readonly sections: SectionState;
   readonly shifts: ShiftState;
 }

@@ -7,9 +7,7 @@ export interface Discount {
   discount: number;
 }
 
-export interface DiscountState {
-  readonly discounts: Array<Discount>;
-}
+export interface DiscountState extends Array<Discount> {}
 
 export enum DiscountActionTypes {
   LoadAllDiscounts = '[DISCOUNT] Load All Discounts',

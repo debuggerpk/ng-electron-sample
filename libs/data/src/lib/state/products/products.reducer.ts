@@ -1,9 +1,9 @@
 import { ItemActions } from '@reaction/common/actions';
-import { Product, ProductActionTypes } from '@reaction/common/models';
+import { ProductActionTypes, ProductState } from '@reaction/common/models';
 
-export const initialState: Array<Product> = [];
+export const initialState: ProductState = [];
 
-export function productsReducer(state = initialState, action: ItemActions): Array<Product> {
+export function productsReducer(state = initialState, action: ItemActions): ProductState {
   switch (action.type) {
     case ProductActionTypes.LoadAllProducts:
       return state;

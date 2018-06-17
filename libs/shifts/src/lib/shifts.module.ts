@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-
-import { ShiftRoutingModule } from './shifts.routing';
+import { NgModule } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
+import { DataModule } from '@reaction/data';
 import { ShiftHomeComponent } from './components';
-import { DataModule } from '@reaction/data/src';
+import { ShiftRoutingModule } from './shifts.routing';
 
 export const shiftsRoutes: Route[] = [];
 

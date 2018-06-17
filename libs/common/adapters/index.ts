@@ -1,0 +1,1 @@
+export { shiftAdapter } from './shift';

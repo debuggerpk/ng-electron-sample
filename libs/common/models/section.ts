@@ -6,9 +6,7 @@ export interface Section {
   outlet: number;
 }
 
-export interface SectionState {
-  readonly sections: Array<Section>;
-}
+export interface SectionState extends Array<Section> {}
 
 export enum SectionActionTypes {
   LoadAllSections = '[SECTION] Load All Sections',

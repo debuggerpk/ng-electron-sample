@@ -1,9 +1,9 @@
 import { CategoryActions } from '@reaction/common/actions';
-import { Category, CategoryActionTypes } from '@reaction/common/models';
+import { CategoryActionTypes, CategoryState } from '@reaction/common/models';
 
-export const initialState = [];
+export const initialState: CategoryState = [];
 
-export function categoriesReducer(state = initialState, action: CategoryActions): Array<Category> {
+export function categoriesReducer(state = initialState, action: CategoryActions): CategoryState {
   switch (action.type) {
     case CategoryActionTypes.LoadAllCategories:
       return state;

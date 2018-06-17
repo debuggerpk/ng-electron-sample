@@ -1,9 +1,9 @@
 import { SectionActions } from '@reaction/common/actions';
-import { Section, SectionActionTypes } from '@reaction/common/models';
+import { SectionActionTypes, SectionState } from '@reaction/common/models';
 
-export const initialState: Array<Section> = [];
+export const initialState: SectionState = [];
 
-export function sectionsReducer(state = initialState, action: SectionActions): Array<Section> {
+export function sectionsReducer(state = initialState, action: SectionActions): SectionState {
   switch (action.type) {
     case SectionActionTypes.LoadAllSections:
       return state;

@@ -10,9 +10,7 @@ export interface Product {
   item: number;
 }
 
-export interface ProductState {
-  readonly items: Array<Product>;
-}
+export interface ProductState extends Array<Product> {}
 
 export enum ProductActionTypes {
   LoadAllProducts = '[PRODUCT] Load All Products',
