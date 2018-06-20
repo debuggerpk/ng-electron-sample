@@ -1,1 +1,2 @@
-export { ShiftHomeComponent } from './shift-home/home.component';
+export { ShiftHomeComponent } from './home/home.component';
+export { ShiftListComponent } from './list/list.component';

@@ -6,19 +6,21 @@ import {
   Discount,
   DiscountActionTypes,
   FluxStandardAction,
+  OutletActionTypes,
   Product,
   ProductActionTypes,
-  OutletActionTypes,
+  ProjectionIpcMainEvent,
   Section,
   SectionActionTypes,
-  ShiftActionTypes,
   Shift,
+  ShiftActionTypes,
 } from '@reaction/common/models';
-import { Event, ipcMain } from 'electron';
+import { Normalize } from '@reaction/common/utils/normalize';
+import { ipcMain } from 'electron';
 import { fromEvent, merge } from 'rxjs';
 import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
 import { getForOutlet, getOutlet } from './api';
-import { configStore, dataStore } from './store';
+import { configStore } from './store';
 import { ofType } from './utils/rx-operators';
 import { windowsRef } from './windows-ref';
 
@@ -28,13 +30,7 @@ const FB_CONFIG = {
   api_key: '',
   api_gateway: '',
 };
-
-// TODO: investigate for better rxjs conformity
-const listener$ = fromEvent<FluxStandardAction>(
-  ipcMain,
-  'reaction',
-  (event: Event, action: FluxStandardAction) => action,
-);
+const listener$ = fromEvent(ipcMain, 'reaction').pipe(map<ProjectionIpcMainEvent, FluxStandardAction>(args => args[1]));
 
 const getConfig$ = listener$.pipe(
   ofType<actions.GetConfigFromElectron>(ConfigActionTypes.GetConfigFromElectron),
@@ -55,8 +51,8 @@ const getOutlet$ = listener$.pipe(
 
 const getShift$ = listener$.pipe(
   ofType<actions.LoadAllShifts>(ShiftActionTypes.LoadAllShifts),
-  // map(() => new actions.LoadAllShiftsDone(dataStore.get('shifts', []))),
   switchMap(() => getForOutlet<Array<Shift>>('shifts')),
+  map(shifts => Normalize.shifts(shifts)),
   map(payload => new actions.LoadAllShiftsDone(payload)),
 );
 

@@ -1,6 +1,6 @@
 import { ShiftsActions } from '@reaction/common/actions';
 import { ShiftActionTypes, ShiftState } from '@reaction/common/models';
-import { shiftAdapter } from './shift.adapter';
+import { shiftAdapter } from '@reaction/common/adapters';
 
 export const initialState: ShiftState = shiftAdapter.getInitialState({
   selectedShiftId: null,
@@ -12,7 +12,6 @@ export function shiftsReducer(state = initialState, action: ShiftsActions): Shif
       return state;
 
     case ShiftActionTypes.LoadAllShiftsDone:
-      console.log(action.payload);
       return shiftAdapter.addAll(action.payload, state);
 
     case ShiftActionTypes.AddNewShift:

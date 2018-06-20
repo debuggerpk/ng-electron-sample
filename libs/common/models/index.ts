@@ -5,7 +5,7 @@ export { Product, ProductActionTypes, ProductState } from './product';
 export { LineItem, LineItemActionTypes } from './line-item';
 export { Order, OrderActionTypes, OrderSection } from './order';
 export { Outlet, OutletActionTypes } from './outlet';
-export { FluxStandardAction } from './utils';
+export { FluxStandardAction, ProjectionIpcMainEvent } from './utils';
 export { ReactionRouter, RootState, RouterState } from './root';
 export { Section, SectionActionTypes, SectionState } from './section';
 export { Shift, ShiftActionTypes, ShiftState } from './shift';

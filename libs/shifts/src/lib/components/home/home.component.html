@@ -1,9 +1,9 @@
 <div class="shift-page"
      fxLayout="column"
      fxLayoutAlign="center center">
-  <mat-card class="shift-card">
-    <mat-card-content fxFlex
-                      fxLayout="column">
+  <mat-card class="shift-card"
+            fxLayout="column">
+    <mat-card-content fxLayout="column">
       <mat-form-field appearance="outline">
         <input matInput>
         <mat-icon matSuffix>mode_edit</mat-icon>
@@ -18,5 +18,10 @@
                 color="primary">Continue</button>
       </mat-card-actions>
     </mat-card-content>
+  </mat-card>
+
+  <mat-card class="shift-list-card"
+            fxLayout="column">
+    <reaction-shifts-list [shifts]="shifts"></reaction-shifts-list>
   </mat-card>
 </div>

@@ -6,7 +6,6 @@ import { windowsRef } from './lib/windows-ref';
 
 import './lib/ipc.reducer';
 
-
 const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   width: configStore.get('windowBounds.width', 800),
   height: configStore.get('windowBounds.height', 640),

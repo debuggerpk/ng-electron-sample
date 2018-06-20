@@ -59,7 +59,13 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "allow": ["@reaction/common/models", "@reaction/common/actions", "@reaction/common/utils"],
+        "allow": [
+          "@reaction/common/actions",
+          "@reaction/common/adapters",
+          "@reaction/common/models",
+          "@reaction/common/selectors",
+          "@reaction/common/utils"
+        ],
         "depConstraints": [{ "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }]
       }
     ]
