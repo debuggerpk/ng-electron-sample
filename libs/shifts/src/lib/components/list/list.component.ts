@@ -7,8 +7,6 @@ import { Shift } from '@reaction/common/models';
   styleUrls: ['./list.component.scss'],
 })
 export class ShiftListComponent implements OnInit {
-  @Input() public shifts: Array<Shift> = [];
-
   constructor() {}
 
   ngOnInit() {}

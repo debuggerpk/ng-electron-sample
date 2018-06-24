@@ -18,7 +18,7 @@ export const getOutlet: () => Observable<Outlet> = () => {
     return RxHR.get<Outlet>(url, { headers, json: true }).pipe(
       map(response => response.body),
       tap(data => dataStore.set('outlet', { data, updated_at: new Date() })),
-      catchError(error => observableOf(<Outlet>outlet.data)),
+      catchError(() => observableOf(<Outlet>outlet.data)),
     );
   } else {
     return observableOf(<Outlet>outlet.data);
@@ -26,9 +26,9 @@ export const getOutlet: () => Observable<Outlet> = () => {
 };
 
 export function getForOutlet<T>(endpointName: string): Observable<T> {
-  const data = dataStore.get(endpointName, null);
+  const fromStore = dataStore.get(endpointName, null);
 
-  if (!data || new Date().getTime() - new Date(data.updated_at).getTime() > 1000 * 60 * 60 * 2) {
+  if (!fromStore || new Date().getTime() - new Date(fromStore.updated_at).getTime() > 1000 * 60 * 60 * 2) {
     const config = getConfiguration();
     const url = `${config.api_gateway}/${endpointName}/`;
     const headers = getHeaders();
@@ -39,9 +39,9 @@ export function getForOutlet<T>(endpointName: string): Observable<T> {
     }).pipe(
       map(response => response.body),
       tap(data => dataStore.set(endpointName, { data, updated_at: new Date() })),
-      catchError<T, T>(() => observableOf<T>(data ? data.data : [])),
+      catchError<T, T>(() => observableOf<T>(fromStore ? fromStore.data : [])),
     );
   } else {
-    return observableOf<T>(data.data);
+    return observableOf<T>(fromStore.data);
   }
 }

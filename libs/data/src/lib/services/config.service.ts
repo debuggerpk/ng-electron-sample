@@ -32,6 +32,7 @@ export class ConfigService {
   }
 
   public get isElectronApp() {
+    console.log(window.navigator.userAgent);
     return window.navigator.userAgent.indexOf('Electron') > -1;
   }
 

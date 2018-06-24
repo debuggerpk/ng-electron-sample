@@ -1,1 +1,1 @@
-export { ShiftsModule, shiftsRoutes } from './lib/shifts.module';
+export { ShiftsModule } from './lib/shifts.module';

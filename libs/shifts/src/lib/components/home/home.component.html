@@ -1,7 +1,7 @@
 <div class="shift-page"
      fxLayout="column"
      fxLayoutAlign="center center">
-  <mat-card class="shift-card"
+  <!-- <mat-card class="shift-card"
             fxLayout="column">
     <mat-card-content fxLayout="column">
       <mat-form-field appearance="outline">
@@ -18,10 +18,10 @@
                 color="primary">Continue</button>
       </mat-card-actions>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 
-  <mat-card class="shift-list-card"
-            fxLayout="column">
-    <reaction-shifts-list [shifts]="shifts"></reaction-shifts-list>
-  </mat-card>
+  <reaction-shifts-list>
+    <reaction-shifts-list-item [shift]="shift"
+                               *ngFor="let shift of shifts"></reaction-shifts-list-item>
+  </reaction-shifts-list>
 </div>

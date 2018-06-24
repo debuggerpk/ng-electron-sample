@@ -73,7 +73,6 @@ const rollupJS = (inputFile: string, options, cache) => {
       .on('bundle', () => {
         cache = cache;
       })
-      // rollup({ input: `${PATHS.src.folder}/${PATHS.src.scripts.source}/${inputFile}`, ...options })
       // point to the entry file.
       .pipe(source(inputFile, `${PATHS.electron.src.folder}`))
       // we need to buffer the output, since many gulp plugins don't support streams.
@@ -81,22 +80,18 @@ const rollupJS = (inputFile: string, options, cache) => {
       // initialize sourcemaps
       .pipe($.sourcemaps.init({ loadMaps: true }))
       // google closure compile
-      .pipe(
-        closure({
-          compilation_level: 'SIMPLE',
-          language_in: 'ECMASCRIPT6_STRICT',
-          language_out: 'ECMASCRIPT6_STRICT',
-          assume_function_wrapper: true,
-          output_wrapper: '(function(){%output%})();',
-        }),
-      )
+      // .pipe(
+      //   closure({
+      //     compilation_level: 'SIMPLE',
+      //     language_in: 'ECMASCRIPT6_STRICT',
+      //     language_out: 'ECMASCRIPT6_STRICT',
+      //     assume_function_wrapper: true,
+      //     output_wrapper: '(function(){%output%})();',
+      //   }),
+      // )
       // rename
       .pipe($.rename(inputFile))
-      .pipe(
-        $.rename(path => {
-          path.extname = '.js';
-        }),
-      )
+      .pipe($.rename(path => (path.extname = '.js')))
       // size after
       .pipe($.size({ showFiles: true, showTotal: false }))
       // write source maps
@@ -116,23 +111,3 @@ export const electronMainBundle = () => {
 export const electronPreloadBundle = () => {
   return rollupJS(PATHS.electron.src.entryPoints.preload, rollupOptions, preloadCache);
 };
-
-// export const backgroundScriptBundle = () => {
-//   return rollupJS(PATHS.src.scripts.background, rollupOptions);
-// };
-
-// export const appScriptBundle = () => {
-//   return rollupJS(PATHS.src.scripts.app, rollupOptions);
-// };
-
-// export const preloadScriptBundle = () => {
-//   return rollupJS(PATHS.src.scripts.preload, rollupOptions);
-// };
-
-// export const splashScriptBundle = () => {
-//   return rollupJS(PATHS.src.scripts.splash, rollupOptions);
-// };
-
-// export const updateScreenScriptBundle = () => {
-//   return rollupJS(PATHS.src.scripts['update-screen'], rollupOptions);
-// };
