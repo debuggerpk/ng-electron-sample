@@ -1,6 +1,11 @@
-$mq-breakpoints: (mobile: 320px, tablet: 740px, desktop: 980px, wide: 1300px);
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 740px,
+  desktop: 980px,
+  wide: 1300px,
+);
 
-@import "~sass-mq/mq";
+@import '~sass-mq/mq';
 
 :host {
   width: 90%;

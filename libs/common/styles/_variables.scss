@@ -1,0 +1,89 @@
+@import '~@angular/material/theming';
+
+/*
+ * Fonts
+ */
+
+$font-stack-roboto: 'Roboto', 'Helvetica Neue', sans-serif;
+$font-stack-roboto-condensed: 'Roboto Condensed', sans-serif;
+/*
+ * Colors
+ */
+
+$retail-blue: (
+  50: #e0f4fb,
+  100: #b3e4f5,
+  200: #80d2ef,
+  300: #4dc0e9,
+  400: #26b3e4,
+  500: #00a5df,
+  600: #009ddb,
+  700: #0093d7,
+  800: #008ad2,
+  900: #0079ca,
+  A100: #f2f9ff,
+  A200: #bfe2ff,
+  A400: #8ccbff,
+  A700: #73bfff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$retail-pink: (
+  50: #fee4ea,
+  100: #fdbccc,
+  200: #fc90aa,
+  300: #fa6487,
+  400: #f9426e,
+  500: #f82154,
+  600: #f71d4d,
+  700: #f61843,
+  800: #f5143a,
+  900: #f30b29,
+  A100: #ffffff,
+  A200: #ffeaec,
+  A400: #ffb7be,
+  A700: #ff9da7,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$reaction-palette-primary: mat-palette($retail-blue);
+$reaction-palette-accent: mat-palette($retail-pink);
+$reaction-palette-warn: mat-palette($mat-deep-orange);
+
+$reaction-color-primary: mat-color($reaction-palette-primary);
+$reaction-color-accent: mat-color($reaction-palette-accent);
+$reaction-color-warn: mat-color($reaction-palette-warn);
+$reaction-color-white: rgb(255, 255, 255);
+$reaction-color-whitesmoke: rgb(245, 245, 245);
+
+$reaction-theme: mat-light-theme($reaction-palette-primary, $reaction-palette-accent, $reaction-palette-warn);

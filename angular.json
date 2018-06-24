@@ -23,6 +23,9 @@
             "polyfills": "apps/root/src/polyfills.ts",
             "assets": ["apps/root/src/assets", "apps/root/src/favicon.ico"],
             "styles": ["apps/root/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles", "libs/common/styles"]
+            },
             "scripts": []
           },
           "configurations": {

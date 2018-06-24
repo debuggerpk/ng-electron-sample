@@ -24,6 +24,7 @@
     "format:write": "./node_modules/.bin/nx format:write",
     "format:check": "./node_modules/.bin/nx format:check",
     "format:all": "prettier --write './{apps,libs,desktop,tasks}/**/*.ts'",
+    "format:styles": "prettier --write './{apps,libs,desktop,tasks}/**/*.scss'",
     "update": "ng update @nrwl/schematics",
     "update:check": "ng update",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
