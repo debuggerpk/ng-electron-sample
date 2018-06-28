@@ -1,1 +1,5 @@
-<div class="reaction__list-calendar"></div>
+<div class="reaction__list-calendar">
+  <div class="weekday">{{ shift.started_at | date:'EEEE' }}</div>
+  <div class="day">{{ shift.started_at | date:'dd' }}</div>
+  <div class="month">{{ shift.started_at | date:'MMMM' }}</div>
+</div>
