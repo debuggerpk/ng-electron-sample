@@ -22,6 +22,6 @@
 
   <reaction-shifts-list>
     <reaction-shifts-list-item [shift]="shift"
-                               *ngFor="let shift of shifts"></reaction-shifts-list-item>
+                               *ngFor="let shift of shifts | orderBy:'-created_at'"></reaction-shifts-list-item>
   </reaction-shifts-list>
 </div>

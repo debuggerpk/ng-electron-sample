@@ -34,6 +34,7 @@ import { SectionsEffects } from './state/sections/sections.effects';
 import { sectionsReducer } from './state/sections/sections.reducer';
 import { ShiftsEffects } from './state/shifts/shifts.effects';
 import { shiftsReducer } from './state/shifts/shifts.reducer';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   imports: [
@@ -58,7 +59,7 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     StoreModule.forFeature('sections', sectionsReducer),
     EffectsModule.forFeature([SectionsEffects]),
   ],
-  exports: [VendorModule],
+  exports: [OrderByPipe],
   providers: [
     CategoryEffects,
     CategoryService,
@@ -81,5 +82,6 @@ import { shiftsReducer } from './state/shifts/shifts.reducer';
     ShiftsEffects,
     ShiftService,
   ],
+  declarations: [OrderByPipe],
 })
 export class DataModule {}
