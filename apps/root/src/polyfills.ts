@@ -71,10 +71,11 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
  */
 // import 'intl/locale-data/jsonp/en';
 
-import { IpcRenderer } from 'electron';
+import { IpcRenderer, Remote } from 'electron';
 
 export interface ReactionWindow {
   ipc: IpcRenderer;
+  remote: Remote;
 }
 
 declare global {

@@ -13,10 +13,12 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   y: configStore.get('windowBounds.y', 102),
   frame: true,
   webPreferences: {
-    nodeIntegration: false,
+    nodeIntegration: IS_DEV,
     preload: path.join(__dirname, 'preload.js'),
   },
 };
+
+console.log(mainWindowSettings);
 
 const createWindow: () => void = () => {
   const url = IS_DEV && IS_HMR ? 'http://localhost:4200' : `file:///${__dirname}/apps/root/index.html`;

@@ -9,5 +9,8 @@
     "node_modules/": true,
     ".idea/": true,
     ".rpt2_cache/": true
-  }
+  },
+  "prettier.requireConfig": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all"
 }

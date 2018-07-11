@@ -1,4 +1,4 @@
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, remote } from 'electron';
 
-window['reaction'] = { ipc: ipcRenderer };
+window['reaction'] = { remote, ipc: ipcRenderer };
 window['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;

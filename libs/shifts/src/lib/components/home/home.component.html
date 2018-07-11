@@ -1,6 +1,4 @@
-<div class="shift-page"
-     fxLayout="column"
-     fxLayoutAlign="center center">
+<div class="shift-page">
   <!-- <mat-card class="shift-card"
             fxLayout="column">
     <mat-card-content fxLayout="column">
@@ -20,8 +18,10 @@
     </mat-card-content>
   </mat-card> -->
 
-  <reaction-shifts-list>
+  <reaction-shifts-list fxLayout="column"
+                        fxLayoutAlign="center center">
     <reaction-shifts-list-item [shift]="shift"
-                               *ngFor="let shift of shifts | orderBy:'-created_at'"></reaction-shifts-list-item>
+                               *ngFor="let shift of shifts | orderBy:'-created_at'">
+    </reaction-shifts-list-item>
   </reaction-shifts-list>
 </div>

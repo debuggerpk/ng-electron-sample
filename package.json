@@ -77,6 +77,7 @@
     "devtron": "^1.4.0",
     "electron": "^2.0.0",
     "electron-builder": "^20.13.3",
+    "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.2.4",
     "google-closure-compiler": "^20180610.0.1",
     "gulp": "^4.0.0",
