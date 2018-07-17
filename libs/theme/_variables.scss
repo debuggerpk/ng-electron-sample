@@ -87,3 +87,14 @@ $reaction-color-white: rgb(255, 255, 255);
 $reaction-color-whitesmoke: rgb(245, 245, 245);
 
 $reaction-theme: mat-light-theme($reaction-palette-primary, $reaction-palette-accent, $reaction-palette-warn);
+
+/**
+ * Media Query
+ */
+
+$mq-breakpoints: (
+  mobile: 320px,
+  tablet: 740px,
+  desktop: 980px,
+  wide: 1300px,
+);

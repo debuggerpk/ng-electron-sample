@@ -1,4 +1,4 @@
-@import '~sass-mq/mq';
+@import '~@reaction/theme/variables';
 
 $mq-breakpoints: (
   mobile: 320px,
@@ -7,21 +7,13 @@ $mq-breakpoints: (
   wide: 1300px,
 );
 
-.shift-page {
-  height: 100vh;
+:host {
   width: 100vw;
-}
-
-.shift-card {
-  width: 90vw;
-
-  @include mq($from: tablet) {
-    width: 60vw;
-  }
-}
-
-.shift-list-card {
-  @extend .shift-card;
-
-  margin-top: 1em;
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }

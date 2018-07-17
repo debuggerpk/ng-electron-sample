@@ -1,27 +1,5 @@
-<div class="shift-page">
-  <!-- <mat-card class="shift-card"
-            fxLayout="column">
-    <mat-card-content fxLayout="column">
-      <mat-form-field appearance="outline">
-        <input matInput>
-        <mat-icon matSuffix>mode_edit</mat-icon>
-        <mat-label>Shift Password</mat-label>
-        <mat-hint>
-          This will be needed to set voids or view sales summary.
-        </mat-hint>
-      </mat-form-field>
-      <mat-card-actions fxLayout="row"
-                        fxLayoutAlign="end">
-        <button mat-raised-button
-                color="primary">Continue</button>
-      </mat-card-actions>
-    </mat-card-content>
-  </mat-card> -->
-
-  <reaction-shifts-list fxLayout="column"
-                        fxLayoutAlign="center center">
-    <reaction-shifts-list-item [shift]="shift"
-                               *ngFor="let shift of shifts | orderBy:'-created_at'">
-    </reaction-shifts-list-item>
-  </reaction-shifts-list>
-</div>
+<reaction-shifts-list>
+  <reaction-shifts-list-item [shift]="shift"
+                             *ngFor="let shift of shifts | orderBy:'-created_at'">
+  </reaction-shifts-list-item>
+</reaction-shifts-list>

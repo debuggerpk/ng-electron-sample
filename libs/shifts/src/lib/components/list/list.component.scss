@@ -1,16 +1,10 @@
-$mq-breakpoints: (
-  mobile: 320px,
-  tablet: 740px,
-  desktop: 980px,
-  wide: 1300px,
-);
-
+@import '~@reaction/theme/variables';
 @import '~sass-mq/mq';
 
 :host {
-  width: 90%;
   display: flex;
   flex-direction: column;
+  width: 90%;
 
   @include mq($from: tablet) {
     width: 60%;
