@@ -18,8 +18,6 @@ const mainWindowSettings: Electron.BrowserWindowConstructorOptions = {
   },
 };
 
-console.log(mainWindowSettings);
-
 const createWindow: () => void = () => {
   const url = IS_DEV && IS_HMR ? 'http://localhost:4200' : `file:///${__dirname}/apps/root/index.html`;
 

@@ -1,7 +1,42 @@
 import { EntityState } from '@ngrx/entity';
 
+export interface BaseSaleSummary {
+  order_count: number;
+  sale: number;
+}
+
+export interface PaymentModeSummary {
+  card: BaseSaleSummary;
+  cash: BaseSaleSummary;
+  cod: BaseSaleSummary;
+}
+
+export interface ItemizedSummary {
+  quantity: number;
+  sale: number;
+  discount: number;
+  returns: {
+    quantity: number;
+    value: number;
+  };
+}
+
+export interface ShiftPropertySummary extends BaseSaleSummary {
+  payment_modes: PaymentModeSummary;
+  category: {
+    [name: string]: ItemizedSummary;
+  };
+  family: {
+    [name: string]: ItemizedSummary;
+  };
+  products: {
+    [name: string]: ItemizedSummary;
+  };
+}
+
 export interface ShiftProperties {
-  [key: string]: any;
+  password: string;
+  summary: ShiftPropertySummary;
 }
 
 export interface Shift {
